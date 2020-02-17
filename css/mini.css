@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+.mini-box1 .item{float: left; width: 190px;margin-right: 8%;}
+.mini-box1 .item:last-child{margin-right:0 ;}
+.mini-box1 .item .icon{width: 140px;height: 140px;display: block;margin: 0 auto;}
+.mini-box1 .item p{font-size: 16px;margin-top: 20px;}
+
+/* 我们的优势 */
+.OurAdvantage{padding: 80px 0;background:url(../images/public-img2.png) no-repeat 0 0/100% 100%}
+.OurAdvantage .title h1{font-size: 28px;margin-bottom: 10px;}
+.OurAdvantage .title p{font-size: 16px;}
+.OurAdvantage .item{width: 50%;float: left;}
+.OurAdvantage .left{height: 100%;}
+.OurAdvantage .left img{width: 350px;height: 365px; display: block;margin-top: 50px;}
+
+.OurAdvantage .child{padding-left: 50px;position: relative;padding-bottom: 50px;}
+.OurAdvantage .child:last-child{padding-bottom: 0;}
+.OurAdvantage .child .icon{position: absolute;top: 3px;left:0;width: 30px;height: 30px;}
+.OurAdvantage .child h1{font-size: 18px;margin-bottom: 10px;font-weight: bold;}
+.OurAdvantage .child p{color: #4a4a4a;}
+
+@media screen and ( max-width:1100px){ 
+	.mini-box1 .item{width: 25%;margin-right: 0;}
+	.mini-box1 .item .icon{width: 80px;height: 80px;}
+	.mini-box1 .item p{width: 85%;font-size: 15px;margin: 15px auto 0 auto;}
+	
+}
+@media screen and ( max-width:500px){ 
+	.mini-box1 .item .icon{width: 50px;height: 50px;}
+	.mini-box1 .item p{font-size: 12px;}
+	
+	.OurAdvantage{padding: 40px 0;}
+	.OurAdvantage .title{text-align: center;margin-bottom: 15px;}
+	.OurAdvantage .title h1{font-size: 20px; font-weight: bold;}
+	.OurAdvantage .title p{font-size: 14px;}
+	.OurAdvantage .item.left{width: 46%;}
+	.OurAdvantage .item.right{float: right;}
+	.OurAdvantage .left img{width: 100%;height: auto;margin-top: 80px;}
+	.OurAdvantage .child{padding-left: 30px;padding-bottom: 15px;}
+	.OurAdvantage .child .icon{width: 20px;height: 20px;}
+	.OurAdvantage .child h1{font-size: 15px;    margin-bottom: 5px;}
+	.OurAdvantage .child p{font-size: 12px;line-height: 20px;}
+}
+

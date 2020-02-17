@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>网站开发</title>
+		<script src="./js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/include.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/swipe.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" href="css/animate/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	</head>
+	<style type="text/css">
+		/* 服务案例展示 */
+		.swiper-container{width: 100%;height: 100%;padding-bottom: 100px;}
+		.swiper-slide {width: 30%;text-align: center;font-size: 18px;background: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;transition: 300ms;display: block;box-shadow: 0 0 10px rgba(0,0,0,0.15);}
+		.swiper-slide:not(.swiper-slide-active){transform: scale(0.8);}
+		.swiper-slide img {width: 100%;height: auto;display: block;}
+		.swiper-slide p{padding: 20px 2%;}
+		
+		.website{ background:#f5f5f5 url(images/web-icon6.png) no-repeat center bottom/100% auto;margin: 0 auto; padding: 90px 0 110px 0;box-sizing: border-box;}
+		.website-title{width: 25%;}
+		.website-list{width: 72%;}
+		.website-title .font{font-size: 20px; color: #b9b9b9;}
+		.website-title .tit{font-size: 24px; margin-top: 15px;}
+		.website-title .text{font-size: 14px; margin-top: 50px;}
+		.website-list li{width: 220px; height: 130px;background-color: #fff;border-radius: 5px;padding: 20px;box-sizing: border-box;float: left;margin:0 0 20px 20px;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
+		.website-list li h1{font-size:16px;}
+		.website-list li .Bfix{position: absolute;left: 30px;right:30px;bottom: 15px;}
+		.website-list li .xian{width:1px;height: 25px;background-color: #d8d8d8;}
+		.website-list li .num{clear: both;font-size: 16px;color: #a8a8a8;}
+		.website-list li .rr .icon{width:35px;height: 35px;display: block;margin-top: 8px;}
+	</style>
+
+	<body>
+		<div id="app">
+			<!-- 网站导航 -->
+			<div class="">
+				<include src="header.html"></include>
+			</div>
+			
+			<!-- banner -->
+			<div class="">
+				<include src="headBanner.html"></include>
+			</div>
+
+			<div class="website">
+				<div class="w1000 clearfix">
+					<div class="website-title fl">
+						<p class="font">WEBSITE ADVANTAGE</p>
+						<p class="tit">网站优势</p>
+						<p class="text color6">专业提供以互联网为基础的信息化系统软件解决方案</p>
+					</div>
+					<div class="website-list fr">
+						<ul class="clearfix">
+							<li v-for="(item,index) in websiteData" :key="index">
+								<h1>{{item.title}}</h1>
+								<div class="Bfix clearfix">
+									<div class="ll fl">
+										<p class="xian"></p>
+										<p class="num">{{item.num}}</p>
+									</div>
+									<div class="rr fr"><img class="icon" :src="item.iconUrl" ></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 产品，让客户充分放心 -->
+			<div>
+				<div class="pubTitle center">
+					<h1 class="mgb20">产品，让客户充分放心</h1>
+					<p>Peoduct，let customers rest assured</p>
+				</div>
+				<div class="w1200">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="images/img4.jpg">
+									<p>华汇音响</p>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="images/img5.jpg">
+									<p>瑞安消防</p>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="images/img4.jpg">
+									<p>华汇音响</p>
+								</a>	
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="images/img5.jpg">
+									<p>瑞安消防</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="">
+				<include src="OurCace.html"></include>
+			</div> -->
+			
+			<!-- 服务 -->
+			<div class="">
+				<include src="OurServices.html"></include>
+			</div>
+			
+			<!-- 多一分参考，总有益处 -->
+			<div class="">
+				<include src="WritePhone.html"></include>
+			</div>
+			
+			<include src="footer.html"></include>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		$(function() {
+			var swiper = new Swiper('.swiper-container', {
+				slidesPerView: 3,
+				slidesPerGroup : 1,
+				spaceBetween: 30,
+				slidesOffsetAfter : 500,
+				centeredSlides: true,
+				observer: true,
+				observeParents: true,
+				initialSlide: 2,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				}
+			});
+	
+		});
+	</script>
+	<script src="js/swiper.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					is_toggle: false,
+					indshareLis: [],
+					mainData:[],
+					websiteData:[
+						{title:'视觉设计',num:'01',iconUrl:'images/web-icon5.png'},
+						{title:'绝佳的响应式体验',num:'02',iconUrl:'images/web-icon4.png'},
+						{title:'H5/CSS3标准',num:'03',iconUrl:'images/web-icon3.png'},
+						{title:'VUE原创后台管理系统',num:'04',iconUrl:'images/web-icon2.png'},
+						{title:'优秀的SEO优化',num:'05',iconUrl:'images/web-icon1.png'},
+						{title:'一站式服务',num:'06',iconUrl:'images/web-icon.png'}
+					]
+				}
+			},
+			created: function() {
+				var self = this;
+				window.onload = function() {
+					window.base.bus.$emit('to_headBanner', {
+						title:'轮播图'
+					});	
+					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
+				};
+			},
+			methods: {
+				getMainData: function(id) {
+					var self = this;
+					var callback = function(res) {
+						console.log('getMainData', res);
+						self.mainData.push.apply(self.mainData, res.info.data);
+						for (var i = 0; i < self.mainData.length; i++) {
+							self[self.mainData[i].title] = self.mainData[i];
+						};
+						console.log(self[''])
+						
+					};
+					console.log('self.mainData', self.mainData)
+				},
+				
+
+			}
+		});
+	</script>
+	
+</html>

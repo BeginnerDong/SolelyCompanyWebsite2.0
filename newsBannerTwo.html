@@ -1,0 +1,128 @@
+<div id="banner_app" style="">
+	<div class="banner clearfix pr" v-for="(item,index) in bannerData" v-show="index==banner_index" style="height:100%">
+		<a href="newsCenterDetal.html">
+			<img :src="item.banImgUrl" />
+			<p class="text avoidOverflow">{{item.title}}</p>
+		</a>
+	</div>
+	
+	<!-- 导航点 -->
+	<div class="banBtnNav">
+		<span v-for="(item,index) in bannerData" :class="index==banner_index?'active':''" :data-index="index" @click="toBannerOne"></span>
+	</div>
+	
+	<!-- 左右按钮 -->
+	<!-- <div class="arrowIon prev" @click="changeBanner('+')">
+		<img src="images/icon-right.png" />
+	</div>
+	<div class="arrowIon next" @click="changeBanner('-')">
+		<img src="images/icon-left.png" />
+	</div> -->
+</div>
+
+
+<script type="text/javascript">
+	var banner_app = new Vue({
+	    el: '#banner_app',
+	    data:function(){
+	        return {
+	        	banner_index:0,
+	        	is_toggle:false,
+				is_show:false,
+				bannerData:[
+					{banImgUrl:"images/new-banner.jpg",title:'数字化企业研习社走进广联达  共探工业互联网产业变革'},
+					{banImgUrl:"images/case-img1.jpg",title:'携手同行，共筑未来——广联达举办北京造价咨询企业BIM应用交流会'},
+				],
+				searchItem:{
+					thirdapp_id:window.base.thirdapp_id,
+					title:''
+				},
+				bannerTimer:null
+	        }
+	    },
+	    created:function () {
+	        var self = this;
+	        var currentUrl = window.base.GetUrlRelativePath();
+		
+			var reg = /\/([^\/]+)\.html/i;
+			if(reg.exec(currentUrl)&&reg.exec(currentUrl)[0]){
+				self.currentUrl = reg.exec(currentUrl)[0];
+			}else{
+				self.currentUrl = '/index.html';
+			};
+			
+
+    		window.base.bus.$on('to_headBanner',(res)=>{	
+				if(res.mainImg){
+					 self.bannerData = res.mainImg
+					 return
+				};
+				console.log('res222',res)
+				this.searchItem.title = res.title;
+				
+	        	this.to_headBanner()
+		    });
+			
+			self.bannerTimer = setInterval(function(){
+				self.changeBanner('+');
+			},3000)
+	    },
+		
+		
+		destroyed() {
+			const self = this;
+			clearInterval(this.timer);        
+			self.bannerTimer = null;
+		},
+	    methods: {
+			
+			toBannerOne:function(e){
+				const self = this;
+				console.log('e',e)
+				var index = parseInt(e.target.dataset.index);
+				self.banner_index = index;
+			},
+			
+	   //  	to_headBanner:function(){
+				// var self = this;
+				// var postData = {};
+				// postData.searchItem = window.base.cloneForm(self.searchItem);
+				// var callback = function(res){
+				//      if(res.info.data.length>0){
+				// 		 self.bannerData =res.info.data[0].mainImg;
+				// 		 console.log('self.bannerData',self.bannerData)
+				//      };    
+				// };
+				// window.base.labelGet(postData, callback);
+	   //  	},
+	        
+			// 自动轮播
+	    	changeBanner: function(type) {
+	    		var self = this;
+	    		if(type=='+'){
+	    			console.log(8852)
+	    			self.banner_index += 1;
+	    		}else if((type=='-')){
+	    			self.banner_index -= 1;
+	    		};
+	    		
+	    		if(self.banner_index<0){
+	    			self.banner_index = self.bannerData.length-1
+	    		};
+	    		if(self.banner_index==self.bannerData.length){
+	    			self.banner_index = 0
+	    		};	
+	    		console.log('self.banner_index',self.banner_index);
+	    	},
+			// 
+			// intoPath:function(url,id){
+			//     var self = this;
+			//     var toUrl = url;
+			//     console.log(toUrl);
+			//     window.location.href= toUrl+'?id='+id;
+			// }
+	    }
+	});
+</script>
+
+

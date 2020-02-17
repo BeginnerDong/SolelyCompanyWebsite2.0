@@ -1,0 +1,130 @@
+<div id="OurService">
+	<div class="bjgayf5 pdb100">
+		<div class="pubTitle center">
+			<h1 class="mgb20">我们的服务</h1>
+			<p>Our service</p>
+		</div>
+		<div class="w1200 indx-myService clearfix">
+			<div class="list left fl">
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon8.png" >
+					<img class="arrow" src="images/xian-icon1.png" >
+					<h1>01需求</h1>
+					<p>需求整理、定位分析、可行性分析、功能策划、合同签订</p>
+				</div>
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon9.png" >
+					<img class="arrow" src="images/xian-icon1.png" >
+					<h1>02设计</h1>
+					<p>交互设计、视觉创新</p>
+				</div>
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon10.png" >
+					<img class="arrow" src="images/xian-icon1.png" >
+					<h1>01技术开发</h1>
+					<p>数据定义、程序编码、程序对接</p>
+				</div>
+			</div>
+			<div class="Mpic fl flipInX animated">
+				<img src="images/home-img01.png" >
+			</div>
+			<div class="list right fr">
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon8.png" >
+					<img class="arrow" src="images/xian-icon2.png" >
+					<h1>01需求</h1>
+					<p>需求整理、定位分析、可行性分析、功能策划、合同签订</p>
+				</div>
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon9.png" >
+					<img class="arrow" src="images/xian-icon2.png" >
+					<h1>02设计</h1>
+					<p>交互设计、视觉创新</p>
+				</div>
+				<div class="item flipInX animated">
+					<img class="icon" src="images/home-icon10.png" >
+					<img class="arrow" src="images/xian-icon2.png" >
+					<h1>01技术开发</h1>
+					<p>数据定义、程序编码、程序对接</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<script type="text/javascript">
+	var OurService = new Vue({
+	    el: '#OurService',
+	    data:function(){
+	        return {
+	        	is_toggle:false,
+				conactData:{}
+	        }
+	    },
+	    created:function () {
+	        var self = this;
+			self.getMainData()	
+			self.getLabelData()
+	    },
+		
+	    methods: {
+			getMainData: function(id) {
+				var self = this;
+				var postData = {};
+				var callback = (res) => {
+					console.log('getMainData', res);
+					self.conactData = res.info.data[0];
+					window.base.bus.$emit('to_headBanner', {
+						conactData:self.conactData
+					});	
+				};
+				window.base.articleGet(postData, callback);
+			}
+	    	
+	    }
+	});   
+</script>
+
+<style type="text/css">
+	
+	/* 我们的服务 */
+	.indx-myService .list{width: 33.3%;padding-right: 120px;box-sizing: border-box; }
+	.indx-myService .list .item{position: relative;padding-right: 40px;text-align: right;padding-bottom: 60px;}
+	.indx-myService .list .item:last-child{padding-bottom: 0;}
+	.indx-myService .list .icon{position: absolute;top: 0;right: 0;width: 26px;height: 26px; display: block;}
+	.indx-myService .list .arrow{position: absolute;top:10px;right: -120px;width: 110px;height: 78px; display: block;}
+	.indx-myService .list.right{padding-left: 120px;padding-right: 0;}
+	.indx-myService .list.right .item{padding-left: 40px;padding-right: 0;text-align: left;}
+	.indx-myService .list.right .icon{left: 0;right: auto;}
+	.indx-myService .list.right .arrow{left: -130px;right: auto;}
+	.indx-myService .list .item h1{font-size: 18px;padding-bottom: 15px;font-weight: bold;}
+	
+	.indx-myService .Mpic{width: 33.3%; text-align: center; vertical-align: middle;} 
+	.indx-myService .Mpic img{width: 90%;height: auto; display: block;margin: 0 auto;}
+	
+	@media only screen and (max-width: 1050px){
+		.indx-myService .list{padding-right: 50px;}
+		.indx-myService .list .item{padding-bottom: 40px;}
+		.indx-myService .list .arrow{width: 80px;height: 78px;right: -90px;}
+		.indx-myService .list.right{padding-left: 50px;}
+		.indx-myService .list.right .arrow{left: -90px;}
+		.indx-myService .Mpic{margin-top: 6%;}
+	}
+	
+	@media only screen and (max-width: 500px){
+		.indx-myService{padding: 0;}
+		.indx-myService .Mpic{width: 30%;margin-top: 50px;}
+		.indx-myService .list{width: 35%;padding-right: 0px;}
+		.indx-myService .list .icon{width: 16px;height: 16px;top: 3px;}
+		.indx-myService .list .arrow{width: 60px;height: 43px;right: -60px;}
+		.indx-myService .list .item{padding-right: 20px;padding-bottom: 20px;}
+		.indx-myService .list .item h1{font-size: 14px;padding-bottom: 5px;}
+		.indx-myService .list .item p{font-size: 10px;line-height: 18px;}
+		.indx-myService .list.right .arrow{left: -60px;}
+		.indx-myService .list.right{padding-left: 0;}
+		.indx-myService .list.right .item{padding-left: 20px;}
+	}
+</style>
+
+
+

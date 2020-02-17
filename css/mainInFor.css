@@ -1,0 +1,35 @@
+
+/*列表左侧导航*/
+.LRListCont{ padding-top: 80px;}
+.main-leftNav{ width:22%; border:1px solid #eee; box-sizing:border-box; margin-bottom: 50px; margin-top: -1px;background: #fff;}
+.main-leftNav .title .icon{ width:60px; height: 60px; display: block; margin: 30px auto 15px auto;}
+.main-leftNav .title .tt{ font-size: 20px; line-height: 24px; padding-bottom: 20px;}
+.main-leftNav .selnav a{ width: 100%; line-height: 50px;height: 50px;padding: 0 20px; overflow: hidden; display: block; font-size:16px; color: #818181;box-sizing: border-box;overflow: hidden;text-overflow:ellipsis; white-space: nowrap;}
+.main-leftNav .selnav a:hover{background: #eee; }
+.main-leftNav .selnav a.on{background: #339fd6; color: #fff; position: relative; }
+.main-leftNav .selnav a::before{content:''; width: 12px; height: 12px;  background: url(../images/aboutUs-iocn1.png)no-repeat 0 0 /100% 100%; display: inline-block;margin-right: 10px;}
+
+
+/*页面右侧内容*/
+.main-rightCont{ width: 75%; padding:60px 30px 60px 30px; background: #fff;box-sizing:border-box;}
+.mainXqInfor img{max-width: 100%; display: block; margin:10px auto;}
+.mainXqInfor p{padding-bottom: 10px;}
+.mainXqTit{ padding-bottom:30px;}
+.portLisbox1 .contBox img{max-width: 100%;display: block; margin: 0 auto;}
+
+
+
+@media screen and ( max-width: 750px){ 
+.main-leftNav,.main-rightCont{ width: 100%;}
+.main-leftNav{  border:none;margin-bottom: 0;}
+.main-leftNav .title .icon{ width: 50px; height: 50px;margin: 20px auto 5px auto;}
+.main-leftNav .title .tt{font-size: 18px;}
+
+/* .main-leftNav .selnav{ text-align: center; padding-top:15px;} */
+.main-leftNav .selnav a{width:100%;  display: inline-block; margin:0px 0 5px 0 ;line-height: 38px; height: 38px;padding: 0 8px; text-align: center; font-size: 14px;border: 1px solid #EEEEEE;}
+
+.main-rightCont{ width: 100%; padding: 20px 2%; margin-bottom: 30px;}
+.mainXqTit{padding-bottom: 15px;}
+.mainXqTit .tit{font-size: 17px; line-height: 24px;}
+
+}

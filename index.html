@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>首页</title>
+		<script src="./js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/include.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/swipe.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" href="css/animate/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 网站导航 -->
+			<div class="">
+				<include src="header.html"></include>
+			</div>
+			
+			<!-- banner -->
+			<div class="">
+				<include src="headBanner.html"></include>
+			</div>
+
+			<!-- 四大类 -->
+			<div class="pdb60 clearfix indx-homeClass white">
+				<ul class="oh clearfix animated slideInUp">
+					<li class="fadeInRight animated">
+						<div class="text">
+							<h1 class="tit">高端网络建设</h1>
+							<p class="avoidOverflow">品牌网站建设</p>
+							<p class="avoidOverflow">企业网站建设</p>
+							<p class="avoidOverflow">是网络建设</p>
+						</div>
+						<img class="icon" src="images/home-icon.png" alt="">
+					</li>
+					<li class="fadeInRight animated">
+						<div class="text">
+							<h1 class="tit">小程序定制开发</h1>
+							<p class="avoidOverflow">软件平台开发</p>
+							<p class="avoidOverflow">电商平台开发</p>
+							<p class="avoidOverflow">行业应用开发</p>
+						</div>
+						<img class="icon" src="images/home-icon1.png" alt="">
+					</li>
+					<li class="fadeInRight animated">
+						<div class="text">
+							<h1 class="tit">APP开发</h1>
+							<p class="avoidOverflow">软件平台开发</p>
+							<p class="avoidOverflow">企业网站建设</p>
+							<p class="avoidOverflow">是网络建设</p>
+						</div>
+						<img class="icon" src="images/home-icon2.png" alt="">
+					</li>
+					<li class="fadeInRight animated">
+						<div class="text">
+							<h1 class="tit">系统定制</h1>
+							<p class="avoidOverflow">品牌网站建设</p>
+							<p class="avoidOverflow">企业网站建设</p>
+							<p class="avoidOverflow">是网络建设</p>
+						</div>
+						<img class="icon" src="images/home-icon3.png" alt="">
+					</li>
+				</ul>
+			</div>
+			
+			<div class="w1200 clearfix indx-aboutUs oh pdb100">
+				<div class="left fl">
+					<h3 class="name color9">About us</h3>
+					<h1 class="tit">10年开发经验|9道测试严把质量|8种角色打造服务闭环</h1>
+					<p class="text color6">西安纯粹云信息科技有限公司是一家专致于服务中高端定制软件项目的互联网公司，创始人团队全部源于技术条线，以完善的团队，先进的技术，助力企业实现互联网转型。</p>
+					<div class="qrcodeCopy oh">
+						<img src="images/home-img12.png" >
+						<img src="images/home-img12.png" >
+					</div>
+				</div>
+				<div class="right fr center">
+					<ul class="oh">
+						<li>
+							<h1 class="num">3<em class="">年</em></h1>
+							<p>3年网站建站经验</p>
+						</li>
+						<li>
+							<h1 class="num">800<em class="">+</em></h1>
+							<p>300余技术人员</p>
+						</li>
+						<li>
+							<h1 class="num">3<em class="">年</em></h1>
+							<p>3年网站建站经验</p>
+						</li>
+						<li>
+							<h1 class="num">1300<em class="">+</em></h1>
+							<p>1300余家企业服务经验</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- 四大框架 -->
+			<div class="strengths white center">
+				<ul class="w1200 clearfix">
+					<li class="fadeInDown animated" v-for="(item,index) in strengthsData" :key="index">
+						<img class="icon" :src="item.iconUrl" >
+						<h1 class="tit">{{item.title}}</h1>
+						<p class="text">{{item.text}}</p>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- 产品，让客户充分放心 -->
+			<div class="">
+				<include src="OurCace.html"></include>
+			</div>
+			
+			<!-- 服务 -->
+			<div class="">
+				<include src="OurServices.html"></include>
+			</div>
+			
+			<!-- 多一分参考，总有益处 -->
+			<div class="">
+				<include src="WritePhone.html"></include>
+			</div>
+			
+			<!-- 合伙伙伴 -->
+			<div class="indx-partner pdb100">
+				<div class="pubTitle center">
+					<h1 class="mgb20">合伙伙伴</h1>
+					<p>Partners</p>
+				</div>
+				<div class="w1200">
+					<ul class="clearfix">
+						<li v-for="(item,index) in partnerData" :key="index"><img :src="item" ></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<include src="footer.html"></include>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					is_toggle: false,
+					indshareLis: [],
+					mainData:[],
+					strengthsData:[
+						{iconUrl:'images/home-icon4.png',title:'开发架构',text:'基于目前流行的WEB2.0的架构(php+mysql)，拥有成熟、稳定的技术解决方案。'},
+						{iconUrl:'images/home-icon5.png',title:'系统可控性',text:'源码透明、开放，一切的数据资源都架设在自己服务上，保证独立性。安全性及可控性。'},
+						{iconUrl:'images/home-icon6.png',title:'开放的生态理念',text:'活跃的开发者及设计团队、依托现有开放生态，轻松扩展。'},
+						{iconUrl:'images/home-icon7.png',title:'完善的售后体系',text:'优质的客服人员、技术工程师解决使用中的各种疑难问题。'}
+					],
+					partnerData:['images/partner.jpg','images/partner1.jpg','images/partner2.jpg','images/partner3.jpg','images/partner4.jpg','images/partner.jpg','images/partner1.jpg','images/partner2.jpg']
+				}
+			},
+			created: function() {
+				var self = this;
+				window.onload = function() {
+
+					/* window.base.bus.$emit('to_contentOne', {
+						paginate: self.paginate
+					}); */
+					window.base.bus.$emit('to_headBanner', {
+						title:'首页轮播图'
+					});	
+					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
+				};
+				self.getMainData();
+				// if(window.screen.width<760){
+				// 	self.slidesPerView = 3
+				// }
+			},
+			methods: {
+				getMainData: function(id) {
+					var self = this;
+					var callback = function(res) {
+						console.log('getMainData', res);
+						self.mainData.push.apply(self.mainData, res.info.data);
+						for (var i = 0; i < self.mainData.length; i++) {
+							self[self.mainData[i].title] = self.mainData[i];
+						};
+						console.log(self[''])
+						
+					};
+					console.log('self.mainData', self.mainData)
+				}
+			}
+		});
+	</script>
+
+
+</html>

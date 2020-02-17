@@ -1,0 +1,92 @@
+
+
+<div id="swiperBox">
+	<div class="pubTitle center">
+		<h1 class="mgb20">产品，让客户充分放心</h1>
+		<p>Peoduct，let customers rest assured</p>
+	</div>
+	<div class="w1200">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img.jpg">
+						<p>校园APP</p>
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img1.jpg">
+						<p>酒便利APP</p>
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img2.jpg">
+						<p>旅行社小程序</p>
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img3.jpg">
+						<p>小蜂侠小程序</p>
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img.jpg">
+						<p>校园APP</p>
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/img1.jpg">
+						<p>酒便利APP</p>
+					</a>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	
+	$(function() {
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 5,
+			slidesPerGroup : 1,
+			spaceBetween: 30,
+			slidesOffsetAfter : 500,
+			centeredSlides: true,
+			observer: true,
+			observeParents: true,
+			initialSlide: 2,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			}
+		});
+		var self = this;
+		// if(window.screen.width<760){
+		// 	self.slidesPerView = 3
+		// }
+	});
+</script>
+
+<script src="js/swiper.min.js"></script>
+
+<style type="text/css">
+	/* 案例展示 */
+	.swiper-container {width: 100%;height: 100%;padding-bottom: 100px;}
+	.swiper-slide {width: 30%;text-align: center;font-size: 18px;background: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;transition: 300ms;display: block;box-shadow: 0 0 10px rgba(0,0,0,0.15);/* transition: color 0.25s; */}
+	.swiper-slide:not(.swiper-slide-active) {transform: scale(0.8);}
+	.swiper-slide img {width: 100%;height: auto;display: block;}
+	.swiper-slide p{padding: 20px 2%;}
+	
+	
+</style>
+
+
+

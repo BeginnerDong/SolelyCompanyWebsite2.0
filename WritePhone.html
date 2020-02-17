@@ -1,0 +1,85 @@
+<div id="writePhone">
+	<div class="indx-contact oh" >
+		<div class="w1200">
+			<div class="left fl white">
+				<h1 class="tit ftw">多一分参考，总有益处</h1>
+				<p class="text">联系纯粹科技，免费提供报价方案，为您增加一份保障</p>
+				<p class="text2">咨询相关问题或预约面谈，可以通过以下联系方式和我联系</p>
+				<div class="B-phone oh">
+					<div class="ll fl"><img class="icon" src="images/home-icon14.png" >18092561090</div>
+					<div class="rr fl"><img class="icon" src="images/home-icon15.png" ><img class="ewm" src="images/home-img6.jpg" ></div>
+				</div>
+			</div>
+			<div class="right fr">
+				<div><input type="text" value="" placeholder="请输入联系人姓名" /></div>
+				<div><input type="text" value="" placeholder="请输入联系人电话" /></div>
+				<div class="pdt20"><button class="btn" type="submit">提交</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var writePhone = new Vue({
+	    el: '#writePhone',
+	    data:function(){
+	        return {
+	        	is_toggle:false,
+				conactData:{}
+	        }
+	    },
+	    methods: {
+			getMainData: function(id) {
+				var self = this;
+				var postData = {};
+				var callback = (res) => {
+					console.log('getMainData', res);
+					self.conactData = res.info.data[0];
+					window.base.bus.$emit('to_headBanner', {
+						conactData:self.conactData
+					});	
+				};
+				window.base.articleGet(postData, callback);
+			}
+	    	
+	    }
+	});   
+</script>
+
+<style type="text/css">
+	/* 多一分参考，总有益处*/
+	.indx-contact{padding:70px 0;background: url(images/home-img5.jpg)no-repeat 0 0/100% 100%;}
+	.indx-contact .left{width: 55%;}
+	.indx-contact .left .tit{font-size: 32px;line-height: 40px;}
+	.indx-contact .left .text{font-size: 20px;padding:30px 0 70px 0 ;}
+	.indx-contact .B-phone{margin-top: 20px;}
+	.indx-contact .B-phone .icon{width: 40px; height: 40px;display: inline-block; vertical-align: middle;margin-right: 15px;}
+	.indx-contact .left .ll{margin-right: 80px;font-size: 18px;margin-top: 10px;}
+	.indx-contact .B-phone .ewm{display: inline-block; vertical-align: middle;width: 60px;height: 60px;}
+	
+	.indx-contact .right{width: 400px;border-radius: 8px;background: #fff;box-sizing: border-box;padding:40px;}
+	.indx-contact .right input{border-radius:4px;background-color: #F5F5F5;height: 44px;box-sizing: border-box;width: 100%;display: block;font-size: 15px;padding: 10px;margin-bottom: 30px;}
+	.indx-contact .right .btn{border-radius:4px;background-color: #17acee;height: 44px;box-sizing: border-box;width: 100%;display: block;font-size: 15px;padding: 10px;color: #fff;}
+	
+	@media only screen and (max-width: 1050px){
+		.indx-contact .left .tit{font-size: 24px;}
+		.indx-contact .left .text{font-size: 16px;}
+		.indx-contact .right{width: 40%;padding: 30px;}
+		.indx-contact .right input{height: 40px;font-size: 14px;margin-bottom: 20px;}
+	}
+	
+	@media only screen and (max-width: 500px){
+		.indx-contact{padding: 50px 0;}
+		.indx-contact .left{width: 100%;padding-bottom: 30px;}
+		.indx-contact .left .tit{font-size: 20px;}
+		
+		.indx-contact .left .text{padding: 10px 0 25px 0;font-size: 14px;}
+		.indx-contact .left .text2{font-size: 12px;}
+		.indx-contact .right{padding: 30px 20px;width: 98%;float: initial;clear: both;margin: 0 auto;}
+		.indx-contact .right input{height: 40px;font-size: 14px;margin-bottom: 20px;}
+		.indx-contact .B-phone .icon{width: 30px;height: 30px;margin-right: 10px;}
+		.indx-contact .left .ll{font-size: 16px;}
+	}
+</style>
+
+
+

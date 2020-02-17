@@ -1,0 +1,160 @@
+
+<div id="header_app" class="pubHeader headH head-fixH">
+	<div class="indNavbar w1200 pr white oh pdt20">
+		<div class="leftLogo fl">
+			<img class="logo fl" src="images/home-logo.png">
+			<div class="text fl">
+				<p>服务热线</p>
+				<p>18092651095</p>
+			</div>
+		</div>
+		
+		<div class="fr rightNav">
+			<div class="list">
+				<ul class="oh">
+					<li :class="currentUrl=='/index.html'?'on':''">
+						<a href="index.html">网站首页</a>
+					</li>
+					<li :class="currentUrl=='/mini.html'?'on':''">
+						<a href="mini.html">公众号/小程序</a>
+					</li>
+					<li :class="currentUrl=='/website.html'?'on':''">
+						<a href="website.html">网站开发</a>
+					</li>
+					<li :class="currentUrl=='/app.html'?'on':''">
+						<a href="app.html">APP开发</a>
+					</li>
+					<li :class="currentUrl=='/planeDesign.html'?'on':''">
+						<a href="planeDesign.html">平面设计</a>
+					</li>
+					<li :class="currentUrl=='/product.html'?'on':''">
+						<a href="product.html">产品</a>
+					</li>
+					<li :class="currentUrl=='/aboutUs.html'?'on':''">
+						<a href="aboutUs.html">关于我们</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="navBtn center" @click="topNavBtn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</div>
+<div class="headH"></div>
+
+
+<script type="text/javascript">
+
+	var header_app = new Vue({
+	    el: '#header_app',
+	    data:function(){
+	        return {
+	        	is_toggle:false,
+				shownav:true,
+				currentUrl:''
+	        }
+	    },
+	    created:function () {
+	        var self = this;
+			var currentUrl = window.base.GetUrlRelativePath();
+		
+			var reg = /\/([^\/]+)\.html/i;
+			if(reg.exec(currentUrl)&&reg.exec(currentUrl)[0]){
+				self.currentUrl = reg.exec(currentUrl)[0];
+			}else{
+				self.currentUrl = '/index.html';
+			};
+			console.log('self.currentUrl',self.currentUrl)
+	    },
+	    methods: {
+			toggleMenu:function(e){
+			    var self = this;
+			    self.is_toggle = !self.is_toggle;
+				var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+				var navigation = document.getElementById('navigation');
+				if(scrollTop<100){
+					if(self.is_toggle){
+						$("#navigation").css('background','rgb(0, 0, 0,0.6)');
+					}else{
+						$("#navigation").css('background','none');
+					};
+				};	
+			},
+			topNavBtn:function(){
+				if($(".rightNav").css('display')=='none'){
+					$(".rightNav").show()
+				}else{
+					$(".rightNav").hide()
+				}
+			},
+	        
+	    	changeHeaderStyle: function(){
+	    		var self = this;
+	    		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+	    		var navigation = document.getElementById('navigation');
+					if(scrollTop>=100){
+						$("#navigation").css('position','fixed');
+						$("#navigation").addClass('animated.faster  slideInDown delay-0.1s');
+						console.log('is_toggle-before08',self.is_toggle)
+						if(!self.is_toggle){
+							navigation.addEventListener('animationend', function() {
+								$("#navigation").css('background-color','hsla(0, 0%, 0%, 0.6)');
+							});
+						};
+					}else{          //恢复正常
+						$("#navigation").css('position','absolute');
+						if(!self.is_toggle){
+							$("#navigation").css('background','none');
+							$("#navigation").css('opacity','1');
+						};
+						$("#navigation").removeClass('animated.faster  slideInDown delay-0.1s');
+					}			
+	    	}
+	    }
+	});   
+</script>
+
+<style>
+ /*网站导航*/
+.pubHeader{width: 100%;}
+.indNavbar .logo{ width:140px; height:44px; display: block; margin-right:15px;}
+.leftLogo .text{padding:0 5px 0 15px;position: relative;}
+.leftLogo .text::after{content: '';width: 1px;height: 40px;background: #fff;position: absolute;top: 50%;left: 0;transform: translateY(-50%);}
+
+.indNavbar .list{box-sizing: border-box;}
+.indNavbar .list li{float: left;padding-left:40px;box-sizing: border-box;}
+.indNavbar .list li a{ display: block; line-height: 44px; font-size: 16px;color: #fff;padding-bottom: 16px;}
+.indNavbar .list li.on a{position: relative;}
+.indNavbar .list li.on a::after{content: '';width: 40px;height: 3px;background: #17acee;position: absolute;left: 50%;bottom: 0;transform: translateX(-50%);}
+.indNavbar .navBtn{ width: 36px; height: 36px;position: absolute; right: 10px; top:50%; transform: translateY(-50%);z-index: 66; display: none;background: rgba(0,0,0,0.6);border-radius: 5px;color: #fff;padding: 5px 10px;box-sizing: border-box;}
+.indNavbar .navBtn span{display: block;width: 100%;box-sizing: border-box;height: 1px;background: #fff;margin-top:6px ;}
+
+
+
+.head-fixH{width: 100%; position: fixed;top: 0;left: 0; z-index: 66;background:rgba(64,83,153,0.8);box-shadow: 0 0 8px rgba(0,0,0,0.1);}
+
+@media screen and ( max-width: 1100px){ 
+	.indNavbar .logo{ width: auto; height: 34px;margin-top: 3px;}
+	.indNavbar{padding: 10px;}
+	.indNavbar .list{width: 100%;}
+	.indNavbar .navBtn{ display: block;}
+	.leftLogo .text{line-height: 20px;font-size: 13px;}
+	.leftLogo .text::after{height: 30px;}
+	.indNavbar .rightNav{ display: none;width: 100%;position: fixed;top: 60px; left: 0; right: 0;z-index: 66; padding: 10px 0;background: rgb(0,0,0,0.8);box-sizing: border-box;padding-bottom: 0;}
+	.indNavbar .list li{width: 100%;padding: 0 3%;}
+	.indNavbar .list li a{width: 100%;font-size: 16px;padding-bottom: 0;box-sizing: border-box;line-height: 50px;border-bottom: 1px solid #547b8e;text-align: center;}
+	.indNavbar .list li.on a{color: #17acee;border-bottom: 1px solid #17ACEE;font-weight: bold;}
+	.indNavbar .list li.on a::after{height: 0;}
+}
+
+@media screen and ( max-width: 750px){ 
+}
+
+
+
+</style>
+

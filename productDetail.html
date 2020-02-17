@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>产品详情</title>
+		<script src="./js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/include.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" type="text/css" href="css/detail.css">
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="detail clearfix">
+				<a class="close" href="product.html"></a>
+				<div class="left fl">
+					<div class="mobile">
+						<div class="pic">
+							<img src="images/img1.jpg" >
+						</div>
+					</div>
+				</div>
+				<div class="right fr white">
+					<h1 class="tit ftw center">校园APP</h1>
+					<p class="text">合肥互粉分行首付款回复数喝热水的看法和更合适的客户公司和个人私黑人供货商工行卡国华人寿国华人寿客户刚开始过生日个人烧开后改开惹事人工湖我哦了。</p>
+					<div class="tabs clearfix">
+						<span>论坛型</span>
+						<span>APP设计</span>
+					</div>
+					<div class="xian"></div>
+					<div class="clearfix">
+						<p class="fl mgr10">界面样式</p>
+						<img class="ewm" src="images/case-img2.jpg" >
+					</div>
+					<div class="Bcont">
+						<p>如果您需要定制网站 </p>
+						<p>请联系我们：18091651090</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					is_toggle: false,
+					indshareLis: [],
+					mainData:[]
+				}
+			},
+			methods: {
+				getMainData: function(id) {
+					var self = this;
+					var callback = function(res) {
+						console.log('getMainData', res);
+						self.mainData.push.apply(self.mainData, res.info.data);
+						for (var i = 0; i < self.mainData.length; i++) {
+							self[self.mainData[i].title] = self.mainData[i];
+						};
+						console.log(self[''])
+						
+					};
+					console.log('self.mainData', self.mainData)
+				},
+				
+
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>产品</title>
+		<script src="./js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/include.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/mini.css">
+		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" href="css/animate/animate.min.css">
+	</head>
+	<style>
+		.productNav{padding-top: 60px;}
+		.productNav .item{width: 25%;float: left;line-height: 40px; vertical-align: middle;font-size: 18px;color: #5c5c5c;padding-bottom: 30px;}
+		.productNav .item .icon{width: 35px;height: 35px;display: initial; vertical-align: middle;}
+		.productNav .item.on{position: relative;}
+		.productNav .item.on::after{content: ''; width: 100%;height: 20px;background: url(images/product-icon12.png) no-repeat center bottom/100% auto;position: absolute;left: 0;right: 0;bottom: 0;}
+		.pd-class{padding: 30px 0 40px 0;}
+		.pd-class span{display: block;float: left;font-size: 16px;line-height: 44px;width: 120px;text-align: center;border-radius: 20px 0 20px 0;border: 1px solid #eee;margin-right: 32px;margin-bottom: 20px;background-color: #fff;}
+		.pd-class span:last-child{margin-right: 0;}
+		.pd-class span.on{background-color: #17acee;color: #fff;border-color:#17ACEE ;}
+		
+		/* 产品列表 */
+		.prodcutList li{float: left;overflow: hidden;box-shadow: 0 0 10px rgba(0,0,0,0.15);background-color: #fff;text-align: center;}
+		.prodcutList li .pic{width: 100%; display: block;}
+		.prodcutList li p{padding: 20px 10px;font-size: 16px;}
+		
+		/* mobile */
+		.prodcutList .proMobile li{width: 23.5%;margin-bottom: 40px;margin-right: 2%; }
+		.prodcutList .proMobile li:nth-child(4n){margin-right: 0%;}
+		.prodcutList .proMobile li .pic{height: 501px;display: block;}
+		
+		
+		/* pc列表 */
+		.prodcutList .proPc li{width: 48%;margin-bottom: 40px;}
+		.prodcutList .proPc li:nth-child(2n){margin-left: 4%;}
+		.prodcutList .proPc li .pic{width: 100%;height: 324px;}
+		
+		/* 页码 */
+		.allPages li{display: inline-block;font-size: 15px;}
+		.allPages li span{margin: 5px 10px; display: inline-block; cursor: pointer;}
+		.allPages li span.on{color: #17ACEE;position: relative;}
+		.allPages li span.on::after{content: '';width: 15px; height: 2px;background: #17ACEE;position: absolute; bottom: -3px;left: 50%;transform: translateX(-42%);}
+		.allPages li .arrow{width: 13px;height:13px; vertical-align: middle; display: inline-block;padding: 0 10px;}
+	</style>
+
+	<body>
+		<div id="app">
+			<!-- 网站导航 -->
+			<div class="">
+				<include src="header.html"></include>
+			</div>
+			
+			<!-- banner -->
+			<div class="">
+				<include src="headBanner.html"></include>
+			</div>
+			
+			<div>
+				<div class="w1200 pdb100">
+					<!-- 产品导航分类 -->
+					<div class="productNav center clearfix borderB1">
+						<span class="item" :class="curr==1?'on':''" @click="currChange('1')">
+							<img class="icon" :src="curr==1?'images/product-icon.png':'images/product-icon1.png'" >
+							APP
+						</span>
+						<span class="item" :class="curr==2?'on':''" @click="currChange('2')">
+							<img class="icon" :src="curr==2?'images/product-icon3.png':'images/product-icon2.png'" >
+							小程序
+						</span>
+						<span class="item" :class="curr==3?'on':''" @click="currChange('3')">
+							<img class="icon" :src="curr==3?'images/product-icon5.png':'images/product-icon4.png'" >
+							公众号
+						</span>
+						<span class="item" :class="curr==4?'on':''" @click="currChange('4')">
+							<img class="icon" :src="curr==4?'images/product-icon7.png':'images/product-icon6.png'" >
+							网站建设
+						</span>
+					</div>
+					<!-- 产品类别 -->
+					<div class="pd-class clearfix">
+						<span v-for="(item,index) in classData" :class="classCurr==index?'on':''" @click="classChange(index)">{{item}}</span>
+					</div>
+					
+					<!-- 产品列表 -->
+					<!-- mobile -->
+					<div class="prodcutList"  v-show="curr==1">
+						<ul class=" proMobile clearfix">
+							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
+								<a href="productDetail.html">
+									<img class="pic" src="images/img1.jpg"/>
+									<p>瑞安消防</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="prodcutList"  v-show="curr==2">
+						<ul class=" proMobile clearfix">
+							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
+								<a href="productDetail.html">
+									<img class="pic" src="images/img1.jpg"/>
+									<p>瑞安消防</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="prodcutList"  v-show="curr==3">
+						<ul class="proMobile clearfix">
+							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
+								<a href="productDetail.html">
+									<img class="pic" src="images/img1.jpg"/>
+									<p>瑞安消防</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- pc -->
+					<div class="prodcutList center" v-show="curr==4">
+						<ul class="proPc clearfix">
+							<li class="fadeInUp animated" v-for="(item,index) in productData" :key="index">
+								<a href="productPcDetail.html">
+									<img class="pic" src="images/img5.jpg"/>
+									<p>瑞安消防</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- 页码 -->
+					<div class="allPages center color6 pdt30">
+						<ul class="clearfix">
+							<li><span class="prev" data-type="back"><img class="arrow" src="images/product-icon10.png" ></span></li>
+							<li>
+								<span class="on">1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+								<span>5</span>
+								<span>6</span>
+							</li>
+							<li><span class="next" data-type="next"><img class="arrow" src="images/product-icon11.png"/></span></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			<include src="footer.html"></include>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					is_toggle: false,
+					indshareLis: [],
+					mainData:[],
+					curr:1,
+					classData:['餐饮类','商城类','服装类','电商类','旅游类','招聘类','酒店类','房产类'],
+					classCurr:0,
+					mobileData:[{},{},{},{},{},{}],
+					productData:[{},{},{},{},{},{}],
+					n:1
+				}
+			},
+			created: function() {
+				var self = this;
+				window.onload = function() {
+					window.base.bus.$emit('to_headBanner', {
+						title:'轮播图'
+					});	
+					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
+				};
+			},
+			methods: {
+				currChange(curr){
+					const self = this;
+					if(curr!=self.curr){
+						self.curr = curr
+					}
+				},
+				classChange(index){
+					const self = this;
+					self.classCurr = index
+				},
+				getMainData: function(id) {
+					var self = this;
+					var callback = function(res) {
+						console.log('getMainData', res);
+						self.mainData.push.apply(self.mainData, res.info.data);
+						for (var i = 0; i < self.mainData.length; i++) {
+							self[self.mainData[i].title] = self.mainData[i];
+						};
+						console.log(self[''])
+						
+					};
+					console.log('self.mainData', self.mainData)
+				},
+				
+
+			}
+		});
+	</script>
+
+</html>

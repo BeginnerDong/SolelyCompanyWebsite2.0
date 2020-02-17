@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* 我们能为您做什么？ */
+.candoWhat{padding-bottom: 50px;}
+.candoWhat .item{float: left; width: 25%;margin-right: 12%;margin-bottom: 80px;}
+.candoWhat .item:nth-child(3n){margin-right:0 ;}
+.candoWhat .item .icon{width: 60px;height: 60px;display: block;margin: 0 auto;}
+.candoWhat .item h1{font-size: 17px;margin: 30px 0 20px 0;font-weight: bold;}
+.candoWhat .item p{font-size: 14px;margin-top: 20px;}
+
+/* 我们的优势 */
+.strengthsTwo{background: url(../images/the-plane-img.jpg) no-repeat left top/100% 100%;}
+.strengthsTwo .item{float: left; width: 240px;margin-right: 20%;}
+.strengthsTwo .item:nth-child(3n){margin-right:0 ;}
+.strengthsTwo .item .num{font-size: 40px;line-height: 44px;}
+.strengthsTwo .item .num span{position: relative;font-weight: bold;padding-right: 25px;display: inline-block;}
+.strengthsTwo .item .num span em{position: absolute; top: 3px;right: 0;font-size: 20px;line-height: 18px;display: block;}
+.strengthsTwo .item h1{font-size: 17px;margin: 30px 0 15px 0;font-weight: bold;}
+.strengthsTwo .item p{line-height: 30px;font-size: 15px;}
+
+
+/* 产品案例 */
+.proCase{padding-bottom: 60px;}
+.proCase .item{float: left;width: 380px;height: 253px;overflow: hidden;margin: 0 30px 30px 0;}
+.proCase .item:nth-child(3n){margin-right: 0;}
+.proCase .item img{width: 100%;height: 100%;display: block;}
+
+
+/* 合作流程 */
+.hezuoLC .cont{padding: 25px 5% 100px 5%;}
+.hezuoLC .cont .item{width: 172px;float: left;margin-right: 3%;position: relative;}
+.hezuoLC .cont .item:last-child{margin-right: 0;}
+.hezuoLC .cont .item:nth-child(2n){margin-top: 15px;}
+.hezuoLC .cont .item .numIcon{width: 40px;height: 40px;display: block;margin: 0 auto;background: url(../images/the-plane-icon6.png) no-repeat 0 0/100% 100%;color: #fff;line-height: 40px;text-align: center;box-sizing: border-box;padding-top: 3px;font-size: 13px;}
+.hezuoLC .cont .item .xian{width: 148px;height: 34px;display: block;position: absolute;top: 25px;left:68% ;background: url(../images/the-plane-icon7.png) no-repeat 0 0/100% 100%;}
+.hezuoLC .cont .item:nth-child(2n) .xian{background-image: url(../images/the-plane-icon8.png);top: -30px;}
+.hezuoLC .cont .item:last-child .xian{display: none;}
+.hezuoLC .item h1{font-size: 17px;margin: 50px 0 30px 0;font-weight: bold;text-align: center;}
+.hezuoLC .item p{font-size: 15px;line-height: 24px;}
+
+

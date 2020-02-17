@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>公众号/小程序</title>
+		<script src="./js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/include.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/swipe.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/mini.css">
+		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" href="css/animate/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 网站导航 -->
+			<div class="">
+				<include src="header.html"></include>
+			</div>
+			
+			<!-- banner -->
+			<div class="">
+				<include src="headBanner.html"></include>
+			</div>
+
+			<!-- 企业为什么要开发公众号、小程序 -->
+			<div class=" pdb100">
+				<div class="pubTitle center">
+					<h1 class="mgb20">企业为什么要开发公众号、小程序?</h1>
+					<p>10亿免费流量，天生社交裂变工具，你如何拒绝？？？</p>
+				</div>
+				<div class="clearfix center w1000 mini-box1">
+					<div class="item fadeInDown animated" v-for="(item,index) in whyData" :key="index">
+						<img class="icon" :src="item.iconUrl" >
+						<p>{{item.text}}</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 我们的优势 -->
+			<div class="OurAdvantage">
+				<div class="w1200">
+					<div class="title">
+						<h1 class="">我们的优势</h1>
+						<p>Our advantage</p>
+					</div>
+					<div class="cont clearfix">
+						<div class="item left">
+							<img src="images/public-img.png" >
+						</div>
+						<div class="item right">
+							<div class="child  animated bounceInRight" v-for="(item,index) in advantageData" :key="index">
+								<img class="icon" :src="item.iconUrl" >
+								<h1>{{item.title}}</h1>
+								<p>{{item.text}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 产品，让客户充分放心 -->
+			<div class="">
+				<include src="OurCace.html"></include>
+			</div>
+			
+			<!-- 服务 -->
+			<div class="">
+				<include src="OurServices.html"></include>
+			</div>
+			
+			<!-- 多一分参考，总有益处 -->
+			<div class="">
+				<include src="WritePhone.html"></include>
+			</div>
+			
+			<include src="footer.html"></include>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					is_toggle: false,
+					indshareLis: [],
+					mainData:[],
+					whyData:[
+						{iconUrl:'images/public-icon.png',text:'接近app的优质体验'},
+						{iconUrl:'images/public-icon1.png',text:'天然的社交工具，疯狂裂变'},
+						{iconUrl:'images/public-icon1.png',text:'免费的10亿流量共享'},
+						{iconUrl:'images/public-icon1.png',text:'小程序的风口已经掀起，大势所趋'}
+					],
+					advantageData:[
+						{iconUrl:'images/the-public-icon6.png',title:'100%定制开发',text:'我们拥有专业的开发团队，核心代码框架100%自研，拒绝模板，拒绝转包。'},
+						{iconUrl:'images/the-public-icon5.png',title:'优秀的产品规划',text:'我们拥有大量的微信产品营销经验，深入了解分销、裂变设计逻辑，针对性地提高产品裂变能力、提升用户体验感，助力您的产品规划。'},
+						{iconUrl:'images/the-public-icon4.png',title:'一站式服务',text:'从域名申请备案，到公众号的认证、微信支付的开通认证，所有相关的资质和准备工作全部交给我们，绝佳的一站式开发体验。'}
+					]
+				}
+			},
+			created: function() {
+				var self = this;
+				window.onload = function() {
+					window.base.bus.$emit('to_headBanner', {
+						title:'轮播图'
+					});	
+					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
+				};
+			},
+			methods: {
+				getMainData: function(id) {
+					var self = this;
+					var callback = function(res) {
+						console.log('getMainData', res);
+						self.mainData.push.apply(self.mainData, res.info.data);
+						for (var i = 0; i < self.mainData.length; i++) {
+							self[self.mainData[i].title] = self.mainData[i];
+						};
+						console.log(self[''])
+						
+					};
+					console.log('self.mainData', self.mainData)
+				},
+				
+
+			}
+		});
+	</script>
+
+
+</html>
