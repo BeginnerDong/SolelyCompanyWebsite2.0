@@ -2,15 +2,15 @@
 
 /* 我们能为您做什么？ */
 .candoWhat{padding-bottom: 50px;}
-.candoWhat .item{float: left; width: 25%;margin-right: 12%;margin-bottom: 80px;}
+.candoWhat .item{float: left; width: 25%;margin-right: 12%;margin-bottom: 80px;box-sizing: border-box;}
 .candoWhat .item:nth-child(3n){margin-right:0 ;}
 .candoWhat .item .icon{width: 60px;height: 60px;display: block;margin: 0 auto;}
 .candoWhat .item h1{font-size: 17px;margin: 30px 0 20px 0;font-weight: bold;}
-.candoWhat .item p{font-size: 14px;margin-top: 20px;}
+.candoWhat .item p{font-size: 14px;}
 
 /* 我们的优势 */
 .strengthsTwo{background: url(../images/the-plane-img.jpg) no-repeat left top/100% 100%;}
-.strengthsTwo .item{float: left; width: 240px;margin-right: 20%;}
+.strengthsTwo .item{float: left; width: 240px;margin-right: 20%;box-sizing: border-box;}
 .strengthsTwo .item:nth-child(3n){margin-right:0 ;}
 .strengthsTwo .item .num{font-size: 40px;line-height: 44px;}
 .strengthsTwo .item .num span{position: relative;font-weight: bold;padding-right: 25px;display: inline-block;}
@@ -21,7 +21,7 @@
 
 /* 产品案例 */
 .proCase{padding-bottom: 60px;}
-.proCase .item{float: left;width: 380px;height: 253px;overflow: hidden;margin: 0 30px 30px 0;}
+.proCase .item{float: left;width: 32%;height: 253px;overflow: hidden;margin: 0 2% 25px 0;}
 .proCase .item:nth-child(3n){margin-right: 0;}
 .proCase .item img{width: 100%;height: 100%;display: block;}
 
@@ -38,4 +38,51 @@
 .hezuoLC .item h1{font-size: 17px;margin: 50px 0 30px 0;font-weight: bold;text-align: center;}
 .hezuoLC .item p{font-size: 15px;line-height: 24px;}
 
+@media screen and ( max-width:1050px){
+	.strengthsTwo .item{width: 33.3%;margin-right: 0;padding: 0 3%;}
+	.proCase .item{width: 32%;height: 154px;margin-right: 2%;margin-bottom: 15px;}
+	
+	.hezuoLC .cont{padding:20px 2% 40px 2%; }
+	.hezuoLC .cont .item{width: 33.3%;height: 240px;margin-right: 0;box-sizing: border-box;padding: 0 3%;}
+	.hezuoLC .cont .item:nth-child(2n){margin-top: 0;}
+	.hezuoLC .cont .item .xian{display: none;}
+	.hezuoLC .cont .item h1{margin: 25px 0 15px 0;font-size: 16px;}
+	.hezuoLC .item p{font-size: 14px;}
+}
+@media screen and ( max-width:500px){
+	.candoWhat{padding-bottom: 10px;}
+	.candoWhat .item{width: 50%;margin-right: 0;padding: 0 4%; margin-bottom: 30px;}
+	.candoWhat .item:nth-child(3n){margin-right: 0;}
+	.candoWhat .item .icon {width: 45px;height: 45px;}
+	.candoWhat .item h1 {font-size: 15px;margin: 15px 0 10px 0;}
+	.candoWhat .item p {font-size: 12px;margin-top: 0; -webkit-line-clamp: initial;}
+	
+	.strengthsTwo {background: url(../images/the-plane-img.jpg) no-repeat center top/auto 100%;}
+	.strengthsTwo .item{ width: 50%;height: 160px;padding-bottom: 15px;}
+	.strengthsTwo .item:nth-child(3n){margin: 0 auto;float: initial;clear: both;}
+	.strengthsTwo .item .num{font-size: 28px;line-height: 30px;}
+	.strengthsTwo .item .num span{padding-right: 17px;}
+	.strengthsTwo .item .num span em{font-size: 16px;}
+	.strengthsTwo .item h1{font-size: 15px;margin: 15px 0 10px 0;}
+	.strengthsTwo .item p{line-height: 22px;font-size: 12px;}
+	
+	.proCase{padding-bottom: 30px;}
+	.proCase .item{width: 48%;margin-right: 0;}
+	.proCase .item:nth-child(2n) {float: right;}
+	
+	.hezuoLC .cont{padding:20px 2% 40px 2%; }
+	.hezuoLC .cont .item{width: 50%;height: 240px;}
+	.hezuoLC .cont .item h1{margin: 20px 0 10px 0;font-size: 14px;}
+	.hezuoLC .item p{font-size: 12px;}
+	
+}
 
+@media screen and ( max-width:414px){
+	.proCase .item{height: 124px;}
+}
+@media screen and ( max-width:375px){
+	.proCase .item{height: 113px;}
+}
+@media screen and ( max-width:320px){
+	.proCase .item{height: 96px;}
+}

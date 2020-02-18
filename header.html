@@ -71,49 +71,13 @@
 			console.log('self.currentUrl',self.currentUrl)
 	    },
 	    methods: {
-			toggleMenu:function(e){
-			    var self = this;
-			    self.is_toggle = !self.is_toggle;
-				var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
-				var navigation = document.getElementById('navigation');
-				if(scrollTop<100){
-					if(self.is_toggle){
-						$("#navigation").css('background','rgb(0, 0, 0,0.6)');
-					}else{
-						$("#navigation").css('background','none');
-					};
-				};	
-			},
 			topNavBtn:function(){
 				if($(".rightNav").css('display')=='none'){
 					$(".rightNav").show()
 				}else{
 					$(".rightNav").hide()
 				}
-			},
-	        
-	    	changeHeaderStyle: function(){
-	    		var self = this;
-	    		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
-	    		var navigation = document.getElementById('navigation');
-					if(scrollTop>=100){
-						$("#navigation").css('position','fixed');
-						$("#navigation").addClass('animated.faster  slideInDown delay-0.1s');
-						console.log('is_toggle-before08',self.is_toggle)
-						if(!self.is_toggle){
-							navigation.addEventListener('animationend', function() {
-								$("#navigation").css('background-color','hsla(0, 0%, 0%, 0.6)');
-							});
-						};
-					}else{          //恢复正常
-						$("#navigation").css('position','absolute');
-						if(!self.is_toggle){
-							$("#navigation").css('background','none');
-							$("#navigation").css('opacity','1');
-						};
-						$("#navigation").removeClass('animated.faster  slideInDown delay-0.1s');
-					}			
-	    	}
+			}
 	    }
 	});   
 </script>
@@ -144,7 +108,7 @@
 	.indNavbar .navBtn{ display: block;}
 	.leftLogo .text{line-height: 20px;font-size: 13px;}
 	.leftLogo .text::after{height: 30px;}
-	.indNavbar .rightNav{ display: none;width: 100%;position: fixed;top: 60px; left: 0; right: 0;z-index: 66; padding: 10px 0;background: rgb(0,0,0,0.8);box-sizing: border-box;padding-bottom: 0;}
+	.indNavbar .rightNav{ display: none;width: 100%;position: fixed;top: 58px; left: 0; right: 0;z-index: 66; padding: 10px 0;background: rgb(0,0,0,0.8);box-sizing: border-box;padding-bottom: 0;}
 	.indNavbar .list li{width: 100%;padding: 0 3%;}
 	.indNavbar .list li a{width: 100%;font-size: 16px;padding-bottom: 0;box-sizing: border-box;line-height: 50px;border-bottom: 1px solid #547b8e;text-align: center;}
 	.indNavbar .list li.on a{color: #17acee;border-bottom: 1px solid #17ACEE;font-weight: bold;}

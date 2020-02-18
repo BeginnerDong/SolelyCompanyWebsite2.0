@@ -19,11 +19,22 @@
 		<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 	</head>
 	<style type="text/css">
+		.mobile-imgTwo{display: none;}
 		.wecando{padding-bottom: 50px;background: #223061 url(images/web-icon6.png) no-repeat center bottom/100% auto;}
-		.wecando li{float: left;width: 42%;box-sizing: border-box;padding-left: 45px;position: relative;margin-bottom: 60px;}
+		.wecando li{float: left;width: 42%;height: 80px;box-sizing: border-box;padding-left: 45px;position: relative;margin-bottom: 30px;}
 		.wecando li:nth-of-type(2n){float: right;}
 		.wecando li .icon{width: 30px;height: 30px;display: block;position: absolute;left: 0;top: 0;}
 		.wecando li h1{font-size: 18px;padding-bottom: 10px;}
+		.wecando li p{line-height: 22px;}
+		@media screen and ( max-width:500px){
+			.wecando{padding-bottom: 10px;}
+			.wecando li{width: 100%;height: auto;padding-left: 40px;}
+			.wecando li .icon{width: 25px;height: 25px;}
+			.wecando li h1{font-size: 16px;}
+			.wecando li p{font-size: 12px;}
+			.pc-imgOne{display: none;}
+			.mobile-imgTwo{display: block;}
+		}
 	</style>
 
 	<body>
@@ -44,7 +55,13 @@
 					<h1 class="mgb20">哪些场景需要我们的服务？</h1>
 				</div>
 				<div class="w1200 clearfix">
-					<img class="w" src="images/app-img.png" >
+					<div class="pc-imgOne">
+						<img class="w" src="images/app-img.png" >
+					</div>
+					<div class="mobile-imgTwo">
+						<img class="w" src="images/app-img0.png" >
+					</div>
+					
 				</div>
 			</div>
 			
@@ -55,8 +72,8 @@
 				</div>
 				<div class="w1000">
 					<ul class="clearfix">
-						<li v-for="(item,index) in wecandoData" :key="index">
-							<img class="icon" src="images/app-icon1.png" >
+						<li class="fadeInLeft animated" v-for="(item,index) in wecandoData" :key="index">
+							<img class="icon" :src="item.iconUrl" >
 							<h1>{{item.title}}</h1>
 							<p>{{item.text}}</p>
 						</li>

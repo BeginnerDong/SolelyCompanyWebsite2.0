@@ -57,26 +57,15 @@
 	    el: '#OurService',
 	    data:function(){
 	        return {
-	        	is_toggle:false,
-				conactData:{}
+	        	is_toggle:false
 	        }
 	    },
-	    created:function () {
-	        var self = this;
-			self.getMainData()	
-			self.getLabelData()
-	    },
-		
 	    methods: {
 			getMainData: function(id) {
 				var self = this;
 				var postData = {};
 				var callback = (res) => {
 					console.log('getMainData', res);
-					self.conactData = res.info.data[0];
-					window.base.bus.$emit('to_headBanner', {
-						conactData:self.conactData
-					});	
 				};
 				window.base.articleGet(postData, callback);
 			}

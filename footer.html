@@ -41,56 +41,19 @@
 				copyrightData:['copyright © 2013 京ICP备05008535号','京公网安备11010502033333号']
 	        }
 	    },
-	    created:function () {
-	        var self = this;
-			self.getMainData()	
-			self.getLabelData()
-	    },
 		
 	    methods: {
-			
 			getMainData: function(id) {
 				var self = this;
-				var postData = {};
-				postData.searchItem = {
-					thirdapp_id:2,
-				};
-				postData.getBefore = {
-					caseData: {
-						tableName: 'Label',
-						searchItem: {
-							title: ['=', ['联系我们']],
-						},
-						middleKey: 'menu_id',
-						key: 'id',
-						condition: 'in',
-					},
-				};
 				var callback = (res) => {
 					console.log('getMainData', res);
-					self.conactData = res.info.data[0];
-					window.base.bus.$emit('to_headBanner', {
-						conactData:self.conactData
-					});	
+					// self.conactData = res.info.data[0];
+					// window.base.bus.$emit('to_headBanner', {
+					// 	conactData:self.conactData
+					// });	
 				};
-				window.base.articleGet(postData, callback);
-			},
-			
-			getLabelData: function(id) {
-				var self = this;
-				var postData = {};
-				postData.searchItem = {
-					thirdapp_id:2,
-					title:'底部简介'
-				};
-				var callback = (res) => {
-					console.log('getMainData', res);
-					self.labelData = res.info.data[0];
-				};
-				window.base.labelGet(postData, callback);
-			},
-	        
-	    	
+				// window.base.articleGet(postData, callback);
+			}
 	    }
 	});   
 </script>
@@ -136,6 +99,7 @@
 	footer .one .infor h1{font-size: 22px;font-weight: normal;}
 	footer .two .samllis p{width: 80px;margin-top: 10px;margin-right: 3%;}
 	footer .two .samllis p:nth-child(4n){margin-right: 0;}
+	footer .item.two .title{font-size: 16px;padding-bottom: 5px;}
 	footer .three .map{width: 100%;height: 242px;}
 }
 </style>

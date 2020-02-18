@@ -30,7 +30,7 @@
 		.website-title{width: 25%;}
 		.website-list{width: 72%;}
 		.website-title .font{font-size: 20px; color: #b9b9b9;}
-		.website-title .tit{font-size: 24px; margin-top: 15px;}
+		.website-title .tit{font-size: 24px; margin-top: 15px;line-height: 24px;}
 		.website-title .text{font-size: 14px; margin-top: 50px;}
 		.website-list li{width: 220px; height: 130px;background-color: #fff;border-radius: 5px;padding: 20px;box-sizing: border-box;float: left;margin:0 0 20px 20px;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
 		.website-list li h1{font-size:16px;}
@@ -38,6 +38,22 @@
 		.website-list li .xian{width:1px;height: 25px;background-color: #d8d8d8;}
 		.website-list li .num{clear: both;font-size: 16px;color: #a8a8a8;}
 		.website-list li .rr .icon{width:35px;height: 35px;display: block;margin-top: 8px;}
+		@media screen and ( max-width:500px){
+			.website{padding: 30px 0;}
+			.website-title{width: 100%;text-align: center;}
+			.website-title .font{font-size: 16px;}
+			.website-title .tit{font-size: 18px;margin-top: 10px;font-weight: bold;}
+			.website-title .text{margin-top: 10px;}
+			.website-list{width: 96%;margin: 0 auto;padding-top: 30px;float: initial;clear: both;}
+			.website-list li{width: 48%;height: 115px;margin-left: 4%;padding: 15px;}
+			.website-list li:nth-child(2n+1){margin-left: 0;}
+			.website-list li h1{font-size: 14px;}
+			.website-list li .Bfix{left: 15px;right: 15px;bottom:10px}
+			.website-list li .num{font-size: 14px;}
+			.website-list li .xian{height: 20px;}
+			.website-list li .rr .icon{width: 25px;height: 25px;}
+			.swiper-slide p{padding: 15px 2%;font-size: 15px;}
+		}
 	</style>
 
 	<body>
@@ -61,7 +77,7 @@
 					</div>
 					<div class="website-list fr">
 						<ul class="clearfix">
-							<li v-for="(item,index) in websiteData" :key="index">
+							<li class="fadeInRight animated" v-for="(item,index) in websiteData" :key="index">
 								<h1>{{item.title}}</h1>
 								<div class="Bfix clearfix">
 									<div class="ll fl">
@@ -136,7 +152,7 @@
 			var swiper = new Swiper('.swiper-container', {
 				slidesPerView: 3,
 				slidesPerGroup : 1,
-				spaceBetween: 30,
+				spaceBetween: 0,
 				slidesOffsetAfter : 500,
 				centeredSlides: true,
 				observer: true,
@@ -169,15 +185,15 @@
 					]
 				}
 			},
-			created: function() {
-				var self = this;
-				window.onload = function() {
-					window.base.bus.$emit('to_headBanner', {
-						title:'轮播图'
-					});	
-					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
-				};
-			},
+			// created: function() {
+			// 	var self = this;
+			// 	window.onload = function() {
+			// 		window.base.bus.$emit('to_headBanner', {
+			// 			title:'轮播图'
+			// 		});	
+			// 		//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
+			// 	};
+			// },
 			methods: {
 				getMainData: function(id) {
 					var self = this;

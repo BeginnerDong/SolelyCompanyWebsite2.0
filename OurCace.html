@@ -9,37 +9,37 @@
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img.jpg">
 						<p>校园APP</p>
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img1.jpg">
 						<p>酒便利APP</p>
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img2.jpg">
 						<p>旅行社小程序</p>
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img3.jpg">
 						<p>小蜂侠小程序</p>
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img.jpg">
 						<p>校园APP</p>
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="#">
+					<a href="productDetail.html">
 						<img src="images/img1.jpg">
 						<p>酒便利APP</p>
 					</a>
@@ -57,7 +57,7 @@
 		var swiper = new Swiper('.swiper-container', {
 			slidesPerView: 5,
 			slidesPerGroup : 1,
-			spaceBetween: 30,
+			spaceBetween: 15,
 			slidesOffsetAfter : 500,
 			centeredSlides: true,
 			observer: true,
@@ -85,7 +85,13 @@
 	.swiper-slide img {width: 100%;height: auto;display: block;}
 	.swiper-slide p{padding: 20px 2%;}
 	
-	
+	@media screen and ( max-width:750px){
+		.swiper-slide{width: 33.3%!important;}
+	}
+	@media screen and ( max-width:500px){
+		.swiper-container{padding-bottom: 40px;}
+		.swiper-slide p{font-size: 14px;padding: 15px 2%;}
+	}
 </style>
 
 

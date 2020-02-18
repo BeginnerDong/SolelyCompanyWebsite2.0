@@ -18,29 +18,29 @@
 		<link rel="stylesheet" href="css/animate/animate.min.css">
 	</head>
 	<style>
-		.productNav{padding-top: 60px;}
+		.productNav{padding-top: 60px; }
 		.productNav .item{width: 25%;float: left;line-height: 40px; vertical-align: middle;font-size: 18px;color: #5c5c5c;padding-bottom: 30px;}
 		.productNav .item .icon{width: 35px;height: 35px;display: initial; vertical-align: middle;}
-		.productNav .item.on{position: relative;}
-		.productNav .item.on::after{content: ''; width: 100%;height: 20px;background: url(images/product-icon12.png) no-repeat center bottom/100% auto;position: absolute;left: 0;right: 0;bottom: 0;}
+		.productNav .item.on{position: relative;border-bottom: 1px solid #17ACEE;}
+		.productNav .item.on::after{content: ''; position: absolute;left: 50%;transform: translateX(-50%);bottom: 0; border-top: 10px transparent dashed;border-left: 10px transparent dashed;border-right: 10px transparent dashed;border-bottom: 10px #17ACEE solid;}
 		.pd-class{padding: 30px 0 40px 0;}
 		.pd-class span{display: block;float: left;font-size: 16px;line-height: 44px;width: 120px;text-align: center;border-radius: 20px 0 20px 0;border: 1px solid #eee;margin-right: 32px;margin-bottom: 20px;background-color: #fff;}
 		.pd-class span:last-child{margin-right: 0;}
 		.pd-class span.on{background-color: #17acee;color: #fff;border-color:#17ACEE ;}
 		
 		/* 产品列表 */
-		.prodcutList li{float: left;overflow: hidden;box-shadow: 0 0 10px rgba(0,0,0,0.15);background-color: #fff;text-align: center;}
+		.prodcutList li{float: left;overflow: hidden;box-shadow: 0 0 10px rgba(0,0,0,0.15);background-color: #fff;text-align: center;margin-bottom: 40px;}
 		.prodcutList li .pic{width: 100%; display: block;}
 		.prodcutList li p{padding: 20px 10px;font-size: 16px;}
 		
 		/* mobile */
-		.prodcutList .proMobile li{width: 23.5%;margin-bottom: 40px;margin-right: 2%; }
+		.prodcutList .proMobile li{width: 23.5%;margin-right: 2%; }
 		.prodcutList .proMobile li:nth-child(4n){margin-right: 0%;}
 		.prodcutList .proMobile li .pic{height: 501px;display: block;}
 		
 		
 		/* pc列表 */
-		.prodcutList .proPc li{width: 48%;margin-bottom: 40px;}
+		.prodcutList .proPc li{width: 48%;}
 		.prodcutList .proPc li:nth-child(2n){margin-left: 4%;}
 		.prodcutList .proPc li .pic{width: 100%;height: 324px;}
 		
@@ -50,6 +50,48 @@
 		.allPages li span.on{color: #17ACEE;position: relative;}
 		.allPages li span.on::after{content: '';width: 15px; height: 2px;background: #17ACEE;position: absolute; bottom: -3px;left: 50%;transform: translateX(-42%);}
 		.allPages li .arrow{width: 13px;height:13px; vertical-align: middle; display: inline-block;padding: 0 10px;}
+		
+		@media only screen and (max-width: 1050px){
+			.prodcutList .proMobile li .pic{height: 402px;}
+		}
+		@media only screen and (max-width: 768px){
+			.productNav {padding-top: 40px;}
+			.productNav .item{font-size: 16px;    padding-bottom: 20px;}
+			.productNav .item .icon {width: 30px;height: 30px;}
+			.pd-class span{line-height: 40px;width: 100px;margin-right: 2.5%;}
+			.prodcutList .proMobile li .pic{height: 301px;}
+			.prodcutList .proPc li .pic{height: 195px;}
+		}
+		
+		@media only screen and (max-width: 500px){
+			.productNav {padding-top: 15px;}
+			.productNav .item.on::after{border-top: 6px transparent dashed;border-left: 6px transparent dashed;border-right: 6px transparent dashed;border-bottom: 6px #17ACEE solid;}
+			.productNav .item{font-size: 14px; padding-bottom: 10px;}
+			.productNav .item .icon {width:22px;height: 22px;}
+			.pd-class {padding: 20px 0 10px 0;}
+			.pd-class span{line-height: 30px;width: 22.5%;margin-right: 2%;font-size: 13px;border-radius: 15px 0 15px 0;margin-bottom: 15px;}
+			.pd-class span:nth-child(4n){margin-right: 0;}
+			.prodcutList li{margin-bottom: 20px;}
+			.prodcutList .proMobile li{width: 48%;}
+			.prodcutList .proMobile li:nth-child(2n){margin-right: 0;float: right;}
+			.prodcutList .proMobile li .pic{height: 300px;}
+			
+			.prodcutList .proPc li .pic{height: 95px;}
+			.prodcutList li p{font-size: 14px;padding: 10px 2%;}
+			.allPages{padding-top: 10px;}
+		}
+		@media only screen and (max-width: 414px){
+			.prodcutList .proMobile li .pic{height: 332px;}
+			.prodcutList .proPc li .pic{height: 105px;}
+		}
+		@media only screen and (max-width: 375px){
+			.prodcutList .proMobile li .pic{height: 300px;}
+			.prodcutList .proPc li .pic{height: 95px;}
+		}
+		@media only screen and (max-width: 320px){
+			.prodcutList .proMobile li .pic{height: 257px;}
+			.prodcutList .proPc li .pic{height: 81px;}
+		}
 	</style>
 
 	<body>

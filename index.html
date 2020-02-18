@@ -34,8 +34,8 @@
 
 			<!-- 四大类 -->
 			<div class="pdb60 clearfix indx-homeClass white">
-				<ul class="oh clearfix animated slideInUp">
-					<li class="fadeInRight animated">
+				<ul class="oh clearfix">
+					<li class="flipInX animated">
 						<div class="text">
 							<h1 class="tit">高端网络建设</h1>
 							<p class="avoidOverflow">品牌网站建设</p>
@@ -44,7 +44,7 @@
 						</div>
 						<img class="icon" src="images/home-icon.png" alt="">
 					</li>
-					<li class="fadeInRight animated">
+					<li class="flipInX animated">
 						<div class="text">
 							<h1 class="tit">小程序定制开发</h1>
 							<p class="avoidOverflow">软件平台开发</p>
@@ -53,7 +53,7 @@
 						</div>
 						<img class="icon" src="images/home-icon1.png" alt="">
 					</li>
-					<li class="fadeInRight animated">
+					<li class="flipInX animated">
 						<div class="text">
 							<h1 class="tit">APP开发</h1>
 							<p class="avoidOverflow">软件平台开发</p>
@@ -62,7 +62,7 @@
 						</div>
 						<img class="icon" src="images/home-icon2.png" alt="">
 					</li>
-					<li class="fadeInRight animated">
+					<li class="flipInX animated">
 						<div class="text">
 							<h1 class="tit">系统定制</h1>
 							<p class="avoidOverflow">品牌网站建设</p>
@@ -181,9 +181,9 @@
 					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
 				};
 				self.getMainData();
-				// if(window.screen.width<760){
-				// 	self.slidesPerView = 3
-				// }
+				if(window.screen.width<760){
+					self.slidesPerView = 3
+				}
 			},
 			methods: {
 				getMainData: function(id) {

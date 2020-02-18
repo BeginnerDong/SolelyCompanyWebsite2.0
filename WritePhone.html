@@ -34,9 +34,6 @@
 				var callback = (res) => {
 					console.log('getMainData', res);
 					self.conactData = res.info.data[0];
-					window.base.bus.$emit('to_headBanner', {
-						conactData:self.conactData
-					});	
 				};
 				window.base.articleGet(postData, callback);
 			}
@@ -68,7 +65,7 @@
 	}
 	
 	@media only screen and (max-width: 500px){
-		.indx-contact{padding: 50px 0;}
+		.indx-contact{padding: 30px 0 50px 0;background: url(images/home-img5.jpg)no-repeat left top/auto 100%;}
 		.indx-contact .left{width: 100%;padding-bottom: 30px;}
 		.indx-contact .left .tit{font-size: 20px;}
 		
