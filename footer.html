@@ -1,3 +1,4 @@
+
 <footer class="oh footer white" id="footer_app">
 	<div class="w1200 fs13 clearfix">
 		<div class="item one">
@@ -19,8 +20,11 @@
 				<p v-for="(item,index) in samNavData" :key="index"><a href="#">{{item}}</a></p>
 			</div>
 		</div>
-		<div class="item three">
+		<!-- <div class="item three">
 			<img class="map" src="images/home-img9.jpg" >
+		</div> -->
+		<div class="item three">
+			<include src="map.html"></include>
 		</div>
 		
 	</div>
@@ -29,6 +33,8 @@
 	</div>
 	
 </footer>
+<script type="text/javascript" src="js/include.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
 <script type="text/javascript">
 	var footer_app = new Vue({
 	    el: '#footer_app',
