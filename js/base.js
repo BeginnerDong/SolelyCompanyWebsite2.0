@@ -1041,10 +1041,14 @@ window.base = {
 	},
 
 	changePage: function(dataSet, self) {
+		console.log(23343254,dataSet)
+		
 		if (dataSet.type == 'next') {
 			if (self.paginate.currentPage >= self.allPages) {
+				console.log(233432541)
 				alert('已经到底啦')
 			} else {
+				console.log(233432542)
 				self.paginate.currentPage++;
 				self.mainData = [];
 				self.getMainData();
@@ -1052,6 +1056,7 @@ window.base = {
 		};
 		if (dataSet.type == 'back') {
 			if (self.paginate.currentPage == 1) {
+				console.log(233432543)
 				alert('已经没有啦')
 			} else {
 				self.paginate.currentPage--;
