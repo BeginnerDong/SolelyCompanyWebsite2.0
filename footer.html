@@ -1,16 +1,15 @@
-
 <footer class="oh footer white" id="footer_app">
 	<div class="w1200 fs13 clearfix">
 		<div class="item one">
-			<div><img class="logo" src="images/home-img8.png" ></div>
+			<div><img class="logo" src="images/home-img8.png"></div>
 			<div class="infor clearfix">
 				<div class="fl left">
 					<h1 class="ftw">180-9265-1090</h1>
 					<p class="fs12"> 地址:西安市雁塔区高新大都荟A座20楼2007</p>
 				</div>
 				<div class="ewmbox fl">
-					<img src="images/home-img7.jpg" >
-					<img src="images/home-img7.jpg" >
+					<img src="images/home-img7.jpg">
+					<img src="images/home-img7.jpg">
 				</div>
 			</div>
 		</div>
@@ -20,95 +19,245 @@
 				<p v-for="(item,index) in samNavData" :key="index"><a href="#">{{item}}</a></p>
 			</div>
 		</div>
-		<!-- <div class="item three">
-			<img class="map" src="images/home-img9.jpg" >
-		</div> -->
 		<div class="item three">
-			<include src="map.html"></include>
+			<div id="dituContent" style="min-height:14.7rem;overflow:hidden;"></div>
 		</div>
-		
 	</div>
 	<div class="copyright center">
 		<p v-for="(item,index) in copyrightData" :key="index">{{item}}</p>
 	</div>
-	
+
 </footer>
-<script type="text/javascript" src="js/include.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
+
 <script type="text/javascript">
 	var footer_app = new Vue({
-	    el: '#footer_app',
-	    data:function(){
-	        return {
-	        	is_toggle:false,
-				conactData:{},
-				labelData:{},
-				samNavData:['公众号/小程序','网站开发','APP开发','案例开发','关于我们','关于我们','关于我们','关于我们','关于我们'],
-				copyrightData:['copyright © 2013 京ICP备05008535号','京公网安备11010502033333号']
-	        }
-	    },
-		
-	    methods: {
-			getMainData: function(id) {
-				var self = this;
-				var callback = (res) => {
-					console.log('getMainData', res);
-					// self.conactData = res.info.data[0];
-					// window.base.bus.$emit('to_headBanner', {
-					// 	conactData:self.conactData
-					// });	
-				};
-				// window.base.articleGet(postData, callback);
+		el: '#footer_app',
+		data: function() {
+			return {
+				samNavData: ['公众号/小程序', '网站开发', 'APP开发', '案例开发', '关于我们', '关于我们', '关于我们', '关于我们', '关于我们'],
+				copyrightData: ['copyright © 2013 京ICP备05008535号', '京公网安备11010502033333号']
 			}
-	    }
-	});   
+		},
+
+		created: function() {
+			var self = this;
+			
+			
+		},
+
+		methods: {
+			
+			addVisitorInfo(address) {
+				var self = this;
+				var postData = {
+					address:address,
+					thirdapp_id:2,
+					visitor_url:self.currentUrl
+				};
+				var callback = (res) => {
+					if(res.solely_code==100000){
+						
+					}else{
+						
+					}
+				};
+				window.base.addVisitorInfo(postData, callback);
+			}
+			
+		}
+	});
 </script>
 
 <style type="text/css">
 	/* 页脚footer */
-	footer{background: #0c173c; padding: 40px 0 0 0;}
-	footer .item{ line-height: 22px; box-sizing: border-box;float: left;padding: 0 40px;}
-	footer .item.one{width:40%;padding-left: 0px;border-right:1px solid #767676;padding-bottom: 20px;}
-	footer .one .logo{width: 180px;height: 57px;}
-	footer .one .infor{padding-top: 49px;}
-	footer .one .infor .left{width: 55%;padding-top: 10px;}
-	footer .one .infor h1{font-size: 26px;margin-bottom: 20px;}
-	footer .one .infor .ewmbox img{float: left; width: 80px; height: 80px; display: block;margin-left:15px;}
-	
-	footer .item.two{width: 30%;}
-	footer .item.three{width:30%;padding-right: 0px;border-left: 1px solid #767676;}
-	footer .item.two .title{font-size: 18px;padding-bottom: 10px;}
-	footer .two .samllis p{width: 33.3%;float: left; margin-top: 20px;font-size: 12px;}
-	footer .two .samllis p a{color: #fff;}
-	footer .three .map{ width: 300px; height:206px; display: block;float: right;}
-	footer .copyright{ font-size: 13px; clear: both; padding: 10px 2%; color: #fff;margin-top: 30px;padding: 20px 0; background: #0a112a;}
+	footer {
+		background: #0c173c;
+		padding: 40px 0 0 0;
+	}
+
+	footer .item {
+		line-height: 22px;
+		box-sizing: border-box;
+		float: left;
+		padding: 0 40px;
+	}
+
+	footer .item.one {
+		width: 40%;
+		padding-left: 0px;
+		border-right: 1px solid #767676;
+		padding-bottom: 20px;
+	}
+
+	footer .one .logo {
+		width: 180px;
+		height: 57px;
+	}
+
+	footer .one .infor {
+		padding-top: 49px;
+	}
+
+	footer .one .infor .left {
+		width: 55%;
+		padding-top: 10px;
+	}
+
+	footer .one .infor h1 {
+		font-size: 26px;
+		margin-bottom: 20px;
+	}
+
+	footer .one .infor .ewmbox img {
+		float: left;
+		width: 80px;
+		height: 80px;
+		display: block;
+		margin-left: 15px;
+	}
+
+	footer .item.two {
+		width: 30%;
+	}
+
+	footer .item.three {
+		width: 30%;
+		padding-right: 0px;
+		border-left: 1px solid #767676;
+	}
+
+	footer .item.two .title {
+		font-size: 18px;
+		padding-bottom: 10px;
+	}
+
+	footer .two .samllis p {
+		width: 33.3%;
+		float: left;
+		margin-top: 20px;
+		font-size: 12px;
+	}
+
+	footer .two .samllis p a {
+		color: #fff;
+	}
+
+	footer .three .map {
+		width: 300px;
+		height: 206px;
+		display: block;
+		float: right;
+	}
+
+	footer .copyright {
+		font-size: 13px;
+		clear: both;
+		padding: 10px 2%;
+		color: #fff;
+		margin-top: 30px;
+		padding: 20px 0;
+		background: #0a112a;
+	}
+
 	/* 页脚footer end */
-	
-	
-@media screen and ( max-width:1100px){ 
-	footer{padding-top: 0;}
-	footer .one .logo{width: auto;height: 40px;}
-	footer .item{width: 100%;}
-	footer .item.one{width: 100%;border-right: 0;padding: 20px 0;}
-	footer .one .infor .left{width: 55;}
-	footer .one .infor .ewmbox{width: auto;float: right;}
-	footer .one .infor .ewmbox img{width: 60px;height: 60px;margin-left: 10px;}
-	footer .item.two{width: 100%;padding: 20px 0;border-top: 1px dashed #767676;border-bottom: 1px dashed #767676;}
-	footer .item.three{width: 100%;padding: 20px 0;    border-left: 0;}
-	footer .one .infor{padding-top: 15px;}
-	footer .two .samllis p{width: 20%;margin-top: 15px;}
-	footer .three .map{width: 100%;height: 495px;}
-}
-@media screen and ( max-width:500px){ 
-	footer{padding-top: 0;}
-	footer .one .logo{width: auto;height: 30px;}
-	footer .one .infor h1{font-size: 22px;font-weight: normal;}
-	footer .two .samllis p{width: 80px;margin-top: 10px;margin-right: 3%;}
-	footer .two .samllis p:nth-child(4n){margin-right: 0;}
-	footer .item.two .title{font-size: 16px;padding-bottom: 5px;}
-	footer .three .map{width: 100%;height: 242px;}
-}
+
+
+	@media screen and (max-width:1100px) {
+		footer {
+			padding-top: 0;
+		}
+
+		footer .one .logo {
+			width: auto;
+			height: 40px;
+		}
+
+		footer .item {
+			width: 100%;
+		}
+
+		footer .item.one {
+			width: 100%;
+			border-right: 0;
+			padding: 20px 0;
+		}
+
+		footer .one .infor .left {
+			width: 55;
+		}
+
+		footer .one .infor .ewmbox {
+			width: auto;
+			float: right;
+		}
+
+		footer .one .infor .ewmbox img {
+			width: 60px;
+			height: 60px;
+			margin-left: 10px;
+		}
+
+		footer .item.two {
+			width: 100%;
+			padding: 20px 0;
+			border-top: 1px dashed #767676;
+			border-bottom: 1px dashed #767676;
+		}
+
+		footer .item.three {
+			width: 100%;
+			padding: 20px 0;
+			border-left: 0;
+		}
+
+		footer .one .infor {
+			padding-top: 15px;
+		}
+
+		footer .two .samllis p {
+			width: 20%;
+			margin-top: 15px;
+		}
+
+		footer .three .map {
+			width: 100%;
+			height: 495px;
+		}
+	}
+
+	@media screen and (max-width:500px) {
+		footer {
+			padding-top: 0;
+		}
+
+		footer .one .logo {
+			width: auto;
+			height: 30px;
+		}
+
+		footer .one .infor h1 {
+			font-size: 22px;
+			font-weight: normal;
+		}
+
+		footer .two .samllis p {
+			width: 80px;
+			margin-top: 10px;
+			margin-right: 3%;
+		}
+
+		footer .two .samllis p:nth-child(4n) {
+			margin-right: 0;
+		}
+
+		footer .item.two .title {
+			font-size: 16px;
+			padding-bottom: 5px;
+		}
+
+		footer .three .map {
+			width: 100%;
+			height: 242px;
+		}
+	}
 </style>
-
-
-

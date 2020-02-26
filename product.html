@@ -16,6 +16,9 @@
 		<link rel="stylesheet" type="text/css" href="css/mini.css">
 		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
 		<link rel="stylesheet" href="css/animate/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="css/detail.css">
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
 	</head>
 	<style>
 		.productNav{padding-top: 60px; }
@@ -92,112 +95,125 @@
 			.prodcutList .proMobile li .pic{height: 257px;}
 			.prodcutList .proPc li .pic{height: 81px;}
 		}
+		@media only screen and (max-width: 500px){
+			.detail .right .Bcont{text-align: right;}
+		}
 	</style>
 
 	<body>
 		<div id="app">
 			<!-- 网站导航 -->
-			<div class="">
-				<include src="header.html"></include>
-			</div>
-			
-			<!-- banner -->
-			<div class="">
-				<include src="headBanner.html"></include>
-			</div>
-			
-			<div>
-				<div class="w1200 pdb100">
-					<!-- 产品导航分类 -->
-					<div class="productNav center clearfix borderB1">
-						<span class="item" :class="curr==1?'on':''" @click="currChange('1')">
-							<img class="icon" :src="curr==1?'images/product-icon.png':'images/product-icon1.png'" >
-							APP
-						</span>
-						<span class="item" :class="curr==2?'on':''" @click="currChange('2')">
-							<img class="icon" :src="curr==2?'images/product-icon3.png':'images/product-icon2.png'" >
-							小程序
-						</span>
-						<span class="item" :class="curr==3?'on':''" @click="currChange('3')">
-							<img class="icon" :src="curr==3?'images/product-icon5.png':'images/product-icon4.png'" >
-							公众号
-						</span>
-						<span class="item" :class="curr==4?'on':''" @click="currChange('4')">
-							<img class="icon" :src="curr==4?'images/product-icon7.png':'images/product-icon6.png'" >
-							网站建设
-						</span>
+			<div v-show="detailId<0">
+				<div class="">
+					<include src="header.html"></include>
+				</div>
+				
+				<!-- banner -->
+				<div class="">
+					<include src="headBanner.html"></include>
+				</div>
+				
+				<div>
+					<div class="w1200 pdb100">
+						<!-- 产品导航分类 -->
+						<div class="productNav center clearfix borderB1">
+							<span class="item" :class="curr==1?'on':''" @click="currChange('1')">
+								<img class="icon" :src="curr==1?'images/product-icon.png':'images/product-icon1.png'" >
+								APP
+							</span>
+							<span class="item" :class="curr==2?'on':''" @click="currChange('2')">
+								<img class="icon" :src="curr==2?'images/product-icon3.png':'images/product-icon2.png'" >
+								小程序
+							</span>
+							<span class="item" :class="curr==3?'on':''" @click="currChange('3')">
+								<img class="icon" :src="curr==3?'images/product-icon5.png':'images/product-icon4.png'" >
+								公众号
+							</span>
+							<span class="item" :class="curr==4?'on':''" @click="currChange('4')">
+								<img class="icon" :src="curr==4?'images/product-icon7.png':'images/product-icon6.png'" >
+								网站建设
+							</span>
+						</div>
+						<!-- 产品类别 -->
+						<div class="pd-class clearfix">
+							<span v-for="(item,index) in labelTwoData" :class="idTwo==item.id?'on':''" 
+							@click="classChange(item.id)">{{item.title}}</span>
+						</div>
+						
+						<!-- 产品列表 -->
+						<!-- mobile -->
+						<div class="prodcutList">
+							<ul class="clearfix" :class="curr==4?'proPc':'proMobile'">
+								<li class="fadeInUp animated" v-for="(item,index) in mainData" :key="index">
+									<a @click="detailView(item.id)">
+										<img class="pic" :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"/>
+										<p>{{item.title}}</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+				
+						<!-- 页码 -->
+						<div class="allPages center color6 pdt30">
+							<ul class="clearfix">
+								<li><span class="prev" data-type="back"  @click="changePage"><img class="arrow" src="images/product-icon10.png" ></span></li>
+								<li>
+									<span v-for="item in pageArray" :class="item == paginate.currentPage?'on':''" :data-page="item" @click="linkTo">{{item}}</span>
+								</li>
+								<li><span class="next" data-type="next"  @click="changePage"><img class="arrow" src="images/product-icon11.png"/></span></li>
+							</ul>
+						</div>
+						
 					</div>
-					<!-- 产品类别 -->
-					<div class="pd-class clearfix">
-						<span v-for="(item,index) in classData" :class="classCurr==index?'on':''" @click="classChange(index)">{{item}}</span>
-					</div>
-					
-					<!-- 产品列表 -->
-					<!-- mobile -->
-					<div class="prodcutList"  v-show="curr==1">
-						<ul class=" proMobile clearfix">
-							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
-								<a href="productDetail.html">
-									<img class="pic" src="images/img1.jpg"/>
-									<p>瑞安消防</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="prodcutList"  v-show="curr==2">
-						<ul class=" proMobile clearfix">
-							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
-								<a href="productDetail.html">
-									<img class="pic" src="images/img1.jpg"/>
-									<p>瑞安消防</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="prodcutList"  v-show="curr==3">
-						<ul class="proMobile clearfix">
-							<li class="fadeInUp animated" v-for="(item,index) in mobileData" :key="index">
-								<a href="productDetail.html">
-									<img class="pic" src="images/img1.jpg"/>
-									<p>瑞安消防</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-					<!-- pc -->
-					<div class="prodcutList center" v-show="curr==4">
-						<ul class="proPc clearfix">
-							<li class="fadeInUp animated" v-for="(item,index) in productData" :key="index">
-								<a href="productPcDetail.html">
-									<img class="pic" src="images/img5.jpg"/>
-									<p>瑞安消防</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					
-					<!-- 页码 -->
-					<div class="allPages center color6 pdt30">
-						<ul class="clearfix">
-							<li><span class="prev" data-type="back"><img class="arrow" src="images/product-icon10.png" ></span></li>
-							<li>
-								<span class="on">1</span>
-								<span>2</span>
-								<span>3</span>
-								<span>4</span>
-								<span>5</span>
-								<span>6</span>
-							</li>
-							<li><span class="next" data-type="next"><img class="arrow" src="images/product-icon11.png"/></span></li>
-						</ul>
-					</div>
-					
 				</div>
 			</div>
 			
+			<div class="detail clearfix" v-show="detailId&&detailId>0">
+				<a class="close" @click="detailView('-1')">×</a>
+				<div class="left fl">
+					<iframe :src="currentDetail.passage1" style="width: 100%;height: 100%;" allowTransparency="true" frameborder="0"></iframe>
+					
+					<!-- <iframe src="https://modao.cc/app/xxm2be2wuclk2o7i6w9jp7satndb/embed/v2" style="width: 100%;height: 100%;" allowTransparency="true" frameborder="0"></iframe> -->
+					<!-- <div class="mobile">
+						<div class="pic">
+							<iframe src="https://modao.cc/app/xxm2be2wuclk2o7i6w9jp7satndb/embed/v2" allowTransparency="true" frameborder="0"></iframe>
+							<img src="images/img1.jpg" >
+						</div>
+					</div> -->
+				</div>
+				<div class="right fr white">
+					<h1 class="tit ftw center">{{currentDetail.title}}</h1>
+					<p class="text">{{currentDetail.description}}</p>
+					<div class="tabs clearfix">
+						<span v-for="item in currentDetail.small_title">{{item}}</span>
+					</div>
+					<div class="xian"></div>
+					<div class="clearfix">
+						<div class="fl" style="width: 32%;">
+							<p class="fl mgr10 tit2">界面样式</p>
+							<img class="ewm" :src="currentDetail.mainImg&&currentDetail.mainImg[1]?currentDetail.mainImg[1].url:''" >
+						</div>
+						<div class="fr Bcont" style="width: 65%;">
+							<p>如果您有任何需要 </p>
+							<p>请联系我们：{{phoneData.description}}（同微信）</p>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div>
+				
+					<iframe :src="currentDetail.passage1":style="currentDetail.menu_id!=24&&currentDetail.menu_id!=25&&currentDetail.menu_id!=26?'height:667px':'height:210px'" 
+					style="width: 100%" allowTransparency="true" frameborder="0"></iframe>
+				</div>
+			</div>
 			
 			<include src="footer.html"></include>
+			<!-- <div style="position: fixed;top: 20%;width: 20%;height: 100px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">
+				<div style="width: 100%;text-align: center;height: 70px;line-height: 70px">没有数据了</div>
+				<div style="width: 100%;height: 30px;line-height: 30px;text-align: center;border-top: 1px solid #0066CC;">确定</div>
+			</div> -->
+			<div id='showToast'></div>
 		</div>
 	</body>
 
@@ -214,41 +230,172 @@
 					classCurr:0,
 					mobileData:[{},{},{},{},{},{}],
 					productData:[{},{},{},{},{},{}],
-					n:1
+					n:1,
+					id:-1,
+					idTwo:-1,
+					labelData:[],
+					labelTwoData:[],
+					mainData:[],
+					paginate:{
+						count: 0,
+						currentPage: 1,
+						pagesize: 8,
+						is_page: true,
+					},
+					linkPage: [],
+					pageArray: [],
+					
+					allPages: 0,
+					detailId:-1,
+					currentDetail:{},
+					phoneData:{}
 				}
 			},
 			created: function() {
 				var self = this;
-				window.onload = function() {
-					window.base.bus.$emit('to_headBanner', {
-						title:'轮播图'
-					});	
-					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
-				};
+				self.getLabelData();
+				self.getPhoneData()
 			},
+			
 			methods: {
+				
+				getPhoneData: function(id) {
+					var self = this;
+					var postData = {};
+					postData.searchItem = {
+						title:'客服电话',
+					};
+				
+					var callback = function(res) {
+						if (res.info.data.length > 0 ) {
+				
+							self.phoneData = res.info.data[0]
+						};
+						console.log('2323', self.bannerData)
+					};
+					window.base.labelGet(postData, callback);
+				},
+				
+				detailView(id){
+					const self = this;
+					self.detailId = id;
+					for (var i = 0; i < self.mainData.length; i++) {
+						if(self.detailId==self.mainData[i].id){
+							self.currentDetail = self.mainData[i]
+						}
+					};
+					self.currentDetail.small_title = self.currentDetail.small_title.split(",")
+				},
+				
 				currChange(curr){
 					const self = this;
 					if(curr!=self.curr){
-						self.curr = curr
+						self.curr = curr;
+						self.id = self.labelData[self.curr-1].id;
+						self.labelTwoData = [];
+						self.mainData = [];
+						self.getLabelTwoData()
 					}
 				},
-				classChange(index){
+				
+				classChange(id){
 					const self = this;
-					self.classCurr = index
+					if(id!=self.idTwo){
+						self.idTwo = id
+						self.mainData = [];
+						self.getMainData()
+					}
 				},
-				getMainData: function(id) {
+				
+				getLabelData:function() {
 					var self = this;
-					var callback = function(res) {
-						console.log('getMainData', res);
-						self.mainData.push.apply(self.mainData, res.info.data);
-						for (var i = 0; i < self.mainData.length; i++) {
-							self[self.mainData[i].title] = self.mainData[i];
-						};
-						console.log(self[''])
-						
+					var postData = {};
+					postData.searchItem = {
+						type: 1,
+						thirdapp_id: 2,
+						parentid:7
 					};
-					console.log('self.mainData', self.mainData)
+					postData.order = {
+						listorder:'desc'
+					}
+					/* postData.getBefore = {
+						caseData: {
+							tableName: 'Label',
+							searchItem: {
+								title: ['in', ['产品']],
+							},
+							middleKey: 'parentid',
+							key: 'id',
+							condition: 'in',
+						},
+					}; */
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.labelData.push.apply(self.labelData, res.info.data);
+							
+							self.id = self.labelData[0].id;
+							self.getLabelTwoData()
+						}
+					};
+					window.base.labelGet(postData, callback);
+				},
+				
+				getLabelTwoData:function() {
+					var self = this;
+					var postData = {};
+					postData.searchItem = {
+						type: 1,
+						thirdapp_id: 2,
+						parentid:self.id
+					};
+					postData.order = {
+						listorder:'desc'
+					}
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.labelTwoData.push.apply(self.labelTwoData, res.info.data);
+							
+							self.idTwo = self.labelTwoData[0].id;
+							self.getMainData()
+						}
+					};
+					window.base.labelGet(postData, callback);
+				},
+				
+				
+				getMainData() {
+					const self = this;
+					const postData = {};
+					postData.paginate = window.base.cloneForm(self.paginate);
+					postData.searchItem = {
+						thirdapp_id:2,
+						menu_id:self.idTwo
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.mainData.push.apply(self.mainData,res.info.data);
+							self.paginate['count'] = res.info.total;
+							window.base.computePageArr(self);
+						} else {
+							window.base.showToast('没有数据');
+						};	
+					};
+					window.base.articleGet(postData, callback);
+				},
+				
+				
+				
+				linkTo(e) {
+					var self = this;
+					console.log(e);
+					self.linkPage = window.base.getDataSet(e).page;
+					window.base.linkTo(self);
+				},
+				
+				changePage(e) {
+					var self = this;
+					var dataSet = window.base.getDataSet(e);
+					window.base.changePage(dataSet, self);
 				},
 				
 

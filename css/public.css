@@ -299,7 +299,24 @@ a:visited {
 .white {
 	color: #fff;
 }
-
+.banner-mainTitle{
+	position: absolute;
+	top:15%;
+	left:5%;
+	width: 50%;
+}
+.banner-title{
+	font-size:5.5rem;
+	color:#fff;
+	margin-top:20%;
+	margin-left:11%
+}
+.banner-small-title{
+	font-size:2rem;
+	color:#fff;
+	margin-top:10%;
+	margin-left:15%
+}
 .bgc-white {
 	background: #fff;
 }

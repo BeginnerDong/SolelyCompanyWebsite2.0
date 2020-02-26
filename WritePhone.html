@@ -60,7 +60,9 @@
 					data:window.base.cloneForm(self.submitData)
 				};
 				var callback = (res) => {
-					
+					if(res.solely_code==100000){
+						alert('提交成功，稍后会有专门的业务经理联系您')
+					}
 				};
 				window.base.JustaddMessage(postData, callback);
 			}

@@ -209,17 +209,7 @@ window.base = {
 					var loca = window.location;
 					window.location.href = loca.origin + loca.pathname;
 				} else if (res.solely_code == 200000) {
-					console.log(that.GetUrlRelativePath().substr(1, 2));
-					if (that.GetUrlRelativePath().substr(1, 2) == 'wx') {
-
-						localStorage.removeItem('merchant_token');
-						localStorage.removeItem('merchant_no');
-						window.location.href = './wxBusinessLogin.html'
-					} else {
-						localStorage.removeItem('user_token');
-						localStorage.removeItem('user_no');
-						that.getUserToken();
-					};
+					
 				} else {
 					params.sCallback && params.sCallback(res);
 				};
@@ -295,7 +285,9 @@ window.base = {
 			}
 		});
 	},
-
+	
+	
+	
 
 
 	upLoadImgByJs: function(param, callback) {
@@ -850,6 +842,20 @@ window.base = {
 		};
 		this.getData(allParams)
 	},
+	
+	addVisitorInfo: function(param, callback) {
+		var allParams = {
+			url: 'Project/Solely/addVisitorInfo',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams)
+	},
+	
+	
 
 	menuOne: function(param, callback) {
 		var allParams = {
@@ -1066,6 +1072,18 @@ window.base = {
 			self.getMainData();
 		}
 
+	},
+	
+	showToast:function(str){
+		document.getElementById("showToast").innerHTML = ('\<div class="animated  fadeOutDown delay-1s"  style="position: fixed;top: 20%;width: 20%;height: 50px; line-height:50px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">\<div style="width: 100%;text-align: center;height: 50px;line-height: 50px">\
+        '+str+'\
+</div></div>\
+')
+	},
+	
+	hideToast(){
+		var code = document.getElementById("showToast");
+		code.parentNode.removeNode(element);
 	},
 
 	dealRes:function(res) {
