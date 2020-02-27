@@ -61,6 +61,7 @@ filter: gray;}
 	}
 	
 	@media only screen and (max-width: 500px){
+		.indx-homeClass{padding-bottom: 30px!important;}
 		.indx-homeClass li{padding: 15px 2%;height: 132px;}
 		.indx-homeClass li .text h1{font-size: 14px;padding-bottom: 8px;}
 		.indx-homeClass li .text p{font-size: 12px;}
@@ -69,7 +70,7 @@ filter: gray;}
 		.indx-aboutUs .left .tit{font-size: 16px;padding: 20px 0 10px 0;}
 		.indx-aboutUs .left .text{font-size: 14px;}
 		
-		.indx-aboutUs .right{width: 100%;}
+		.indx-aboutUs .right{width: 100%;padding-bottom: 0;}
 		.indx-aboutUs .right li{padding-bottom: 30px;}
 		.indx-aboutUs .right li:nth-of-type(3){padding: 30px 0px 0px 0px;}
 		.indx-aboutUs .right li:nth-of-type(4){padding: 30px 0px 0 0 ;}
