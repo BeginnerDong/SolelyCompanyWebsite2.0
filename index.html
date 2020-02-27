@@ -190,23 +190,25 @@
 			},
 			created: function() {
 				var self = this;
-				window.onload = function() {
-
-					/* window.base.bus.$emit('to_contentOne', {
-						paginate: self.paginate
-					}); */
-					window.base.bus.$emit('to_headBanner', {
-						title:'首页轮播图'
-					});	
-					//window.base.bus.$emit('to_swiper',{mainData:self.teacherData});
-				};
-				//self.getMainData();
-				if(window.screen.width<760){
-					self.slidesPerView = 3
+				if(!localStorage.getItem('phone')){
+					self.getPhoneData()
 				}
 			},
+			
 			methods: {
-				
+				getPhoneData: function(id) {
+					var self = this;
+					var postData = {};
+					postData.searchItem = {
+						title:'客服电话',
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0 ) {
+							localStorage.setItem('phone', res.info.data[0].description);
+						};
+					};
+					window.base.labelGet(postData, callback);
+				},
 			}
 		});
 	</script>

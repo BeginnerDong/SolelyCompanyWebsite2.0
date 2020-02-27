@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/include.js"></script>
 		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/swipe.js"></script>
 		<link type="text/css" rel="stylesheet" href="css/public.css">
 		<link rel="stylesheet" type="text/css" href="css/mini.css">
 		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
@@ -156,16 +157,17 @@
 						<!-- 页码 -->
 						<div class="allPages center color6 pdt30">
 							<ul class="clearfix">
-								<li><span class="prev" data-type="back"  @click="changePage"><img class="arrow" src="images/product-icon10.png" ></span></li>
+								<li><span class="prev"   @click="changePage('back')"><img class="arrow" src="images/product-icon10.png" ></span></li>
 								<li>
 									<span v-for="item in pageArray" :class="item == paginate.currentPage?'on':''" :data-page="item" @click="linkTo">{{item}}</span>
 								</li>
-								<li><span class="next" data-type="next"  @click="changePage"><img class="arrow" src="images/product-icon11.png"/></span></li>
+								<li><span class="next"   @click="changePage('next')"><img class="arrow" src="images/product-icon11.png"/></span></li>
 							</ul>
 						</div>
 						
 					</div>
 				</div>
+				<include src="footer.html"></include>
 			</div>
 			
 			<div class="detail clearfix" v-show="detailId&&detailId>0">
@@ -183,19 +185,22 @@
 				</div>
 				<div class="right fr white">
 					<h1 class="tit ftw center">{{currentDetail.title}}</h1>
-					<p class="text">{{currentDetail.description}}</p>
+					<!-- <p class="text">{{currentDetail.description}}</p> -->
+					<div class="content ql-editor " style="clear: both;">
+						<p class="p1 " v-html="currentDetail.content"></p>
+					</div>
 					<div class="tabs clearfix">
 						<span v-for="item in currentDetail.small_title">{{item}}</span>
 					</div>
 					<div class="xian"></div>
 					<div class="clearfix">
-						<div class="fl" style="width: 32%;">
+						<!-- <div class="fl" style="width: 32%;">
 							<p class="fl mgr10 tit2">界面样式</p>
 							<img class="ewm" :src="currentDetail.mainImg&&currentDetail.mainImg[1]?currentDetail.mainImg[1].url:''" >
-						</div>
+						</div> -->
 						<div class="fr Bcont" style="width: 65%;">
 							<p>如果您有任何需要 </p>
-							<p>请联系我们：{{phoneData.description}}（同微信）</p>
+							<p>请联系我们：{{phone}}（同微信）</p>
 						</div>
 					</div>
 					
@@ -207,13 +212,6 @@
 					style="width: 100%" allowTransparency="true" frameborder="0"></iframe>
 				</div>
 			</div>
-			
-			<include src="footer.html"></include>
-			<!-- <div style="position: fixed;top: 20%;width: 20%;height: 100px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">
-				<div style="width: 100%;text-align: center;height: 70px;line-height: 70px">没有数据了</div>
-				<div style="width: 100%;height: 30px;line-height: 30px;text-align: center;border-top: 1px solid #0066CC;">确定</div>
-			</div> -->
-			<div id='showToast'></div>
 		</div>
 	</body>
 
@@ -248,33 +246,19 @@
 					allPages: 0,
 					detailId:-1,
 					currentDetail:{},
-					phoneData:{}
+					phoneData:{},
+					phone:'18092651095'
 				}
 			},
 			created: function() {
 				var self = this;
 				self.getLabelData();
-				self.getPhoneData()
+				self.phone = localStorage.getItem('phone')
 			},
 			
 			methods: {
 				
-				getPhoneData: function(id) {
-					var self = this;
-					var postData = {};
-					postData.searchItem = {
-						title:'客服电话',
-					};
 				
-					var callback = function(res) {
-						if (res.info.data.length > 0 ) {
-				
-							self.phoneData = res.info.data[0]
-						};
-						console.log('2323', self.bannerData)
-					};
-					window.base.labelGet(postData, callback);
-				},
 				
 				detailView(id){
 					const self = this;
@@ -387,15 +371,14 @@
 				
 				linkTo(e) {
 					var self = this;
-					console.log(e);
+					
 					self.linkPage = window.base.getDataSet(e).page;
 					window.base.linkTo(self);
 				},
 				
-				changePage(e) {
+				changePage(type) {
 					var self = this;
-					var dataSet = window.base.getDataSet(e);
-					console.log(3432432,dataSet)
+					var dataSet = type;
 					window.base.changePage(dataSet, self);
 				},
 				

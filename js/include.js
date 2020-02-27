@@ -116,8 +116,7 @@
 
                 //拿到路径
                 var src = this.getAttribute("src");
-                console.log('includeTals',includeTals)
-				console.log('src',src)
+                
                 //拿到文件内容
                 var content = $this.getFileContent($this.getRequestUrl(filePath, src));
                 

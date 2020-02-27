@@ -68,19 +68,7 @@
 				}
 			},
 			methods: {
-				getMainData: function(id) {
-					var self = this;
-					var callback = function(res) {
-						console.log('getMainData', res);
-						self.mainData.push.apply(self.mainData, res.info.data);
-						for (var i = 0; i < self.mainData.length; i++) {
-							self[self.mainData[i].title] = self.mainData[i];
-						};
-						console.log(self[''])
-						
-					};
-					console.log('self.mainData', self.mainData)
-				},
+				
 				
 
 			}

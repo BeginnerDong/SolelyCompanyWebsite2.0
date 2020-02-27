@@ -72,7 +72,7 @@
 			}else{
 				self.currentUrl = '/index.html';
 			};
-			console.log('self.currentUrl',self.currentUrl);
+			
 			self.getMainData()
 	    },
 	    methods: {
@@ -94,7 +94,6 @@
 			
 						self.mainData = res.info.data[0]
 					};
-					console.log('2323', self.bannerData)
 				};
 				window.base.labelGet(postData, callback);
 			},

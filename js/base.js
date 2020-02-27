@@ -1,21 +1,21 @@
 window.base = {
 	g_restUrl: 'http://www.solelytech.com/api/public/index.php/api/v1/',
-
-	thirdapp_id:2,
-	test:666,
-	bus:new Vue(),
+	phone:'',
+	thirdapp_id: 2,
+	test: 666,
+	bus: new Vue(),
 	getUserToken: function(callback) {
 
 
 		var param = this.GetRequest();
-		console.log(param);
+		
 		if (param.code) {
 			var postData = {
 				thirdapp_id: 2,
 				code: param.code,
 			};
-			var c_callback = function(res){
-				console.log(res)
+			var c_callback = function(res) {
+				
 				if (res.token) {
 					localStorage.setItem('user_token', res.token);
 					localStorage.setItem('user_no', res.info.user_no);
@@ -32,13 +32,13 @@ window.base = {
 		} else {
 			var href = window.location.href;
 			window.location.href =
-			'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx07335ba385a82d49&redirect_uri=' +
-			encodeURIComponent(href) + '&response_type=code&scope=snsapi_userinfo';
+				'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx07335ba385a82d49&redirect_uri=' +
+				encodeURIComponent(href) + '&response_type=code&scope=snsapi_userinfo';
 		};
 
 	},
 
-	realPay:function(param, callback) {
+	realPay: function(param, callback) {
 
 		function onBridgeReady(param) {
 			WeixinJSBridge.invoke(
@@ -85,21 +85,21 @@ window.base = {
 		};
 		this.getData(allParams);
 	},
-	
-	uploadByUrl:function(param,callback) {
-	  
-	    var allParams = {
-	        url:'Base/FtpFile/uploadByUrl',
-	        type:'post',
-	        data:param,
-	        sCallback: function(data){
-	            callback&&callback(data);
-	        }
-	    }; 
-	    this.getData(allParams)
+
+	uploadByUrl: function(param, callback) {
+
+		var allParams = {
+			url: 'Base/FtpFile/uploadByUrl',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams)
 	},
 
-	addItemInArray:function(array, fieldName) {
+	addItemInArray: function(array, fieldName) {
 		var count = 0;
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][fieldName]) {
@@ -111,7 +111,7 @@ window.base = {
 
 	getMerchantToken: function(callback) {
 		var href = window.location.href;
-		console.log('href', href);
+		
 		var token = localStorage.getItem('merchant_token');
 		if (token) {
 			callback && callback();
@@ -147,7 +147,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	getQrCommonCode:function(param, callback) {
+	getQrCommonCode: function(param, callback) {
 		var allParams = {
 			url: 'Base/Qr/CommonQrGet',
 			type: 'post',
@@ -159,7 +159,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	qrcodeGet:function(param, callback) {
+	qrcodeGet: function(param, callback) {
 		var allParams = {
 			url: 'Common/Qrcode/get',
 			type: 'post',
@@ -171,7 +171,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	qrcodeUpdate:function(param, callback) {
+	qrcodeUpdate: function(param, callback) {
 		var allParams = {
 			url: 'Common/Qrcode/update',
 			type: 'post',
@@ -209,14 +209,14 @@ window.base = {
 					var loca = window.location;
 					window.location.href = loca.origin + loca.pathname;
 				} else if (res.solely_code == 200000) {
-					
+
 				} else {
 					params.sCallback && params.sCallback(res);
 				};
 			},
 			error: function(res) {
 				params.eCallback && params.eCallback(res);
-				console.log('ajax-error', JSON.stringify(res));
+				
 			}
 		});
 	},
@@ -285,9 +285,9 @@ window.base = {
 			}
 		});
 	},
-	
-	
-	
+
+
+
 
 
 	upLoadImgByJs: function(param, callback) {
@@ -303,11 +303,10 @@ window.base = {
 		xhr.open('POST', 'http://www.walhr.com/api/public/index.php/api/v1/Base/FtpImage/upload', true);
 
 		try {
-			console.log('upLoadImgByJs-send', param)
+			
 			xhr.send(param);
 		} catch (error) {
-			console.log('error', error)
-			console.log('error.message', error.message)
+			
 		};
 
 
@@ -488,7 +487,7 @@ window.base = {
 		this.getData(allParams)
 	},
 
-	addOrder:function(param, callback) {
+	addOrder: function(param, callback) {
 		var allParams = {
 			url: 'Func/Order/addOrder',
 			type: 'post',
@@ -655,7 +654,7 @@ window.base = {
 		this.getData(allParams)
 	},
 
-	flowLogCompute:function(param, callback) {
+	flowLogCompute: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/compute',
 			type: 'post',
@@ -667,7 +666,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogGet:function(param, callback) {
+	flowLogGet: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/get',
 			type: 'post',
@@ -679,7 +678,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogUpdate:function(param, callback) {
+	flowLogUpdate: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/update',
 			type: 'post',
@@ -691,7 +690,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogAdd:function(param, callback) {
+	flowLogAdd: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/add',
 			type: 'post',
@@ -784,7 +783,7 @@ window.base = {
 			}
 		};
 		this.getData(allParams)
-		
+
 	},
 
 
@@ -817,7 +816,7 @@ window.base = {
 	        console.log(pass);
 	    }, */
 
-	checkComplete:function(obj) {
+	checkComplete: function(obj) {
 		var pass = true;
 		for (var key in obj) {
 			if (!obj[key] || JSON.stringify(obj[key]) == '[]' || JSON.stringify(obj[key]) == '{}') {
@@ -842,7 +841,7 @@ window.base = {
 		};
 		this.getData(allParams)
 	},
-	
+
 	addVisitorInfo: function(param, callback) {
 		var allParams = {
 			url: 'Project/Solely/addVisitorInfo',
@@ -854,8 +853,8 @@ window.base = {
 		};
 		this.getData(allParams)
 	},
-	
-	
+
+
 
 	menuOne: function(param, callback) {
 		var allParams = {
@@ -981,7 +980,7 @@ window.base = {
 
 			if (Array[i][key] && Array[i][key] == value) {
 				new_array.push(Array[i])
-				console.log('Array', Array[i])
+				
 			};
 		};
 		return new_array;
@@ -1000,7 +999,7 @@ window.base = {
 		return theRequest;
 	},
 
-	getUrlVars:function() {
+	getUrlVars: function() {
 		var vars = [],
 			hash;
 		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -1015,11 +1014,10 @@ window.base = {
 
 	computePageArr: function(self) {
 		self.allPages = Math.ceil(self.paginate['count'] / self.paginate['pagesize']);
-		console.log(self.allPages);
-		console.log(self.paginate);
+		
 		self.pageArray = [];
 		self.pageArray.push(self.paginate.currentPage);
-		console.log('self.pageArray',self.pageArray)
+	
 		if (self.paginate.currentPage + 1 <= self.allPages) {
 			if (self.paginate.currentPage + 2 <= self.allPages) {
 				self.pageArray.push(self.paginate.currentPage + 1);
@@ -1037,27 +1035,29 @@ window.base = {
 				self.pageArray.unshift(self.paginate.currentPage - 1);
 			}
 		};
-		
+
 	},
 
 	changePage: function(dataSet, self) {
-		console.log(23343254,dataSet)
 		
-		if (dataSet.type == 'next') {
+
+		if (dataSet == 'next') {
 			if (self.paginate.currentPage >= self.allPages) {
-				console.log(233432541)
-				alert('已经到底啦')
+				
+
+				this.showToast('已经到底啦')
 			} else {
-				console.log(233432542)
+				
 				self.paginate.currentPage++;
 				self.mainData = [];
 				self.getMainData();
 			}
 		};
-		if (dataSet.type == 'back') {
+		if (dataSet == 'back') {
 			if (self.paginate.currentPage == 1) {
-				console.log(233432543)
-				alert('已经没有啦')
+			
+
+				this.showToast('已经没有啦')
 			} else {
 				self.paginate.currentPage--;
 				self.mainData = [];
@@ -1069,7 +1069,7 @@ window.base = {
 
 	linkTo: function(self) {
 		if (self.linkPage > self.allPages || self.linkPage < 1) {
-			alert('没有那一页');
+			this.showToast('没有那一页')
 			self.linkPage = '';
 		} else {
 			self.paginate.currentPage = self.linkPage;
@@ -1078,20 +1078,24 @@ window.base = {
 		}
 
 	},
-	
-	showToast:function(str){
-		document.getElementById("showToast").innerHTML = ('\<div class="animated  fadeOutDown delay-1s"  style="position: fixed;top: 20%;width: 20%;height: 50px; line-height:50px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">\<div style="width: 100%;text-align: center;height: 50px;line-height: 50px">\
-        '+str+'\
+
+	showToast: function(str) {
+		var code = document.createElement('div')
+		code.innerHTML =
+			'\<div class="animated  fadeOutDown delay-1s"  style="position: fixed;top: 20%;width: 20%;height: 50px; line-height:50px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">\<div style="width: 100%;text-align: center;height: 50px;line-height: 50px">\
+        ' +
+			str + '\
 </div></div>\
-')
+'
+		document.getElementById("app").appendChild(code);
 	},
-	
-	hideToast(){
+
+	hideToast() {
 		var code = document.getElementById("showToast");
 		code.parentNode.removeNode(element);
 	},
 
-	dealRes:function(res) {
+	dealRes: function(res) {
 		if (res.solely_code == 100000) {
 
 			wx.showToast({
@@ -1114,13 +1118,11 @@ window.base = {
 		}
 	},
 
-	footOne:function(res, name, limit, objName) {
+	footOne: function(res, name, limit, objName) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
 			var limitSum = self.getJsonLength(history);
-			console.log(limitSum);
-
 			if (history[res[name]]) {
 				history[res[name]] = res;
 				localStorage.setItem(objName, JSON.stringify(history));
@@ -1148,7 +1150,7 @@ window.base = {
 
 	},
 
-	updateFootOne:function(name, objName, fieldName, field) {
+	updateFootOne: function(name, objName, fieldName, field) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
@@ -1163,7 +1165,7 @@ window.base = {
 
 	},
 
-	deleteFootOne:function(name, objName) {
+	deleteFootOne: function(name, objName) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
@@ -1178,7 +1180,7 @@ window.base = {
 
 	},
 
-	getJsonLength:function(json) {
+	getJsonLength: function(json) {
 		var length = 0;
 		for (var item in json) {
 			length++
@@ -1186,7 +1188,7 @@ window.base = {
 		return length;
 	},
 
-	jsonToArray:function(obj, type) {
+	jsonToArray: function(obj, type) {
 
 		var result = [];
 		for (var key in obj) {
@@ -1204,7 +1206,7 @@ window.base = {
 		return result;
 	},
 
-	getStorageArray:function(storageName, key, value) {
+	getStorageArray: function(storageName, key, value) {
 		var self = this;
 		var array = JSON.parse(localStorage.getItem(storageName));
 		if (key && value && array) {
@@ -1217,10 +1219,10 @@ window.base = {
 		};
 	},
 
-	setStorageArray:function(storageName, item, key, limit, type ) {
+	setStorageArray: function(storageName, item, key, limit, type) {
 
 		var self = this;
-		if(!type)type = 'unshift';
+		if (!type) type = 'unshift';
 		if (localStorage.getItem(storageName)) {
 			var array = JSON.parse(localStorage.getItem(storageName));
 			if (array.length < limit) {
@@ -1243,7 +1245,7 @@ window.base = {
 
 	},
 
-	delStorageArray:function(storageName, item, key) {
+	delStorageArray: function(storageName, item, key) {
 
 		var self = this;
 		var array = JSON.parse(localStorage.getItem(storageName));
@@ -1256,7 +1258,7 @@ window.base = {
 	},
 
 
-	findItemInArray:function(array, fieldName, field) {
+	findItemInArray: function(array, fieldName, field) {
 
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][fieldName] == field) {
@@ -1267,8 +1269,8 @@ window.base = {
 
 	},
 
-	setItemInArray:function(array, item, fieldName, type) {
-		if(!type)type = 'push';
+	setItemInArray: function(array, item, fieldName, type) {
+		if (!type) type = 'push';
 		var findI = -1;
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][fieldName] == item[fieldName]) {
@@ -1284,7 +1286,7 @@ window.base = {
 	},
 
 
-	timestampToTime:function(timestamp) {
+	timestampToTime: function(timestamp) {
 
 		timestamp = parseInt(timestamp);
 		var date = new Date(timestamp * 1000);
@@ -1300,35 +1302,32 @@ window.base = {
 		}else{
 			var format = format + ':' + getDate(timestamp).getMinutes();
 		} */
-		
-		console.log(date)
-		console.log((date.getMonth() + 1))
 		return format;
 
 	},
 
-	throttle:function(method, context){
-	    clearTimeout(method.tId);
-	    method.tId = setTimeout(function(){
-	        method.call(context);
-	    }, 500);
+	throttle: function(method, context) {
+		clearTimeout(method.tId);
+		method.tId = setTimeout(function() {
+			method.call(context);
+		}, 500);
 	},
 
-	debounce:function(method,delay,context){
-		if(!context[method.tId]){
+	debounce: function(method, delay, context) {
+		if (!context[method.tId]) {
 			context[method.tId] = true;
-			context[method.tId] = setTimeout(function(){
+			context[method.tId] = setTimeout(function() {
 				method();
 				context[method.tId] = false;
-			},delay);
+			}, delay);
 		};
 	},
 
-	toFixed:function(num,d){
-        num *=Math.pow(10,d);
-        num = Math.round(num);
-        return num/(Math.pow(10,d));
-    },
+	toFixed: function(num, d) {
+		num *= Math.pow(10, d);
+		num = Math.round(num);
+		return num / (Math.pow(10, d));
+	},
 
 }
 
