@@ -34,7 +34,7 @@
 		el: '#footer_app',
 		data: function() {
 			return {
-				samNavData: ['公众号/小程序', '网站开发', 'APP开发', '案例开发', '关于我们', '关于我们', '关于我们', '关于我们', '关于我们'],
+				samNavData: ['公众号/小程序', '网站开发', 'APP开发', '平面设计', '更多案例', '关于我们'],
 				copyrightData: ['copyright © 2016 陕ICP备17000262号'],
 				phone:'180-9265-1095'
 			}
@@ -77,9 +77,6 @@
 				var marker = new BMap.Marker(point); // 创建标注    
 				map.addOverlay(marker); // 初始化地图，设置中心点坐标和地图级别  
 				map.enableScrollWheelZoom(true);
-				console.log('window.onload')
-
-				console.log(returnCitySN)
 				self.addVisitorInfo(returnCitySN.cname)
 			}
 

@@ -1080,15 +1080,34 @@ window.base = {
 	},
 
 	showToast: function(str) {
+		if(document.getElementById("showToast")){
+			var parent=document.getElementById("app");
+			var child=document.getElementById("model");
+			parent.removeChild(child);
+		};
 		var code = document.createElement('div')
+		code.setAttribute('id','model')
 		code.innerHTML =
-			'\<div class="animated  fadeOutDown delay-1s"  style="position: fixed;top: 20%;width: 20%;height: 50px; line-height:50px;border: 1px solid #0066CC;background-color: #fff;left:40%;border-radius: 20px;">\<div style="width: 100%;text-align: center;height: 50px;line-height: 50px">\
+			'\<div id="showToast" class="animated fadeInRight"  style="position: fixed;z-index:999;top: 10%;:10%;width: 20%;height: 50px; line-height:50px;border: 1px solid #0066CC;background-color: #fff;left:75%">\<div style="width: 100%;text-align: center;height: 50px;line-height: 50px">\
         ' +
 			str + '\
 </div></div>\
-'
+'		
 		document.getElementById("app").appendChild(code);
+		this.addClass()
 	},
+	
+		
+	addClass: function(){
+		setTimeout(function() {
+			$("#showToast").addClass("fadeOutRight"); //添加样式
+		}, 4000);
+		$("#showToast").removeClass("fadeOutRight")
+		
+		
+	},
+	
+	
 
 	hideToast() {
 		var code = document.getElementById("showToast");
