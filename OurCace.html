@@ -55,6 +55,7 @@
 				postData.paginate = window.base.cloneForm(self.paginate);
 				postData.searchItem = {
 					thirdapp_id:2,
+					menu_id:['not in',[24,25,26]]
 				};
 				const callback = (res) => {
 					if (res.info.data.length > 0) {
