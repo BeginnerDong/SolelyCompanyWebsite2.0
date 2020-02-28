@@ -29,10 +29,9 @@
 .ql-editor {
   box-sizing: border-box;
   line-height: 1.42;
-  min-height: 400px;
+  /* min-height: 400px; */
   outline: none;
-  
-  padding: 12px 15px;
+  padding: 10px 0px;
   tab-size: 4;
   -moz-tab-size: 4;
   text-align: left;

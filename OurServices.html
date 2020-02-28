@@ -71,7 +71,7 @@
 	
 	/* 我们的服务 */
 	.indx-myService .list{width: 33.3%;padding-right: 120px;box-sizing: border-box; }
-	.indx-myService .list .item{position: relative;padding-right: 40px;text-align: right;padding-bottom: 60px;}
+	.indx-myService .list .item{position: relative;padding-right: 40px;text-align: right;padding-bottom: 58px; box-sizing: border-box;height: 140px;}
 	.indx-myService .list .item:last-child{padding-bottom: 0;}
 	.indx-myService .list .icon{position: absolute;top: 0;right: 0;width: 26px;height: 26px; display: block;}
 	.indx-myService .list .arrow{position: absolute;top:10px;right: -120px;width: 110px;height: 78px; display: block;}
@@ -86,8 +86,9 @@
 	
 	@media only screen and (max-width: 1050px){
 		.indx-myService .list{padding-right: 50px;width: 50%;}
-		.indx-myService .list .item{text-align: left;padding:0 0 40px 40px;}
-		.indx-myService .list .icon{left: 0;right: auto;}
+		.indx-myService .list .item{text-align: left;padding:0 0 40px 30px!important;height: 120px;}
+		.indx-myService .list .icon{left: -5px;right: auto;}
+		.indx-myService .list.right .icon{left: -5px;}
 		.indx-myService .list .arrow{width: 80px;height: 78px;right: -90px; display: none;}
 		.indx-myService .list.right{padding-left: 50px;border-left: 1px solid #ddd;}
 		.indx-myService .list.right .arrow{left: -90px;}
@@ -98,9 +99,9 @@
 		/* .indx-myService{padding: 0;} */
 		.indx-myService .Mpic{width: 30%;margin-top: 50px;}
 		.indx-myService .list{padding-right: 10px;}
-		.indx-myService .list .icon{width: 16px;height: 16px;top: 3px;}
+		.indx-myService .list .icon{width: 16px;height: 16px;top: 13px;}
 		.indx-myService .list .arrow{width: 60px;height: 43px;right: -60px;}
-		.indx-myService .list .item{padding: 0 0 20px 20px;}
+		.indx-myService .list .item{padding: 10px 0 10px 20px!important;height: 100px;}
 		.indx-myService .list .item h1{font-size: 14px;padding-bottom: 5px;}
 		.indx-myService .list .item p{font-size: 10px;line-height: 18px;}
 		.indx-myService .list.right .arrow{left: -60px;}

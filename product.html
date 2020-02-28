@@ -55,6 +55,10 @@
 		.allPages li span.on::after{content: '';width: 15px; height: 2px;background: #17ACEE;position: absolute; bottom: -3px;left: 50%;transform: translateX(-42%);}
 		.allPages li .arrow{width: 13px;height:13px; vertical-align: middle; display: inline-block;padding: 0 10px;}
 		
+		.anliTit{padding: 20px 2%;}
+		.anliTit .Btn{width: 120px;line-height: 36px;border: 1px solid #17acee;color: #17acee;border-radius: 5px;display: block; margin: 0px auto;position: relative;}
+		.anliTit .Btn::before{content: '';position: absolute;bottom: -20px;left: 50%;transform: translateX(-50%);border-bottom: 10px transparent dashed;border-left: 10px transparent dashed;border-right: 10px transparent dashed;border-top: 10px #17ACEE solid;}
+		
 		@media only screen and (max-width: 1050px){
 			.prodcutList .proMobile li .pic{height: 402px;}
 		}
@@ -83,6 +87,7 @@
 			.prodcutList .proPc li .pic{height: 95px;}
 			.prodcutList li p{font-size: 14px;padding: 10px 2%;}
 			.allPages{padding-top: 10px;}
+			
 		}
 		@media only screen and (max-width: 414px){
 			.prodcutList .proMobile li .pic{height: 332px;}
@@ -96,9 +101,9 @@
 			.prodcutList .proMobile li .pic{height: 257px;}
 			.prodcutList .proPc li .pic{height: 81px;}
 		}
-		@media only screen and (max-width: 500px){
+		/* @media only screen and (max-width: 500px){
 			.detail .right .Bcont{text-align: right;}
-		}
+		} */
 	</style>
 
 	<body>
@@ -198,16 +203,14 @@
 							<p class="fl mgr10 tit2">界面样式</p>
 							<img class="ewm" :src="currentDetail.mainImg&&currentDetail.mainImg[1]?currentDetail.mainImg[1].url:''" >
 						</div> -->
-						<div class="fr Bcont" style="width: 65%;">
+						<div class="Bcont" >
 							<p>如果您有任何需要 </p>
 							<p>请联系我们：{{phone}}（同微信）</p>
 						</div>
 					</div>
-					
-					
 				</div>
-				<div>
-				
+				<div style="clear: both;">
+					<div class="center pdlr2 anliTit B-phone"><span class="Btn">案例展示</span></div>
 					<iframe :src="currentDetail.passage1":style="currentDetail.menu_id!=24&&currentDetail.menu_id!=25&&currentDetail.menu_id!=26?'height:667px':'height:210px'" 
 					style="width: 100%" allowTransparency="true" frameborder="0"></iframe>
 				</div>

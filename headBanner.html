@@ -376,25 +376,26 @@
 		.head-fixH {
 			background: rgba(64, 83, 153, 1);
 		}
-
+		#banner_app .arrowIon{top: 50%;transform: translateY(-50%);}
+		
 		#banner_app .arrowIon img {
 			width: 15px;
 			height: 25px;
+			padding: 8px;
 		}
 
 		#banner_app .arrowIon.prev {
-			right: 2%;
+			right: 5%;
 		}
 
 		#banner_app .arrowIon.next {
-			left: 2%;
+			left: 5%;
 		}
 
 		.pubHeadBanner {
 			height: 340px;
-			padding-top: 58px;
 		}
-
+		.headH{height: 58px;}
 		#banner_app .banner .samlIcon img {
 			width: 220px;
 			height: 210px;
@@ -403,13 +404,11 @@
 
 	@media only screen and (max-width: 500px) {
 		.pubHeadBanner {
-			height: 240px;
+			height: 270px;
 		}
-
-		#banner_app .banner .samlIcon img {
-			width: 160px;
-			height: 152px;
-		}
+		
+		#banner_app .banner .samlIcon{right: 28%;bottom: 7%;}
+		#banner_app .banner .samlIcon img {width: 160px;height: 152px;}
 	}
 
 	/* banner自适应 end */

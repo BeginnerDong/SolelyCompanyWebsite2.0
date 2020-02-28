@@ -3,7 +3,7 @@
 
 .mini-box1 .item{float: left; width: 190px;margin-right: 8%;}
 .mini-box1 .item:last-child{margin-right:0 ;}
-.mini-box1 .item .icon{width: 140px;height: 140px;display: block;margin: 0 auto;}
+.mini-box1 .item .icon{width: 110px;height: 110px;display: block;margin: 0 auto;}
 .mini-box1 .item p{font-size: 16px;margin-top: 20px;}
 
 /* 我们的优势 */
@@ -24,21 +24,23 @@
 	.mini-box1 .item{width: 25%;margin-right: 0;}
 	.mini-box1 .item .icon{width: 80px;height: 80px;}
 	.mini-box1 .item p{width: 85%;font-size: 15px;margin: 15px auto 0 auto;}
-	
+	.OurAdvantage .left img{width: 250px;height: 260px;}
 }
+
+
 @media screen and ( max-width:500px){ 
 	.mini-box1 .item .icon{width: 50px;height: 50px;}
-	.mini-box1 .item p{font-size: 12px;}
+	.mini-box1 .item p{font-size: 12px; line-height: 18px;}
 	
 	.OurAdvantage{padding: 40px 0;}
 	.OurAdvantage .title{text-align: center;margin-bottom: 15px;}
 	.OurAdvantage .title h1{font-size: 20px; font-weight: bold;}
 	.OurAdvantage .title p{font-size: 14px;}
-	.OurAdvantage .item.left{width: 46%;}
-	.OurAdvantage .item.right{float: right;}
-	.OurAdvantage .left img{width: 100%;height: auto;margin-top: 80px;}
-	.OurAdvantage .child{padding-left: 30px;padding-bottom: 15px;}
-	.OurAdvantage .child .icon{width: 20px;height: 20px;}
+	.OurAdvantage .item.left{width: 100%;}
+	.OurAdvantage .item.right{float: right;width: 100%;}
+	.OurAdvantage .left img{width: 140px;height: auto;margin:10px auto 15px auto;}
+	.OurAdvantage .child{padding-left: 35px;padding-bottom: 15px;}
+	.OurAdvantage .child .icon{width: 25px;height: 25px;}
 	.OurAdvantage .child h1{font-size: 15px;    margin-bottom: 5px;}
 	.OurAdvantage .child p{font-size: 12px;line-height: 20px;}
 }
