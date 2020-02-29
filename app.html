@@ -74,7 +74,7 @@
 				</div>
 				<div class="w1000">
 					<ul class="clearfix">
-						<li class="fadeInLeft animated" v-for="(item,index) in wecandoData" :key="index">
+						<li class="fadeInLeft animated" v-show="wecandoShow" v-for="(item,index) in wecandoData" :key="index">
 							<img class="icon" :src="item.iconUrl" >
 							<h1>{{item.title}}</h1>
 							<p>{{item.text}}</p>
@@ -117,16 +117,33 @@
 						{iconUrl:'images/app-icon2.png',title:'完善的服务',text:'跨平台开发框架，高效开发，便于迭代'},
 						{iconUrl:'images/app-icon3.png',title:'高端的开发',text:'安全维护，漏洞修复，后台管理培训，技术支持'},
 						{iconUrl:'images/app-icon4.png',title:'安全的善后',text:'源码交付，知识产权所有，提供一年年费售后。'}
-					]
+					],
+					wecandoShow:false
 				}
 			},
 			created: function() {
 				var self = this;
 				
 			},
+			
+			mounted () {
+			   window.addEventListener('scroll', this.handleScroll)
+			},
+			
 			methods: {
 				
-				
+				handleScroll(){
+					const self = this;
+					var scrollTop = document.documentElement.scrollTop;
+					var array = [{name:'wecandoShow',scrollTop:300}];
+					for (var i = 0; i < array.length; i++) {
+						if(scrollTop>array[i].scrollTop){
+							self[array[i].name] = true
+						}
+					};
+					
+					console.log('scrollTop',scrollTop)
+				},
 
 			}
 		});

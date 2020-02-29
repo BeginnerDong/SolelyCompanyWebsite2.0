@@ -27,7 +27,11 @@
 	
 	.strengths{padding: 70px 0;background: url(../images/home-img4.jpg)no-repeat 0 0/100% 100%;}
 	.strengths li{float: left;width: 25%;box-sizing: border-box;padding: 0 2.5%;}
-	.strengths li .icon{width: 80px;height: 80px;display: block; margin: 0 auto;}
+	.strengths li .icon{width: 80px;height: 80px;display: block; margin: 0 auto;transition: all 1s;}
+	.strengths li:hover img{
+		-webkit-transform: rotate3d(0, 0, 1, 360deg);
+		transform: rotate3d(0, 0, 1, 360deg);
+	}
 	.strengths li .tit{font-size: 18px;padding: 40px 0 30px 0;}
 	
 	/* 合作伙伴 */

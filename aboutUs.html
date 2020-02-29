@@ -68,7 +68,7 @@
 					<h1 class="mgb20">我们的专业在哪里？</h1>
 				</div>
 				<div class="w1200 clearfix center">
-					<div class="item animated lightSpeedIn" v-for="(item,index) in majorData" :key="index">
+					<div class="item animated lightSpeedIn" v-show="majorShow" v-for="(item,index) in majorData" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1>{{item.title}}</h1>
 						<p>{{item.text}}</p>
@@ -120,16 +120,33 @@
 						{iconUrl:'images/about-icon2.png',title:'专业的产品设计',text:'多方位进行产品设计，贴合用户使用习惯'},
 						{iconUrl:'images/about-icon3.png',title:'高性价比的开发方案',text:'致力为客户提供高性价比的开发方案以及报价'},
 						{iconUrl:'images/about-icon4.png',title:'成熟的项目管理经验',text:'在每个项目中我们的运用了专业的项目管理知识及项目管理经验'}
-					]
+					],
+					majorShow:false
 				}
 			},
 			created: function() {
 				var self = this;
 				
 			},
+			
+			mounted () {
+			   window.addEventListener('scroll', this.handleScroll)
+			},
+			
 			methods: {
 				
-				
+				handleScroll(){
+					const self = this;
+					var scrollTop = document.documentElement.scrollTop;
+					var array = [{name:'majorShow',scrollTop:800}];
+					for (var i = 0; i < array.length; i++) {
+						if(scrollTop>array[i].scrollTop){
+							self[array[i].name] = true
+						}
+					};
+					
+					console.log('scrollTop',scrollTop)
+				},
 
 			}
 		});

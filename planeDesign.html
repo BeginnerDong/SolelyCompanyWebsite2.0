@@ -39,7 +39,7 @@
 					<p>10亿免费流量，天生社交裂变工具，你如何拒绝？？？</p>
 				</div>
 				<div class="w1200 clearfix center">
-					<div class="item fadeInDown animated" v-for="(item,index) in candoWhat" :key="index">
+					<div class="item fadeInDown animated" v-show="candoShow" v-for="(item,index) in candoWhat" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1 class="avoidOverflow">{{item.title}}</h1>
 						<p class="avoidOverflow2">{{item.text}}</p>
@@ -54,17 +54,17 @@
 					<p>We have the advantage of</p>
 				</div>
 				<div class="w1200 clearfix">
-					<div class="item fadeInUp animated">
+					<div class="item fadeInUp animated" v-show="strengthsShow">
 						<div class="num" style="color: #0ea441;"><span>700<em>+</em></span></div>
 						<h1>订单交付</h1>
 						<p>真实交付量同行业遥遥领先出品案例网站展示</p>
 					</div>
-					<div class="item fadeInUp animated">
+					<div class="item fadeInUp animated" v-show="strengthsShow">
 						<div class="num" style="color: #00a3f4;"><span>98.13<em>%</em></span></div>
 						<h1>超高好评</h1>
 						<p>98.13的客户再项目完成后给予满意或非常满意的好评</p>
 					</div>
-					<div class="item fadeInUp animated">
+					<div class="item fadeInUp animated" v-show="strengthsShow">
 						<div class="num" style="color: #ef9e10;"><span>38.8<em>%</em></span></div>
 						<h1>超高复购</h1>
 						<p>38.8%的客户再半年内再次选择，纯粹科技远高于行业一般水平</p>
@@ -91,8 +91,8 @@
 					<h1 class="mgb20">合作流程</h1>
 					<p>以诚恳把握现实，以实力着眼未来，共赢的态度为客户提供高水准设计服务</p>
 				</div>
-				<div class="cont oh fadeInUp animated">
-					<div class="item" v-for="(item,index) in hezuoData" :key="index">
+				<div class="cont oh fadeInUp animated" v-show="hezuoShow">
+					<div class="item" v-for="(item,index) in hezuoData"  :key="index">
 						<div class="numIcon">{{item.num}}</div>
 						<span class="xian"></span>
 						<h1>{{item.title}}</h1>
@@ -134,16 +134,36 @@
 						{num:4,title:'反馈修正',text:'客户对初稿满意并提出修改意见，美研根据客户的反馈意见，及时快速地对设计方案进行修改，设计到客户满意为止！'},
 						{num:5,title:'设计项成功结束',text:'方案确定后，客户再最终设计稿签字确认，结清设计项目余款，美研交付最终设计电子文件和版权转移书。设计项目成功结束！'},
 						{num:6,title:'售后服务',text:'项目合作成功结束后，纯粹将会派专人与您在实施过程中任何设计方面的技术问题或其它咨询。'}
-					]
+					],
+					candoShow:false,
+					strengthsShow:false,
+					advantageShow:false,
+					hezuoShow:false
 				}
 			},
 			created: function() {
 				var self = this;
 				
 			},
+			
+			mounted () {
+			   window.addEventListener('scroll', this.handleScroll)
+			},
+			
 			methods: {
 				
-				
+				handleScroll(){
+					const self = this;
+					var scrollTop = document.documentElement.scrollTop;
+					var array = [{name:'candoShow',scrollTop:300},{name:'strengthsShow',scrollTop:1100},{name:'hezuoShow',scrollTop:2400}];
+					for (var i = 0; i < array.length; i++) {
+						if(scrollTop>array[i].scrollTop){
+							self[array[i].name] = true
+						}
+					};
+					
+					console.log('scrollTop',scrollTop)
+				},
 
 			}
 		});
