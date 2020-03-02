@@ -135,7 +135,7 @@
 				handleScroll(){
 					const self = this;
 					var scrollTop = document.documentElement.scrollTop;
-					var array = [{name:'wecandoShow',scrollTop:300}];
+					var array = [{name:'wecandoShow',scrollTop:1000}];
 					for (var i = 0; i < array.length; i++) {
 						if(scrollTop>array[i].scrollTop){
 							self[array[i].name] = true
