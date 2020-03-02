@@ -38,7 +38,7 @@
 					<h1 class="mgb20">我们能为您做什么？</h1>
 					<p>10亿免费流量，天生社交裂变工具，你如何拒绝？？？</p>
 				</div>
-				<div class="w1200 clearfix center">
+				<div class="w1000 clearfix center">
 					<div class="item fadeInDown animated" v-show="candoShow" v-for="(item,index) in candoWhat" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1 class="avoidOverflow">{{item.title}}</h1>
@@ -80,7 +80,7 @@
 				</div>
 				<div class="w1200 clearfix">
 					<div class="item flipInX animated" v-for="(item,index) in proCaseData" :key="index">
-						<img src="images/the-plane-img1.jpg" >
+						<img :src="item" >
 					</div>
 				</div>
 			</div>
@@ -126,7 +126,14 @@
 						{iconUrl:'images/the-plane-icon4.png',title:'包装设计',text:'运用到包装盒美化方面，从市场出发，通过出色的设计，以丰富的策划经验为产品增值'},
 						{iconUrl:'images/the-plane-icon5.png',title:'全案策划设计',text:'全案整合策划，对品牌货企业进行整体包装推广及策略方案，涵盖视觉及推广策略'}
 					],
-					proCaseData:[{},{},{},{},{},{}],
+					proCaseData:[
+						'images/the-plane-img1.jpg',
+						'images/the-plane-img2.jpg',
+						'images/the-plane-img3.jpg',
+						'images/the-plane-img4.jpg',
+						'images/the-plane-img5.jpg',
+						'images/the-plane-img6.jpg'
+					],
 					hezuoData:[
 						{num:1,title:'沟通与定价',text:'您可以先查阅我们的项目套餐是否适合您的企业需要，纯粹会几时与您沟通确定准确报价。'},
 						{num:2,title:'签约合作',text:'签订合同，支付VI设计项目定金！签署合同后，收取项目总额50%预付款，定金支付采用银行对公汇款。'},

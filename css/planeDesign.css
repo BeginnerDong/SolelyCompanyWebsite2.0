@@ -27,23 +27,27 @@
 
 
 /* 合作流程 */
-.hezuoLC .cont{padding: 25px 5% 100px 5%;}
-.hezuoLC .cont .item{width: 172px;float: left;margin-right: 3%;position: relative;}
+.hezuoLC .cont{padding: 25px 8% 100px 8%;}
+.hezuoLC .cont .item{width: 14.1%;float: left;margin-right: 3%;position: relative;}
 .hezuoLC .cont .item:last-child{margin-right: 0;}
 .hezuoLC .cont .item:nth-child(2n){margin-top: 15px;}
 .hezuoLC .cont .item .numIcon{width: 40px;height: 40px;display: block;margin: 0 auto;background: url(../images/the-plane-icon6.png) no-repeat 0 0/100% 100%;color: #fff;line-height: 40px;text-align: center;box-sizing: border-box;padding-top: 3px;font-size: 13px;}
-.hezuoLC .cont .item .xian{width: 148px;height: 34px;display: block;position: absolute;top: 25px;left:68% ;background: url(../images/the-plane-icon7.png) no-repeat 0 0/100% 100%;}
+.hezuoLC .cont .item .xian{width: 84%;height: 40px;display: block;position: absolute;top: 25px;left:68% ;background: url(../images/the-plane-icon7.png) no-repeat 0 0/100% 100%;}
 .hezuoLC .cont .item:nth-child(2n) .xian{background-image: url(../images/the-plane-icon8.png);top: -30px;}
 .hezuoLC .cont .item:last-child .xian{display: none;}
 .hezuoLC .item h1{font-size: 17px;margin: 50px 0 30px 0;font-weight: bold;text-align: center;}
 .hezuoLC .item p{font-size: 15px;line-height: 24px;}
 
+
+@media screen and ( max-width:1500px){
+	.hezuoLC .cont .item .xian{height: 32px;}
+}
 @media screen and ( max-width:1050px){
 	.strengthsTwo .item{width: 33.3%;margin-right: 0;padding: 0 3%;}
 	.proCase .item{width: 32%;height: 154px;margin-right: 2%;margin-bottom: 15px;}
 	
 	.hezuoLC .cont{padding:20px 2% 40px 2%; }
-	.hezuoLC .cont .item{width: 33.3%;height: 240px;margin-right: 0;box-sizing: border-box;padding: 0 3%;}
+	.hezuoLC .cont .item{width: 33.3%;height: 210px;margin-right: 0;box-sizing: border-box;padding: 0 3%;}
 	.hezuoLC .cont .item:nth-child(2n){margin-top: 0;}
 	.hezuoLC .cont .item .xian{display: none;}
 	.hezuoLC .cont .item h1{margin: 25px 0 15px 0;font-size: 16px;}

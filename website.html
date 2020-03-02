@@ -29,17 +29,26 @@
 		.swiper-slide p{padding: 20px 2%;}
 		
 		.website{ background:#f5f5f5 url(images/web-icon6.png) no-repeat center bottom/100% auto;margin: 0 auto; padding: 90px 0 110px 0;box-sizing: border-box;}
+		.website .box{width: 70%;margin: 0 auto;box-sizing: border-box;}
 		.website-title{width: 25%;}
 		.website-list{width: 72%;}
 		.website-title .font{font-size: 20px; color: #b9b9b9;}
 		.website-title .tit{font-size: 24px; margin-top: 15px;line-height: 24px;}
 		.website-title .text{font-size: 14px; margin-top: 50px;}
-		.website-list li{width: 220px; height: 130px;background-color: #fff;border-radius: 5px;padding: 20px;box-sizing: border-box;float: left;margin:0 0 20px 20px;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
+		.website-list li{width: 30.3%; height: 140px;background-color: #fff;border-radius: 5px;padding: 20px;box-sizing: border-box;float: left;margin:0 0 25px 3%;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
 		.website-list li h1{font-size:16px;}
 		.website-list li .Bfix{position: absolute;left: 30px;right:30px;bottom: 15px;}
 		.website-list li .xian{width:1px;height: 25px;background-color: #d8d8d8;}
 		.website-list li .num{clear: both;font-size: 16px;color: #a8a8a8;}
 		.website-list li .rr .icon{width:35px;height: 35px;display: block;margin-top: 8px;}
+		
+		
+		@media screen and ( max-width:1400px){
+			.website-list li{height: 125px;}
+		}
+		@media screen and ( max-width:1100px){
+			.website .box{width: 100%;padding: 0 3%;}
+		}
 		@media screen and ( max-width:500px){
 			.website{padding: 30px 0;}
 			.website-title{width: 100%;text-align: center;}
@@ -71,7 +80,7 @@
 			</div>
 
 			<div class="website">
-				<div class="w1000 clearfix">
+				<div class="box clearfix">
 					<div class="website-title fl">
 						<p class="font">WEBSITE ADVANTAGE</p>
 						<p class="tit">网站优势</p>
@@ -100,7 +109,7 @@
 					<h1 class="mgb20">产品，让客户充分放心</h1>
 					<p>Peoduct，let customers rest assured</p>
 				</div>
-				<div class="w1200">
+				<div class="pageW75">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">

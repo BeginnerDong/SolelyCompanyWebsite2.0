@@ -22,6 +22,9 @@
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
 	</head>
 	<style>
+		.proBanner{width: 100%;height: 600px;overflow: hidden;position: relative;}
+		.proBanner img{width: auto;height: 100%;position: absolute;right: 0;top: 0;bottom: 0;}
+		.prodcuBox{width: 1400px;box-sizing: border-box;margin: 0 auto;}
 		.productNav{padding-top: 60px; }
 		.productNav .item{width: 25%;float: left;line-height: 40px; vertical-align: middle;font-size: 18px;color: #5c5c5c;padding-bottom: 30px;}
 		.productNav .item .icon{width: 35px;height: 35px;display: initial; vertical-align: middle;}
@@ -33,6 +36,7 @@
 		.pd-class span.on{background-color: #17acee;color: #fff;border-color:#17ACEE ;}
 		
 		/* 产品列表 */
+		.prodcutList{min-height: 200px;}
 		.prodcutList li{float: left;overflow: hidden;box-shadow: 0 0 10px rgba(0,0,0,0.15);background-color: #fff;text-align: center;margin-bottom: 40px;}
 		.prodcutList li .pic{width: 100%; display: block;}
 		.prodcutList li p{padding: 20px 10px;font-size: 16px;}
@@ -40,13 +44,13 @@
 		/* mobile */
 		.prodcutList .proMobile li{width: 23.5%;margin-right: 2%; }
 		.prodcutList .proMobile li:nth-child(4n){margin-right: 0%;}
-		.prodcutList .proMobile li .pic{height: 501px;display: block;}
+		.prodcutList .proMobile li .pic{height: 585px;display: block;}
 		
 		
 		/* pc列表 */
 		.prodcutList .proPc li{width: 48%;}
 		.prodcutList .proPc li:nth-child(2n){margin-left: 4%;}
-		.prodcutList .proPc li .pic{width: 100%;height: 324px;}
+		.prodcutList .proPc li .pic{width: 100%;height: 378px;}
 		
 		/* 页码 */
 		.allPages li{display: inline-block;font-size: 15px;}
@@ -59,19 +63,42 @@
 		.anliTit .Btn{width: 120px;line-height: 36px;border: 1px solid #17acee;color: #17acee;border-radius: 5px;display: block; margin: 0px auto;position: relative;}
 		.anliTit .Btn::before{content: '';position: absolute;bottom: -20px;left: 50%;transform: translateX(-50%);border-bottom: 10px transparent dashed;border-left: 10px transparent dashed;border-right: 10px transparent dashed;border-top: 10px #17ACEE solid;}
 		
+		@media only screen and (max-width: 1600px){
+			.proBanner{height: 500px;}
+			.prodcuBox{width: 1200px;}
+			.prodcutList .proMobile li .pic{height: 501px;}
+			.prodcutList .proPc li .pic{height: 324px;}
+		}
+		
+		@media only screen and (max-width: 1440px){
+			.proBanner{height:450px;}
+			.prodcuBox{width: 1100px;}
+			.prodcutList .proMobile li .pic{height: 460px;}
+			.prodcutList .proPc li .pic{height: 297px;}
+		}
+		@media only screen and (max-width: 1366px){
+			.proBanner{height:426px;}
+		}
 		@media only screen and (max-width: 1050px){
+			.proBanner{height:320px;}
+			.prodcuBox{width: 100%;padding: 0 3% 50px 3%;}
 			.prodcutList .proMobile li .pic{height: 402px;}
+			.prodcutList .proPc li .pic{height: 259px;}
 		}
 		@media only screen and (max-width: 768px){
+			.proBanner{height:240px;}
+			.prodcutList{min-height: 100px;}
 			.productNav {padding-top: 40px;}
 			.productNav .item{font-size: 16px;    padding-bottom: 20px;}
 			.productNav .item .icon {width: 30px;height: 30px;}
-			.pd-class span{line-height: 40px;width: 100px;margin-right: 2.5%;}
+			.pd-class{padding: 30px 0 15px 0}
+			.pd-class span{line-height: 38px;width: 100px;margin-right: 2.5%;font-size: 15px;}
 			.prodcutList .proMobile li .pic{height: 301px;}
 			.prodcutList .proPc li .pic{height: 195px;}
 		}
 		
 		@media only screen and (max-width: 500px){
+			.proBanner{height:160px;}
 			.productNav {padding-top: 15px;}
 			.productNav .item.on::after{border-top: 6px transparent dashed;border-left: 6px transparent dashed;border-right: 6px transparent dashed;border-bottom: 6px #17ACEE solid;}
 			.productNav .item{font-size: 14px; padding-bottom: 10px;}
@@ -94,6 +121,7 @@
 			.prodcutList .proPc li .pic{height: 105px;}
 		}
 		@media only screen and (max-width: 375px){
+			
 			.prodcutList .proMobile li .pic{height: 300px;}
 			.prodcutList .proPc li .pic{height: 95px;}
 		}
@@ -110,17 +138,22 @@
 		<div id="app">
 			<!-- 网站导航 -->
 			<div v-show="detailId<0">
+				
+				<!-- 网站导航 -->
 				<div class="">
 					<include src="header.html"></include>
 				</div>
 				
 				<!-- banner -->
-				<div class="">
-					<include src="headBanner.html"></include>
+				<div class="proBanner">
+					<img src="images/banner.jpg" >
 				</div>
+				<!-- <div class="">
+					<include src="headBanner.html"></include>
+				</div> -->
 				
 				<div>
-					<div class="w1200 pdb100">
+					<div class="prodcuBox pdb100">
 						<!-- 产品导航分类 -->
 						<div class="productNav center clearfix borderB1">
 							<span class="item" :class="curr==1?'on':''" @click="currChange('1')">

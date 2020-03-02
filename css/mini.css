@@ -1,18 +1,19 @@
 @charset "UTF-8";
 
 
-.mini-box1 .item{float: left; width: 190px;margin-right: 8%;}
+.mini-box1 .item{float: left; width: 25%;padding: 0 5%;box-sizing: border-box;}
 .mini-box1 .item:last-child{margin-right:0 ;}
-.mini-box1 .item .icon{width: 110px;height: 110px;display: block;margin: 0 auto;}
-.mini-box1 .item p{font-size: 16px;margin-top: 20px;}
+.mini-box1 .item .icon{width: 90px;height: 90px;display: block;margin: 0 auto;}
+.mini-box1 .item p{font-size: 16px;margin-top: 20px;line-height: 24px;line-height: 28px}
 
 /* 我们的优势 */
 .OurAdvantage{padding: 80px 0;background:url(../images/public-img2.png) no-repeat 0 0/100% 100%}
 .OurAdvantage .title h1{font-size: 28px;margin-bottom: 10px;}
 .OurAdvantage .title p{font-size: 16px;}
-.OurAdvantage .item{width: 50%;float: left;}
-.OurAdvantage .left{height: 100%;}
-.OurAdvantage .left img{width: 350px;height: 365px; display: block;margin-top: 50px;}
+.OurAdvantage .item{width: 56%;float: left;}
+.OurAdvantage .left{height: 100%;width: 42%;}
+.OurAdvantage .right{margin-top: 30px;}
+.OurAdvantage .left img{width: 55%;height: auto; display: block;margin-top: 50px;}
 
 .OurAdvantage .child{padding-left: 50px;position: relative;padding-bottom: 50px;}
 .OurAdvantage .child:last-child{padding-bottom: 0;}
@@ -20,25 +21,30 @@
 .OurAdvantage .child h1{font-size: 18px;margin-bottom: 10px;font-weight: bold;}
 .OurAdvantage .child p{color: #4a4a4a;}
 
+@media screen and ( max-width:1500px){ 
+	.OurAdvantage .left img{width: 65%;}
+}
+
 @media screen and ( max-width:1100px){ 
-	.mini-box1 .item{width: 25%;margin-right: 0;}
-	.mini-box1 .item .icon{width: 80px;height: 80px;}
-	.mini-box1 .item p{width: 85%;font-size: 15px;margin: 15px auto 0 auto;}
-	.OurAdvantage .left img{width: 250px;height: 260px;}
+	.mini-box1 .item{padding: 0 3%;}
+	.mini-box1 .item .icon{width: 75px;height: 75px;}
+	.mini-box1 .item p{font-size: 15px;margin: 15px auto 0 auto;}
+	.OurAdvantage .left img{width: 70%;}
 }
 
 
 @media screen and ( max-width:500px){ 
+	.mini-box1 .item{width: 50%;height: 135px;}
 	.mini-box1 .item .icon{width: 50px;height: 50px;}
-	.mini-box1 .item p{font-size: 12px; line-height: 18px;}
+	.mini-box1 .item p{font-size: 14px; line-height: 22px;}
 	
 	.OurAdvantage{padding: 40px 0;}
 	.OurAdvantage .title{text-align: center;margin-bottom: 15px;}
 	.OurAdvantage .title h1{font-size: 20px; font-weight: bold;}
 	.OurAdvantage .title p{font-size: 14px;}
 	.OurAdvantage .item.left{width: 100%;}
-	.OurAdvantage .item.right{float: right;width: 100%;}
-	.OurAdvantage .left img{width: 140px;height: auto;margin:10px auto 15px auto;}
+	.OurAdvantage .item.right{float: right;width: 100%;margin-top: 0;}
+	.OurAdvantage .left img{width: 160px;height: auto;margin:10px auto 15px auto;}
 	.OurAdvantage .child{padding-left: 35px;padding-bottom: 15px;}
 	.OurAdvantage .child .icon{width: 25px;height: 25px;}
 	.OurAdvantage .child h1{font-size: 15px;    margin-bottom: 5px;}

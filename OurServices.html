@@ -4,7 +4,7 @@
 			<h1 class="mgb20">我们的服务</h1>
 			<p>Our service</p>
 		</div>
-		<div class="w1200 indx-myService clearfix">
+		<div class="pageW75 indx-myService clearfix">
 			<div class="list left fl">
 				<div class="item flipInX animated">
 					<img class="icon" src="images/home-icon8.png" >
@@ -70,7 +70,7 @@
 <style type="text/css">
 	
 	/* 我们的服务 */
-	.indx-myService .list{width: 33.3%;padding-right: 120px;box-sizing: border-box; }
+	.indx-myService .list{width: 37%;padding-right: 120px;box-sizing: border-box; }
 	.indx-myService .list .item{position: relative;padding-right: 40px;text-align: right;padding-bottom: 58px; box-sizing: border-box;height: 140px;}
 	.indx-myService .list .item:last-child{padding-bottom: 0;}
 	.indx-myService .list .icon{position: absolute;top: 0;right: 0;width: 26px;height: 26px; display: block;}
@@ -81,9 +81,22 @@
 	.indx-myService .list.right .arrow{left: -130px;right: auto;}
 	.indx-myService .list .item h1{font-size: 18px;padding-bottom: 15px;font-weight: bold;}
 	
-	.indx-myService .Mpic{width: 33.3%; text-align: center; vertical-align: middle;} 
+	.indx-myService .Mpic{width: 26%; text-align: center; vertical-align: middle;} 
 	.indx-myService .Mpic img{width: 90%;height: auto; display: block;margin: 0 auto;}
 	
+	@media only screen and (max-width: 1600px){
+		.indx-myService .list{width: 36%;}
+		.indx-myService .Mpic{width: 28%;}
+		.indx-myService .list .item{height: 130px; padding-bottom: 20px;}
+	}
+	@media only screen and (max-width: 1450px){
+		.indx-myService .list{width: 35%;}
+		.indx-myService .Mpic{width: 30%;}
+	}
+	@media only screen and (max-width: 1366px){
+		.indx-myService .list{width: 33.3%;}
+		.indx-myService .Mpic{width: 33.3%;}
+	}
 	@media only screen and (max-width: 1050px){
 		.indx-myService .list{padding-right: 50px;width: 50%;}
 		.indx-myService .list .item{text-align: left;padding:0 0 40px 30px!important;height: 120px;}

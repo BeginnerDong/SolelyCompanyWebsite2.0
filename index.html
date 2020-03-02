@@ -81,7 +81,7 @@
 				</ul>
 			</div>
 			
-			<div class="w1200 clearfix indx-aboutUs oh pdb100">
+			<div class="pageW75 clearfix indx-aboutUs oh pdb100">
 				<div class="left fl">
 					<h3 class="name color9">About us</h3>
 					<h1 class="tit">10年开发经验|9道测试严把质量|8种角色打造服务闭环</h1>
@@ -115,7 +115,7 @@
 			
 			<!-- 四大框架 -->
 			<div class="strengths white center">
-				<ul class="w1200 clearfix">
+				<ul class="pageW75 clearfix">
 					<li class="fadeInDown animated" :class="item.className" v-show="strengthShow" v-for="(item,index) in strengthsData" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1 class="tit">{{item.title}}</h1>
@@ -145,7 +145,7 @@
 					<h1 class="mgb20">合伙伙伴</h1>
 					<p>Partners</p>
 				</div>
-				<div class="w1200">
+				<div class="cont clearfix">
 					<ul class="clearfix animated slideInUp" v-show="partnerShow">
 						<li v-for="(item,index) in partnerData" class="flipInY animated" :class="item.className" :key="index"><img :src="item.url" ></li>
 					</ul>

@@ -167,7 +167,11 @@ a:visited {
 .w {
 	width: 100%;
 }
-
+.pageW75{
+	width: 75%;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
 .w1200 {
 	width: 1200px;
 	margin: 0 auto;
@@ -175,7 +179,7 @@ a:visited {
 }
 
 .w1000 {
-	width: 1000px;
+	width: 1100px;
 	margin: 0 auto;
 	box-sizing: border-box;
 }
@@ -834,47 +838,6 @@ a:visited {
 	height: 100px;
 }
 
-.h150 {
-	height: 150px;
-}
-
-/* 弹性盒子 */
-.flex {
-	display: flex;
-	align-items: center;
-}
-
-.flexCenter {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.flexRowAround {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-}
-
-.flexRowBetween {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.flexEnd {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.flexColumn {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
 
 /* 行数显示省略号 */
 .avoidOverflow {
@@ -934,10 +897,19 @@ a:visited {
 #showToast{position: fixed;z-index:999;top:10%;width: 300px;background-color: #fff;color:#666;right:5%;border-radius:5px;overflow:hidden; box-shadow: 0 0 8px rgba(0, 0, 0, 0.23);border:1px solid #eee;}
 #showToast .text{width: 100%;text-align: center;line-height: 30px;padding: 10px 10px;box-sizing:border-box;font-size:16px;}
 
+
+@media screen and (max-width: 1400px) {
+	.pageW75 {
+		width: 85%;
+	}
+	.banner-title{font-size: 52px;}
+	.banner-small-title {font-size: 26px;}
+}
 @media screen and (max-width: 1100px) {
 
 	.w1200,
-	.w1000 {
+	.w1000,
+	.pageW75 {
 		width: 100%;
 		padding: 0 3%;
 	}
