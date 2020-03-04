@@ -1,0 +1,156 @@
+<div id="advertise_app" class="consult">
+	<div class="consult_top"  >
+		<div class="consult_top_box" >
+			<a href="tel:18092651090" >
+				<img src="images/consult.png">	
+			</a>
+		</div>
+	</div>
+	<div class="consult_bottom" @mouseover="enter(1)" @mouseout="enter(0)">
+		<div class="consult_bottom_box">
+			<div class="cbb_top">
+				<img src="images/wx_con.png" style="width: 70%;" >
+			</div>
+			<div class="cbb_footer">
+				客服微信
+			</div>
+		</div>
+	</div>
+	<div class="show_card" :class="wx_show == 1?'contact_show':'contact_hidden'">
+		<p class="sc_top">客服微信:<br>18092651090</p>
+		<div style="width: 100%;height: 70%;" style="margin-top: 0;">
+		    <img src="images/qrcode1.jpg"/>
+		</div>
+	</div>
+	
+	
+	<div class="marketing" style="display: none;">
+		<a class="marketing-item" href="tel:18092651090">
+			一键拨号
+		</a>
+		<div class="marketing-item" @click="phoneMarketing(0)">
+			客服微信
+		</div>
+		<div class="marketing-item" @click="phoneMarketing(1)">
+			官方微信
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var advertise_app = new Vue({
+		el: '#advertise_app',
+		data: function() {
+			return {
+				wx_show:0
+			}
+		},
+
+		created: function() {
+			var self = this;
+		
+
+		},
+
+		methods: {
+			
+			enter:function(index) {
+			    var self = this;
+				console.log('index',index)
+			    var cursorId = index;
+			    self.wx_show =cursorId;
+			},
+			phoneMarketing:function(index){
+				var self = this;
+				if(index==self.wx_show){
+					self.wx_show = 2;
+				}else{
+					self.wx_show = index;
+				}
+				
+				console.log('self.wx_show',self.wx_show)
+			},
+
+
+		}
+	});
+</script>
+
+<style type="text/css">
+	.consult{
+	    width:100%;
+	    height:100%; 
+	    z-index:999;
+	}
+	.consult_top{
+	    position: relative;
+		width: 100%;
+		height: 60%;
+		text-align: right;
+	}
+	.consult_top_box{
+		width: 60%;
+		margin-left: 30%;
+		height: 100%;
+	}
+	.consult_bottom{
+		width: 100%;
+		height: 40%;
+	}
+	.consult_bottom_box{
+		width: 80px;
+		height: 80px;
+		background: #089fe3;
+		margin-left: 60%;
+		border-radius: 10%;
+		box-shadow: #aebfcc;
+	}
+	.cbb_top{
+		width: 100%;
+		height: 60%;
+		padding-top: 10%;
+		text-align: center;
+	}
+	.cbb_footer{
+		width: 100%;
+		height: 40%;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+	}
+	
+	.show_card{
+		width: 0;
+		height: 180px;
+		position: absolute;
+		top:60%;
+		right:40%;
+		background:#fff;
+		overflow: hidden;
+		transition:all 1s;
+		-webkit-transition:all 0.5s;
+		text-align: center;
+	}
+	
+	.sc_top{
+		height: 30%;
+		padding-top: 5%;
+		font-weight: bold;
+	}
+	
+	.show_card img{
+		width: 100px;
+		height: 100px;
+	}
+	
+	.contact_show{
+	    width:180px;
+	    opacity: 1;
+	}
+	.contact_hidden{
+	    width:0;
+	    opacity:0;
+	}
+	
+	
+</style>

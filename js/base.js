@@ -4,6 +4,21 @@ window.base = {
 	thirdapp_id: 2,
 	test: 666,
 	bus: new Vue(),
+	needOnload:[],
+	getElementToPageTop:function(el) {
+		if(el.parentElement) {
+			/* console.log('el',el);
+			console.log('el.offsetTop',el.offsetTop);
+			console.log('el.offsetHeight',el.offsetHeight); */
+			if(el.offsetTop>el.parentElement.offsetHeight){
+				return el.offsetTop
+			}else{
+				return this.getElementToPageTop(el.parentElement) + el.offsetTop
+			};
+		}
+		return el.offsetTop
+	},
+	
 	getUserToken: function(callback) {
 
 

@@ -5,9 +5,16 @@
         //倒序循环
         forEach: function(array, callback) {
             var size = array.length;
-            for(var i = size - 1; i >= 0; i--){
+			
+            for(var i = 0; i < size; i++){
+                callback.apply(array[0], [i]);
+            };
+			/* for(var i = size - 1; i >= 0; i--){
+				console.log('i',i)
+				console.log('array',array)
+				console.log('array[i]',array[i])
                 callback.apply(array[i], [i]);
-            }
+            } */
         },
         getFilePath: function() {
             var curWwwPath=window.document.location.href;

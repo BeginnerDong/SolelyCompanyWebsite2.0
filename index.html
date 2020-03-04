@@ -20,6 +20,14 @@
 		<link crossorigin="anonymous" integrity="sha384-K6LrEaceM4QP87RzJ7R4CDXcFN4cFW/A5Q7/fEp/92c2WV+woVw9S9zKDO23sNS+" href="https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
 		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
+		<style>
+			.bannerBack{
+				background-image: url("images/banner-img1.jpg");
+				background-repeat: no-repeat;   
+				background-size: 100% 100%;
+				height: 850px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -35,13 +43,13 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="">
+			<div class="bannerBack">
 				<include src="headBanner.html"></include>
 			</div>
 
 			<!-- 四大类 -->
-			<div class="pdb60 clearfix indx-homeClass white">
-				<ul class="oh clearfix">
+			<div id="menuShow" class="pdb60  indx-homeClass white">
+				<ul class="oh ">
 					<li class="fadeInRightBig animated" v-show="menuShow">
 						<div class="text">
 							<h1 class="tit">高端网络建设</h1>
@@ -81,7 +89,7 @@
 				</ul>
 			</div>
 			
-			<div class="pageW75 clearfix indx-aboutUs oh pdb100">
+			<div class="pageW75  indx-aboutUs oh pdb100" >
 				<div class="left fl">
 					<h3 class="name color9">About us</h3>
 					<h1 class="tit">10年开发经验|9道测试严把质量|8种角色打造服务闭环</h1>
@@ -91,7 +99,7 @@
 						<img src="images/home-img12.png" >
 					</div>
 				</div>
-				<div class="right fr center">
+				<div class="right fr center"  id="numShow">
 					<ul class="oh">
 						<li>
 							<h1 class="num animated rubberBand" v-show="numShow">3<em class="">年</em></h1>
@@ -114,7 +122,7 @@
 			</div>
 			
 			<!-- 四大框架 -->
-			<div class="strengths white center">
+			<div class="strengths white center" id="strengthShow">
 				<ul class="pageW75 clearfix">
 					<li class="fadeInDown animated" :class="item.className" v-show="strengthShow" v-for="(item,index) in strengthsData" :key="index">
 						<img class="icon" :src="item.iconUrl" >
@@ -125,22 +133,22 @@
 			</div>
 			
 			<!-- 产品，让客户充分放心 -->
-			<div class="">
+			<div class="" style="height:920px;">
 				<include src="OurCace.html"></include>
 			</div>
 			
 			<!-- 服务 -->
-			<div class="">
+			<div class="" style="height:718px;">
 				<include src="OurServices.html"></include>
 			</div>
 			
 			<!-- 多一分参考，总有益处 -->
-			<div class="">
+			<div style="height: 506px;">
 				<include src="WritePhone.html"></include>
 			</div>
 			
 			<!-- 合伙伙伴 -->
-			<div class="indx-partner pdb100">
+			<div class="indx-partner pdb100" id="partnerShow">
 				<div class="pubTitle center">
 					<h1 class="mgb20">合伙伙伴</h1>
 					<p>Partners</p>
@@ -154,10 +162,21 @@
 			</div>
 			
 			<include src="footer.html"></include>
+			
+		</div>
+		<div style="width:230px;height:45%; position: fixed;bottom:20%;right:0;z-index: 999;">
+			<include src="advertise.html"></include>
 		</div>
 	</body>
 	
-	
+	<script>
+		window.onload = function(){
+			for(var i=0;i<window.base.needOnload.length;i++){
+				window.base.needOnload[i]();
+			};
+			console.log('onloaded',window.base.needOnload)
+		}
+	</script>
 
 	<script type="text/javascript">
 		
@@ -191,35 +210,61 @@
 					menuShow:false,
 					numShow:false,
 					strengthShow:false,
-					partnerShow:false
+					partnerShow:false,
+					idArray:['menuShow','numShow','strengthShow','partnerShow'],
+					offsetTopArray:[],
+					testNum:0
 				}
 			},
 			
 			
 			mounted () {
-			   window.addEventListener('scroll', this.handleScroll)
+			    window.addEventListener('scroll', this.handleScroll);
 			},
 			
 			created: function() {
 				var self = this;
 				if(!localStorage.getItem('phone')){
 					self.getPhoneData()
-				}
+				};
+				window.base.needOnload.push(this.initOffsetTop)
 			},
 			
 			methods: {
+				initOffsetTop(){
+					for(var i=0;i<this.idArray.length;i++){
+						var res = window.base.getElementToPageTop(document.getElementById(this.idArray[i]));
+						this.offsetTopArray.push(res);
+					};
+					this.handleScroll();
+					console.log('this.offsetTopArray',this.offsetTopArray);
+				},
 				
 				handleScroll(){
 					const self = this;
+					self.testNum = 1000;
 					var scrollTop = document.documentElement.scrollTop;
-					var array = [{name:'partnerShow',scrollTop:3400},{name:'menuShow',scrollTop:100},{name:'numShow',scrollTop:500},{name:'strengthShow',scrollTop:800}];
-					for (var i = 0; i < array.length; i++) {
-						if(scrollTop>array[i].scrollTop){
-							self[array[i].name] = true
-						}
+					var winHeight = window.screen.height;
+					var extra = winHeight*0.3;
+					var testLine = scrollTop + winHeight - extra;
+					/* console.log('scrollTop',scrollTop);
+					console.log('winHeight',winHeight);
+					console.log('extra',extra);
+					console.log('testLine',testLine); */
+					if(testLine < this.offsetTopArray[this.offsetTopArray.length-1]+100){
+						
+						//console.log('self.offsetTopArray',self.offsetTopArray);
+						for(var i=0;i<this.idArray.length;i++){
+							if(testLine>self.offsetTopArray[i]){
+								self[self.idArray[i]] = true;
+								console.log(self.idArray[i])
+								console.log(self[self.idArray[i]])
+							};
+							
+						};
 					};
 					
-					console.log('scrollTop',scrollTop)
+					
 				},
 				
 				

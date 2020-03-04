@@ -52,8 +52,10 @@
 			}else{
 				self.currentUrl = '/index.html';
 			};
-			self.phone = localStorage.getItem('phone')
-			window.onload = function() {
+			self.phone = localStorage.getItem('phone');
+			
+			var footerCallback= function() {
+				console.log('999')
 				if((self.currentUrl=='/index.html'||self.currentUrl=='/mini.html'||self.currentUrl=='/app.html')){
 					if(window.screen.width>760){
 						$(function() {
@@ -103,7 +105,8 @@
 				};
 				
 				self.addVisitorInfo(returnCitySN.cname)
-			}
+			};
+			window.base.needOnload.push(footerCallback);
 
 		},
 
