@@ -1,40 +1,64 @@
-<div id="advertise_app" class="consult">
-	<div class="consult_top"  >
-		<div class="consult_top_box" >
-			<a href="tel:18092651090" >
-				<img src="images/consult.png">	
-			</a>
+<div id="advertise_app" >
+	<div class="consult">
+		<div class="consult_pc">
+			<div class="consult_top"  >
+				<div class="consult_top_box" >
+					<a href="tel:18092651090" >
+						<img src="images/consult.png">	
+					</a>
+				</div>
+			</div>
+			<div class="consult_bottom" @mouseover="enter(1)" @mouseout="enter(0)">
+				<div class="consult_bottom_box">
+					<div class="cbb_top">
+						<img src="images/wx_con.png" style="width: 70%;" >
+					</div>
+					<div class="cbb_footer">
+						客服微信
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="consult_phone">
+			<div class="cp_box">
+				<a href="tel:18092651090" >
+					<div class="cp_top">
+						<img src="images/wx_con.png"  >
+					</div>
+					<div class="cp_footer">
+						电话
+					</div>
+				</a>
+				
+			</div>
+			<div class="cp_box" @click="enter('click')">
+				<div class="cp_top">
+					<img src="images/wx_con.png"  >
+				</div>
+				<div class="cp_footer">
+					微信
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="consult_bottom" @mouseover="enter(1)" @mouseout="enter(0)">
-		<div class="consult_bottom_box">
-			<div class="cbb_top">
-				<img src="images/wx_con.png" style="width: 70%;" >
-			</div>
-			<div class="cbb_footer">
-				客服微信
-			</div>
-		</div>
-	</div>
+	
 	<div class="show_card" :class="wx_show == 1?'contact_show':'contact_hidden'">
-		<p class="sc_top">客服微信:<br>18092651090</p>
+		
+		
 		<div style="width: 100%;height: 70%;" style="margin-top: 0;">
 		    <img src="images/qrcode1.jpg"/>
 		</div>
-	</div>
-	
-	
-	<div class="marketing" style="display: none;">
-		<a class="marketing-item" href="tel:18092651090">
-			一键拨号
+		<a  @click="copyUrl2">
+			<p class="sc_bottom">
+				客服微信:18092651090
+				<br>
+				<span style="color: #089fe3;font-size: 12px;" >点击复制微信号</span>
+			</p>
 		</a>
-		<div class="marketing-item" @click="phoneMarketing(0)">
-			客服微信
-		</div>
-		<div class="marketing-item" @click="phoneMarketing(1)">
-			官方微信
-		</div>
 	</div>
+	
 </div>
 
 <script type="text/javascript">
@@ -56,7 +80,16 @@
 			
 			enter:function(index) {
 			    var self = this;
-				console.log('index',index)
+				if(index=='click'){
+					if(self.wx_show==0){
+						self.wx_show = 1;
+					}else{
+						self.wx_show = 0;
+					};
+					return;
+				};
+				console.log('index',index);
+				console.log('self.wx_show',self.wx_show)
 			    var cursorId = index;
 			    self.wx_show =cursorId;
 			},
@@ -70,6 +103,18 @@
 				
 				console.log('self.wx_show',self.wx_show)
 			},
+			
+			copyUrl2:function(){
+				
+				var oInput = document.createElement('input');
+				oInput.value = '18092651090';
+				document.body.appendChild(oInput);
+				oInput.select(); // 选择对象
+				document.execCommand("Copy"); // 执行浏览器复制命令
+				oInput.className = 'oInput';
+				oInput.style.display='none';
+				alert('复制成功');
+			}
 
 
 		}
@@ -77,10 +122,18 @@
 </script>
 
 <style type="text/css">
+	 
 	.consult{
-	    width:100%;
-	    height:100%; 
-	    z-index:999;
+	    width:230px;
+	    height:400px;
+	    position: fixed;
+		bottom:20%;
+		right:0;
+		z-index: 999;
+	}
+	.consult_pc{
+		width:100%;
+		height:100%;
 	}
 	.consult_top{
 	    position: relative;
@@ -97,6 +150,7 @@
 		width: 100%;
 		height: 40%;
 	}
+	
 	.consult_bottom_box{
 		width: 80px;
 		height: 80px;
@@ -105,12 +159,14 @@
 		border-radius: 10%;
 		box-shadow: #aebfcc;
 	}
+	
 	.cbb_top{
 		width: 100%;
 		height: 60%;
 		padding-top: 10%;
 		text-align: center;
 	}
+	
 	.cbb_footer{
 		width: 100%;
 		height: 40%;
@@ -120,36 +176,128 @@
 	}
 	
 	.show_card{
-		width: 0;
-		height: 180px;
-		position: absolute;
-		top:60%;
-		right:40%;
+		width: 288px;
+		height: 0;
+		position: fixed;
+		top:calc(50% - 145px);
+		right:calc(50% - 145px);
 		background:#fff;
 		overflow: hidden;
 		transition:all 1s;
 		-webkit-transition:all 0.5s;
 		text-align: center;
+		border-radius: 5%;
+		box-shadow:2px 2px 5px #333333;
 	}
 	
-	.sc_top{
-		height: 30%;
-		padding-top: 5%;
+	.sc_bottom{
 		font-weight: bold;
+		margin-top: 18px;
 	}
 	
 	.show_card img{
-		width: 100px;
-		height: 100px;
+		margin-top:10%;
+		width: 188px;
+		height: 188px;
 	}
 	
 	.contact_show{
-	    width:180px;
+	    
+		height: 288px;
 	    opacity: 1;
 	}
 	.contact_hidden{
 	    width:0;
 	    opacity:0;
+	}
+	
+	.consult_phone{
+		display: none;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.cp_box{
+		width: 66px;
+		height: 66px;
+		float: left;
+		margin-left: 20px;
+		background: #089fe3;
+		border-radius: 50%;
+		box-shadow: #aebfcc;
+	}
+	
+	.cp_top{
+		width: 100%;
+		height: 40%;
+		padding-top: 20%;
+		text-align: center;
+	}
+	
+	.cp_top img{
+		width: 35px;
+	}
+	
+	.cp_footer{
+		width: 100%;
+		height: 30%;
+		font-size: 12px;
+		color: white;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	
+	@media only screen and (max-width: 500px) {
+		.consult{
+		    width:200px;
+		    height:100px;
+		    position: fixed;
+			bottom:0;
+			left:0;
+			z-index: 999;
+		}
+		
+		.consult_pc{
+			display: none;
+		}
+		
+		.consult_phone{
+			display: block;
+		}
+		
+		.show_card{
+			width:188px;
+			height: 0;
+			position: fixed;
+			top:50%;
+			right:calc(50% - 94px);
+			background:#fff;
+			overflow: hidden;
+			transition:all 1s;
+			-webkit-transition:all 0.5s;
+			text-align: center;
+			
+			z-index: 999;
+		}
+		
+		.show_card img{
+			margin-top:10%;
+			width: 88px;
+			height: 88px;
+		}
+		
+		.sc_bottom{
+			margin-top: 0;	
+		}
+		
+		
+		.contact_show{
+		    width:188px;
+			height: 188px;
+		    opacity: 1;
+		}
+		
 	}
 	
 	

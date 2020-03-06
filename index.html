@@ -28,6 +28,8 @@
 				height: 850px;
 			}
 		</style>
+		<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a0365323250827af85f41d3890d1ce53"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+
 	</head>
 
 	<body>
@@ -46,13 +48,13 @@
 			<div class="bannerBack">
 				<include src="headBanner.html"></include>
 			</div>
-
+			
 			<!-- 四大类 -->
 			<div id="menuShow" class="pdb60  indx-homeClass white">
 				<ul class="oh ">
 					<li class="fadeInRightBig animated" v-show="menuShow">
 						<div class="text">
-							<h1 class="tit">高端网络建设</h1>
+							<h1 class="tit">高端网络建设222</h1>
 							<p class="avoidOverflow">品牌网站建设</p>
 							<p class="avoidOverflow">企业网站建设</p>
 							<p class="avoidOverflow">是网络建设</p>
@@ -123,8 +125,8 @@
 			
 			<!-- 四大框架 -->
 			<div class="strengths white center" id="strengthShow">
-				<ul class="pageW75 clearfix">
-					<li class="fadeInDown animated" :class="item.className" v-show="strengthShow" v-for="(item,index) in strengthsData" :key="index">
+				<ul class="pageW75 clearfix" v-show="strengthShow">
+					<li class="jackInTheBox animated" :class="item.className"  v-for="(item,index) in strengthsData" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1 class="tit">{{item.title}}</h1>
 						<p class="text">{{item.text}}</p>
@@ -133,49 +135,49 @@
 			</div>
 			
 			<!-- 产品，让客户充分放心 -->
-			<div class="" style="height:920px;">
+			<div class="" >
 				<include src="OurCace.html"></include>
 			</div>
 			
 			<!-- 服务 -->
-			<div class="" style="height:718px;">
+			<div class="" >
 				<include src="OurServices.html"></include>
 			</div>
 			
 			<!-- 多一分参考，总有益处 -->
-			<div style="height: 506px;">
-				<include src="WritePhone.html"></include>
+			<div >
+				<div style="width: 100%;height: 1px;"></div>
+				<include src="WritePhone.html" ></include>
 			</div>
 			
 			<!-- 合伙伙伴 -->
-			<div class="indx-partner pdb100" id="partnerShow">
-				<div class="pubTitle center">
-					<h1 class="mgb20">合伙伙伴</h1>
-					<p>Partners</p>
+			<div>
+				<div style="width:100%;height: 1px;float: left;" id="partnerShow"></div>
+				<div class="indx-partner pdb100" >
+					<div class="pubTitle center">
+						<h1 class="mgb20">合伙伙伴</h1>
+						<p>Partners</p>
+					</div>
+					<div class="cont clearfix">
+						<ul class="clearfix animated slideInUp" v-show="partnerShow">
+							<li v-for="(item,index) in partnerData" class="flipInY animated" :class="item.className" :key="index"><img :src="item.url" ></li>
+						</ul>
+					</div>
+					
 				</div>
-				<div class="cont clearfix">
-					<ul class="clearfix animated slideInUp" v-show="partnerShow">
-						<li v-for="(item,index) in partnerData" class="flipInY animated" :class="item.className" :key="index"><img :src="item.url" ></li>
-					</ul>
-				</div>
-				
 			</div>
+			
 			
 			<include src="footer.html"></include>
 			
 		</div>
-		<div style="width:230px;height:45%; position: fixed;bottom:20%;right:0;z-index: 999;">
+		<div>
 			<include src="advertise.html"></include>
 		</div>
 	</body>
 	
 	<script>
-		window.onload = function(){
-			for(var i=0;i<window.base.needOnload.length;i++){
-				window.base.needOnload[i]();
-			};
-			console.log('onloaded',window.base.needOnload)
-		}
+		
 	</script>
 
 	<script type="text/javascript">
@@ -213,7 +215,9 @@
 					partnerShow:false,
 					idArray:['menuShow','numShow','strengthShow','partnerShow'],
 					offsetTopArray:[],
-					testNum:0
+					testNum:0,
+					bodyOffsetHeight:0,
+					sameTime:0
 				}
 			},
 			
@@ -224,14 +228,34 @@
 			
 			created: function() {
 				var self = this;
+				
 				if(!localStorage.getItem('phone')){
 					self.getPhoneData()
 				};
-				window.base.needOnload.push(this.initOffsetTop)
+				window.base.needOnload.push(this.initOffsetTop);
+				window.onload = function(){
+					for(var i=0;i<window.base.needOnload.length;i++){
+						window.base.needOnload[i]();
+					};
+				};
+				self.topInterval =  setInterval(function(){
+					console.log('document.getElementById',document.getElementById('app').offsetHeight)
+					if(self.sameTime==100){
+						clearInterval(self.topInterval);
+						return;
+					};
+					if(self.bodyOffsetHeight==document.getElementById('app').offsetHeight){
+						self.sameTime++;
+						return;
+					};
+					self.initOffsetTop()
+				},500)
 			},
 			
 			methods: {
 				initOffsetTop(){
+					this.offsetTopArray = [];
+					this.bodyOffsetHeight =  document.getElementById('app').offsetHeight;
 					for(var i=0;i<this.idArray.length;i++){
 						var res = window.base.getElementToPageTop(document.getElementById(this.idArray[i]));
 						this.offsetTopArray.push(res);
@@ -257,8 +281,6 @@
 						for(var i=0;i<this.idArray.length;i++){
 							if(testLine>self.offsetTopArray[i]){
 								self[self.idArray[i]] = true;
-								console.log(self.idArray[i])
-								console.log(self[self.idArray[i]])
 							};
 							
 						};
