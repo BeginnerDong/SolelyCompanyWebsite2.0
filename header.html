@@ -5,7 +5,7 @@
 			<img class="logo fl" src="images/home-logo.png">
 			<div class="text fl">
 				<p>服务热线</p>
-				<p>{{mainData&&mainData.description?mainData.description:'18092651095'}}</p>
+				<p style="font-size: 16px;font-weight: bold;">{{csInfo.description}}</p>
 			</div>
 		</div>
 		
@@ -59,11 +59,12 @@
 				searchItem:{
 					title:'客服电话'
 				},
-				mainData:{}
+				csInfo:{}
 	        }
 	    },
 	    created:function () {
 	        var self = this;
+			self.csInfo = window.base.csInfo;
 			var currentUrl = window.base.GetUrlRelativePath();
 		
 			var reg = /\/([^\/]+)\.html/i;
@@ -91,9 +92,21 @@
 			
 				var callback = function(res) {
 					if (res.info.data.length > 0 ) {
-			
-						self.mainData = res.info.data[0]
+						self.csInfo = res.info.data[0];
+						window.base.csInfo = self.csInfo;
+					}else{
+						self.csInfo = {
+							mainImg:[{
+								url:'http://www.solelytech.com/newweb/images/consult.png'
+							}],
+							description:'18092651095'
+						};
+						window.base.csInfo = self.csInfo;
 					};
+					console.log('getMainData')
+					window.base.bus.$emit('infoChannal',{
+						csInfo:self.csInfo
+					});
 				};
 				window.base.labelGet(postData, callback);
 			},

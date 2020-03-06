@@ -5,6 +5,12 @@ window.base = {
 	test: 666,
 	bus: new Vue(),
 	needOnload:[],
+	csInfo:{
+		mainImg:[{
+			url:''
+		}],
+		description:''
+	},
 	getElementToPageTop:function(el) {
 		if(el.parentElement) {
 			/* console.log('el',el);

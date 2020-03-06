@@ -6,42 +6,42 @@
 		</div>
 		<div class="pageW75 indx-myService clearfix">
 			<div class="list left fl">
-				<div class="item flipInX animated">
+				<div class="item slideInLeft animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon8.png" >
 					<img class="arrow" src="images/xian-icon1.png" >
 					<h1>01需求</h1>
 					<p>需求整理、定位分析、可行性分析、功能策划、合同签订</p>
 				</div>
-				<div class="item flipInX animated">
+				<div class="item slideInLeft animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon9.png" >
 					<img class="arrow" src="images/xian-icon1.png" >
 					<h1>02设计</h1>
 					<p>交互设计、视觉创新</p>
 				</div>
-				<div class="item flipInX animated">
+				<div class="item slideInLeft animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon10.png" >
 					<img class="arrow" src="images/xian-icon1.png" >
 					<h1>03技术开发</h1>
 					<p>数据定义、程序编码、程序对接</p>
 				</div>
 			</div>
-			<div class="Mpic fl flipInX animated">
+			<div class="Mpic fl flipInX animated" v-show="topStandard < offsetTopNow">
 				<img src="images/home-img01.png" >
 			</div>
 			<div class="list right fr">
-				<div class="item flipInX animated">
+				<div class="item slideInRight animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon11.png" >
 					<img class="arrow" src="images/xian-icon2.png" >
 					<h1>04测试项目</h1>
 					<p>项目测试、验收测试、运营上线</p>
 				</div>
-				<div class="item flipInX animated">
+				<div class="item slideInRight animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon12.png" >
 					<img class="arrow" src="images/xian-icon2.png" >
 					<h1>05产品上线</h1>
 					<p>环境搭配、系统部署、软件开发</p>
 				</div>
-				<div class="item flipInX animated">
+				<div class="item slideInRight animated" v-show="topStandard < offsetTopNow">
 					<img class="icon" src="images/home-icon12.png" >
 					<img class="arrow" src="images/xian-icon2.png" >
 					<h1>06跟踪服务</h1>
@@ -57,9 +57,22 @@
 	    el: '#OurService',
 	    data:function(){
 	        return {
-	        	is_toggle:false
+	        	is_toggle:false,
+				topStandard:1,
+				offsetTopNow:0,
 	        }
 	    },
+		created:function () {
+		     var self = this;
+				window.base.bus.$on('infoChannal',function(e){
+				
+				if(e.idObject){
+					self.topStandard = e.idObject['OurService']['offsetTopStandard'] + 300;
+				}else if(e.offsetTopNow){
+					self.offsetTopNow = e.offsetTopNow
+				};
+			});
+		},
 	    methods: {
 			
 	    	

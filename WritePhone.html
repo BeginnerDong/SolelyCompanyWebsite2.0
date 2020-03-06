@@ -6,8 +6,10 @@
 				<p class="text">联系纯粹科技，免费提供报价方案，为您增加一份保障</p>
 				<p class="text2">咨询相关问题或预约面谈，可以通过以下联系方式和我联系</p>
 				<div class="B-phone oh">
-					<div class="ll fl"><img class="icon" src="images/home-icon14.png" >{{phone}}</div>
-					<div class="rr fl"><img class="icon" src="images/home-icon15.png" ><img class="ewm" src="images/home-img6.jpg" ></div>
+					<div class="ll fl"><img class="icon" src="images/home-icon14.png" >{{csInfo.description}}</div>
+					<div class="rr fl"><img class="icon" src="images/home-icon15.png" >
+						<img class="ewm" :src="csInfo['mainImg'][0]&&csInfo['mainImg'][0]['url']" >
+					</div>
 				</div>
 			</div>
 			<div class="right fr">
@@ -35,13 +37,18 @@
 					phone:'',
 					content:''
 				},
-				phone:'18092561090'
+				csInfo:{}
 	        }
 	    },
 		
 		created: function() {
 			var self = this;
-			self.phone = localStorage.getItem('phone')
+			self.csInfo = window.base.csInfo;
+			window.base.bus.$on('infoChannal',function(e){
+				if(e.csInfo){
+					self.csInfo = e.csInfo;
+				};
+			});
 		},
 		
 	    methods: {

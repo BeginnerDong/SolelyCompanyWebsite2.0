@@ -52,16 +52,16 @@
 			<!-- 四大类 -->
 			<div id="menuShow" class="pdb60  indx-homeClass white">
 				<ul class="oh ">
-					<li class="fadeInRightBig animated" v-show="menuShow">
+					<li class="fadeInRightBig animated" v-show="idObject['menuShow']['offsetTopStandard'] <offsetTopNow">
 						<div class="text">
-							<h1 class="tit">高端网络建设222</h1>
+							<h1 class="tit">12345高端网络建设222</h1>
 							<p class="avoidOverflow">品牌网站建设</p>
 							<p class="avoidOverflow">企业网站建设</p>
 							<p class="avoidOverflow">是网络建设</p>
 						</div>
 						<img class="icon" src="images/home-icon.png" alt="">
 					</li>
-					<li class="fadeInRightBig animated delay-01" v-show="menuShow">
+					<li class="fadeInRightBig animated delay-01" v-show="idObject['menuShow']['offsetTopStandard'] <offsetTopNow">
 						<div class="text">
 							<h1 class="tit">小程序定制开发</h1>
 							<p class="avoidOverflow">软件平台开发</p>
@@ -70,7 +70,7 @@
 						</div>
 						<img class="icon" src="images/home-icon1.png" alt="">
 					</li>
-					<li class="fadeInRightBig animated delay-02" v-show="menuShow">
+					<li class="fadeInRightBig animated delay-02" v-show="idObject['menuShow']['offsetTopStandard'] <offsetTopNow">
 						<div class="text">
 							<h1 class="tit">APP开发</h1>
 							<p class="avoidOverflow">软件平台开发</p>
@@ -79,7 +79,7 @@
 						</div>
 						<img class="icon" src="images/home-icon2.png" alt="">
 					</li>
-					<li class="fadeInRightBig animated delay-03" v-show="menuShow">
+					<li class="fadeInRightBig animated delay-03" v-show="idObject['menuShow']['offsetTopStandard'] <offsetTopNow">
 						<div class="text">
 							<h1 class="tit">系统定制</h1>
 							<p class="avoidOverflow">品牌网站建设</p>
@@ -104,19 +104,19 @@
 				<div class="right fr center"  id="numShow">
 					<ul class="oh">
 						<li>
-							<h1 class="num animated rubberBand" v-show="numShow">3<em class="">年</em></h1>
+							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">3<em class="">年</em></h1>
 							<p>3年网站建站经验</p>
 						</li>
 						<li>
-							<h1 class="num animated rubberBand" v-show="numShow">800<em class="">+</em></h1>
+							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">800<em class="">+</em></h1>
 							<p>300余技术人员</p>
 						</li>
 						<li>
-							<h1 class="num animated rubberBand" v-show="numShow">3<em class="">年</em></h1>
+							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">3<em class="">年</em></h1>
 							<p>3年网站建站经验</p>
 						</li>
 						<li>
-							<h1 class="num animated rubberBand" v-show="numShow">1300<em class="">+</em></h1>
+							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">1300<em class="">+</em></h1>
 							<p>1300余家企业服务经验</p>
 						</li>
 					</ul>
@@ -125,7 +125,7 @@
 			
 			<!-- 四大框架 -->
 			<div class="strengths white center" id="strengthShow">
-				<ul class="pageW75 clearfix" v-show="strengthShow">
+				<ul class="pageW75 clearfix" v-show="idObject['strengthShow']['offsetTopStandard'] <offsetTopNow">
 					<li class="jackInTheBox animated" :class="item.className"  v-for="(item,index) in strengthsData" :key="index">
 						<img class="icon" :src="item.iconUrl" >
 						<h1 class="tit">{{item.title}}</h1>
@@ -159,7 +159,7 @@
 						<p>Partners</p>
 					</div>
 					<div class="cont clearfix">
-						<ul class="clearfix animated slideInUp" v-show="partnerShow">
+						<ul class="clearfix animated slideInUp" v-show="idObject['partnerShow']['offsetTopStandard'] <offsetTopNow">
 							<li v-for="(item,index) in partnerData" class="flipInY animated" :class="item.className" :key="index"><img :src="item.url" ></li>
 						</ul>
 					</div>
@@ -214,10 +214,37 @@
 					strengthShow:false,
 					partnerShow:false,
 					idArray:['menuShow','numShow','strengthShow','partnerShow'],
+					idObject:{
+						'menuShow':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+						'numShow':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+						'strengthShow':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+						'partnerShow':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+						'swiperBox':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+						'OurService':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+					},
 					offsetTopArray:[],
 					testNum:0,
 					bodyOffsetHeight:0,
-					sameTime:0
+					sameTime:0,
+					offsetTopNow:0
 				}
 			},
 			
@@ -254,14 +281,18 @@
 			
 			methods: {
 				initOffsetTop(){
-					this.offsetTopArray = [];
+					const self = this;
 					this.bodyOffsetHeight =  document.getElementById('app').offsetHeight;
-					for(var i=0;i<this.idArray.length;i++){
-						var res = window.base.getElementToPageTop(document.getElementById(this.idArray[i]));
-						this.offsetTopArray.push(res);
+					for(let key  in self.idObject){
+						if(document.getElementById(key)){
+							var res = window.base.getElementToPageTop(document.getElementById(key));
+							self.idObject[key]['offsetTopStandard'] = res;
+						};
 					};
+					window.base.bus.$emit('infoChannal',{
+						idObject:self.idObject
+					});
 					this.handleScroll();
-					console.log('this.offsetTopArray',this.offsetTopArray);
 				},
 				
 				handleScroll(){
@@ -270,23 +301,14 @@
 					var scrollTop = document.documentElement.scrollTop;
 					var winHeight = window.screen.height;
 					var extra = winHeight*0.3;
-					var testLine = scrollTop + winHeight - extra;
-					/* console.log('scrollTop',scrollTop);
-					console.log('winHeight',winHeight);
-					console.log('extra',extra);
-					console.log('testLine',testLine); */
-					if(testLine < this.offsetTopArray[this.offsetTopArray.length-1]+100){
-						
-						//console.log('self.offsetTopArray',self.offsetTopArray);
-						for(var i=0;i<this.idArray.length;i++){
-							if(testLine>self.offsetTopArray[i]){
-								self[self.idArray[i]] = true;
-							};
-							
-						};
+					if((scrollTop + winHeight - extra)>self.offsetTopNow){
+						self.offsetTopNow = scrollTop + winHeight - extra;
+						window.base.bus.$emit('infoChannal',{
+							offsetTopNow:self.offsetTopNow
+						});
 					};
 					
-					
+
 				},
 				
 				

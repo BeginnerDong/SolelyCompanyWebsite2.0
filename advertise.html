@@ -3,8 +3,8 @@
 		<div class="consult_pc">
 			<div class="consult_top"  >
 				<div class="consult_top_box" >
-					<a href="tel:18092651090" >
-						<img src="images/consult.png">	
+					<a :href="'tel:' + csInfo.description" >
+						<img src="images/consulter.png">	
 					</a>
 				</div>
 			</div>
@@ -24,22 +24,17 @@
 		<div class="consult_phone">
 			<div class="cp_box">
 				<a href="tel:18092651090" >
-					<div class="cp_top">
-						<img src="images/wx_con.png"  >
-					</div>
-					<div class="cp_footer">
-						电话
-					</div>
+					
+						<img src="images/call.png"  >
+					
 				</a>
 				
 			</div>
 			<div class="cp_box" @click="enter('click')">
-				<div class="cp_top">
-					<img src="images/wx_con.png"  >
-				</div>
-				<div class="cp_footer">
-					微信
-				</div>
+				
+				<img src="images/wechat.png"  >
+				
+					
 			</div>
 		</div>
 	</div>
@@ -48,11 +43,11 @@
 		
 		
 		<div style="width: 100%;height: 70%;" style="margin-top: 0;">
-		    <img src="images/qrcode1.jpg"/>
+		    <img :src="csInfo['mainImg'][0]&&csInfo['mainImg'][0]['url']"/>
 		</div>
 		<a  @click="copyUrl2">
 			<p class="sc_bottom">
-				客服微信:18092651090
+				客服微信:{{csInfo.description}}
 				<br>
 				<span style="color: #089fe3;font-size: 12px;" >点击复制微信号</span>
 			</p>
@@ -66,13 +61,19 @@
 		el: '#advertise_app',
 		data: function() {
 			return {
-				wx_show:0
+				wx_show:0,
+				csInfo:{}
 			}
 		},
 
 		created: function() {
 			var self = this;
-		
+			self.csInfo = window.base.csInfo;
+			window.base.bus.$on('infoChannal',function(e){
+				if(e.csInfo){
+					self.csInfo = e.csInfo;
+				};
+			});
 
 		},
 
@@ -214,28 +215,19 @@
 	.consult_phone{
 		display: none;
 		width: 100%;
-		height: 100%;
+		height: 60px;
 	}
 	
 	.cp_box{
-		width: 66px;
-		height: 66px;
+		width:56px;
+		height: 56px;
 		float: left;
 		margin-left: 20px;
-		background: #089fe3;
-		border-radius: 50%;
-		box-shadow: #aebfcc;
+		
 	}
 	
-	.cp_top{
-		width: 100%;
-		height: 40%;
-		padding-top: 20%;
-		text-align: center;
-	}
-	
-	.cp_top img{
-		width: 35px;
+	.cp_box img{
+		width: 55px;
 	}
 	
 	.cp_footer{
@@ -251,7 +243,7 @@
 	@media only screen and (max-width: 500px) {
 		.consult{
 		    width:200px;
-		    height:100px;
+		    height:66px;
 		    position: fixed;
 			bottom:0;
 			left:0;

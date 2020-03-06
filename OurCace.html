@@ -5,10 +5,10 @@
 		<h1 class="mgb20">产品，让客户充分放心</h1>
 		<p>Peoduct，let customers rest assured</p>
 	</div>
-	<div class="cont">
+	<div class="cont animated zoomIn" v-show="topStandard < offsetTopNow">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in mainData">
+				<div class="swiper-slide" v-for="item in mainData" >
 					<a >
 						<img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''">
 						<p>{{item.title}}</p>
@@ -34,14 +34,22 @@
 					pagesize: 8,
 					is_page: true,
 				},
+				topStandard:1,
+				offsetTopNow:0,
 	        }
 	    },
 		
 	    created:function () {
 	         var self = this;
 			 self.getMainData()
-			
-			 
+			window.base.bus.$on('infoChannal',function(e){
+				
+				if(e.idObject){
+					self.topStandard = e.idObject['swiperBox']['offsetTopStandard'] + 300;
+				}else if(e.offsetTopNow){
+					self.offsetTopNow = e.offsetTopNow
+				};
+			});
 	    },
 		
 	    methods: {

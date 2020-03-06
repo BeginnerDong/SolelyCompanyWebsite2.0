@@ -4,12 +4,11 @@
 			<div><img class="logo" src="images/home-img8.png"></div>
 			<div class="infor clearfix">
 				<div class="fl left">
-					<h1 class="ftw">{{phone}}</h1>
+					<h1 class="ftw">{{csInfo.description}}</h1>
 					<p class="fs12"> 地址:西安市雁塔区高新大都荟A座20楼2007</p>
 				</div>
 				<div class="ewmbox fl">
-					<img src="images/home-img7.jpg">
-					<img src="images/home-img7.jpg">
+					<img v-for="item in csInfo.mainImg" :src="item.url">
 				</div>
 			</div>
 		</div>
@@ -38,12 +37,19 @@
 				{name:'天互数据',url:"https://www.idcs.cn/"},
 				{name:'新浪云',url:"https://www.sinacloud.com/"},],
 				copyrightData: ['copyright © 2016 陕ICP备17000262号'],
-				phone:'180-9265-1095'
+				phone:'180-9265-1095',
+				csInfo:{}
 			}
 		},
 
 		created: function() {
 			var self = this;
+			self.csInfo = window.base.csInfo;
+			window.base.bus.$on('infoChannal',function(e){
+				if(e.csInfo){
+					self.csInfo = e.csInfo;
+				};
+			});
 			var currentUrl = window.base.GetUrlRelativePath();
 					
 			var reg = /\/([^\/]+)\.html/i;
