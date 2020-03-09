@@ -86,9 +86,9 @@
 						<p class="tit">网站优势</p>
 						<p class="text color6">专业提供以互联网为基础的信息化系统软件解决方案</p>
 					</div>
-					<div class="website-list fr">
+					<div class="website-list fr" id="websiteShow">
 						<ul class="clearfix">
-							<li class="fadeInRight animated" v-show="websiteShow" v-for="(item,index) in websiteData" :key="index">
+							<li class="fadeInRight animated" v-show="idObject['websiteShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in websiteData" :key="index">
 								<h1>{{item.title}}</h1>
 								<div class="Bfix clearfix">
 									<div class="ll fl">
@@ -194,27 +194,80 @@
 						{title:'优秀的SEO优化',num:'05',iconUrl:'images/web-icon1.png'},
 						{title:'一站式服务',num:'06',iconUrl:'images/web-icon.png'}
 					],
-					websiteShow:false
+					websiteShow:false,
+					idObject:{
+						'websiteShow':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+		
+						'OurService':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
+					},
+					bodyOffsetHeight:0,
+					sameTime:0,
+					offsetTopNow:0
 				}
 			},
 			
 			mounted () {
 			   window.addEventListener('scroll', this.handleScroll)
 			},
-
+			
+			created(){
+				const self = this;
+				window.base.needOnload.push(this.initOffsetTop);
+				window.onload = function(){
+					for(var i=0;i<window.base.needOnload.length;i++){
+						window.base.needOnload[i]();
+					};
+				};
+				self.topInterval =  setInterval(function(){
+					console.log('document.getElementById',document.getElementById('app').offsetHeight)
+					if(self.sameTime==100){
+						clearInterval(self.topInterval);
+						return;
+					};
+					if(self.bodyOffsetHeight==document.getElementById('app').offsetHeight){
+						self.sameTime++;
+						return;
+					};
+					self.initOffsetTop()
+				},500)
+			},
+			
 			methods: {
+				
+				initOffsetTop(){
+					const self = this;
+					this.bodyOffsetHeight =  document.getElementById('app').offsetHeight;
+					for(let key  in self.idObject){
+						if(document.getElementById(key)){
+							var res = window.base.getElementToPageTop(document.getElementById(key));
+							self.idObject[key]['offsetTopStandard'] = res;
+						};
+					};
+					window.base.bus.$emit('infoChannal',{
+						idObject:self.idObject
+					});
+					this.handleScroll();
+				},
 				
 				handleScroll(){
 					const self = this;
 					var scrollTop = document.documentElement.scrollTop;
-					var array = [{name:'websiteShow',scrollTop:300}];
-					for (var i = 0; i < array.length; i++) {
-						if(scrollTop>array[i].scrollTop){
-							self[array[i].name] = true
-						}
+					var winHeight = window.screen.height;
+					var extra = winHeight*0.3;
+					if((scrollTop + winHeight - extra)>self.offsetTopNow){
+						self.offsetTopNow = scrollTop + winHeight - extra;
+						window.base.bus.$emit('infoChannal',{
+							offsetTopNow:self.offsetTopNow
+						});
 					};
 					
-					console.log('scrollTop',scrollTop)
+				
 				},
 
 			}

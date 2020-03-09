@@ -209,11 +209,6 @@
 						{url:'images/partner11.png',className:'delay-11'},
 						{url:'images/partner12.png',className:'delay-12'}
 					],
-					menuShow:false,
-					numShow:false,
-					strengthShow:false,
-					partnerShow:false,
-					idArray:['menuShow','numShow','strengthShow','partnerShow'],
 					idObject:{
 						'menuShow':{
 							'isShow':false,
@@ -240,8 +235,6 @@
 							'offsetTopStandard':0
 						},
 					},
-					offsetTopArray:[],
-					testNum:0,
 					bodyOffsetHeight:0,
 					sameTime:0,
 					offsetTopNow:0
@@ -255,10 +248,6 @@
 			
 			created: function() {
 				var self = this;
-				
-				if(!localStorage.getItem('phone')){
-					self.getPhoneData()
-				};
 				window.base.needOnload.push(this.initOffsetTop);
 				window.onload = function(){
 					for(var i=0;i<window.base.needOnload.length;i++){
@@ -297,7 +286,6 @@
 				
 				handleScroll(){
 					const self = this;
-					self.testNum = 1000;
 					var scrollTop = document.documentElement.scrollTop;
 					var winHeight = window.screen.height;
 					var extra = winHeight*0.3;

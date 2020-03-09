@@ -238,7 +238,7 @@
 						</div> -->
 						<div class="Bcont" >
 							<p>如果您有任何需要 </p>
-							<p>请联系我们：{{phone}}（同微信）</p>
+							<p>请联系我们：{{csInfo.description}}（同微信）</p>
 						</div>
 					</div>
 				</div>
@@ -283,13 +283,27 @@
 					detailId:-1,
 					currentDetail:{},
 					phoneData:{},
-					phone:'18092651095'
+					phone:'18092651095',
+					csInfo:{}
 				}
 			},
+			
+			
 			created: function() {
 				var self = this;
+				window.onload = function(){
+					for(var i=0;i<window.base.needOnload.length;i++){
+						window.base.needOnload[i]();
+					};
+				};
+			
 				self.getLabelData();
-				self.phone = localStorage.getItem('phone')
+				self.csInfo = window.base.csInfo;
+				window.base.bus.$on('infoChannal',function(e){
+					if(e.csInfo){
+						self.csInfo = e.csInfo;
+					};
+				});
 			},
 			
 			methods: {
