@@ -30,7 +30,7 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="">
+			<div class="bannerBack" style="background-image: url('images/banner-img9.png')">
 				<include src="headBanner.html"></include>
 			</div>
 
@@ -42,7 +42,7 @@
 				</div>
 				<div class="clearfix center pageW75 mini-box1" id="whyShow" >
 					<div class="item fadeInDown animated" v-show="idObject['whyShow']['offsetTopStandard'] <offsetTopNow"  :class="item.className" v-for="(item,index) in whyData" :key="index">
-						<img class="icon" :src="item.iconUrl" >
+						<span class="icon"></span>
 						<p>{{item.text}}</p>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 						</div>
 						<div class="item right" id="advantageShow">
 							<div class="child  animated bounceInRight" v-show="idObject['advantageShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in advantageData" :key="index">
-								<img class="icon" :src="item.iconUrl" >
+								<span class="icon"></span>
 								<h1>{{item.title}}</h1>
 								<p>{{item.text}}</p>
 							</div>
@@ -99,15 +99,15 @@
 					indshareLis: [],
 					mainData:[],
 					whyData:[
-						{iconUrl:'images/public-icon.png',text:'接近app的优质体验',className:'delay-01'},
-						{iconUrl:'images/public-icon1.png',text:'天然的社交工具，疯狂裂变',className:'delay-02'},
-						{iconUrl:'images/public-icon2.png',text:'免费的10亿流量共享',className:'delay-03'},
-						{iconUrl:'images/public-icon3.png',text:'小程序的风口已经掀起，大势所趋',className:'delay-04'}
+						{text:'接近app的优质体验',className:'delay-01'},
+						{text:'天然的社交工具，疯狂裂变',className:'delay-02'},
+						{text:'免费的10亿流量共享',className:'delay-03'},
+						{text:'小程序的风口已经掀起，大势所趋',className:'delay-04'}
 					],
 					advantageData:[
-						{iconUrl:'images/the-public-icon6.png',title:'100%定制开发',text:'我们拥有专业的开发团队，核心代码框架100%自研，拒绝模板，拒绝转包。'},
-						{iconUrl:'images/the-public-icon5.png',title:'优秀的产品规划',text:'我们拥有大量的微信产品营销经验，深入了解分销、裂变设计逻辑，针对性地提高产品裂变能力、提升用户体验感，助力您的产品规划。'},
-						{iconUrl:'images/the-public-icon4.png',title:'一站式服务',text:'从域名申请备案，到公众号的认证、微信支付的开通认证，所有相关的资质和准备工作全部交给我们，绝佳的一站式开发体验。'}
+						{title:'100%定制开发',text:'我们拥有专业的开发团队，核心代码框架100%自研，拒绝模板，拒绝转包。'},
+						{title:'优秀的产品规划',text:'我们拥有大量的微信产品营销经验，深入了解分销、裂变设计逻辑，针对性地提高产品裂变能力、提升用户体验感，助力您的产品规划。'},
+						{title:'一站式服务',text:'从域名申请备案，到公众号的认证、微信支付的开通认证，所有相关的资质和准备工作全部交给我们，绝佳的一站式开发体验。'}
 					],
 					whyShow:false,
 					advantageShow:false,

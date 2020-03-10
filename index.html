@@ -20,14 +20,9 @@
 		<link crossorigin="anonymous" integrity="sha384-K6LrEaceM4QP87RzJ7R4CDXcFN4cFW/A5Q7/fEp/92c2WV+woVw9S9zKDO23sNS+" href="https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
 		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
-		<style>
-			.bannerBack{
-				background-image: url("images/banner-img1.jpg");
-				background-repeat: no-repeat;   
-				background-size: 100% 100%;
-				height: 850px;
-			}
-		</style>
+		<!-- <style>
+			
+		</style> -->
 		<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a0365323250827af85f41d3890d1ce53"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
 
 	</head>
@@ -45,7 +40,7 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="bannerBack">
+			<div class="bannerBack" style="background-image: url('images/banner-img2.jpg')">
 				<include src="headBanner.html"></include>
 			</div>
 			
@@ -127,7 +122,7 @@
 			<div class="strengths white center" id="strengthShow">
 				<ul class="pageW75 clearfix" v-show="idObject['strengthShow']['offsetTopStandard'] <offsetTopNow">
 					<li class="jackInTheBox animated" :class="item.className"  v-for="(item,index) in strengthsData" :key="index">
-						<img class="icon" :src="item.iconUrl" >
+						<span class="icon"></span>
 						<h1 class="tit">{{item.title}}</h1>
 						<p class="text">{{item.text}}</p>
 					</li>

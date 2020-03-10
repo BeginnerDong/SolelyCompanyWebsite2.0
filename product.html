@@ -27,7 +27,17 @@
 		.prodcuBox{width: 1400px;box-sizing: border-box;margin: 0 auto;}
 		.productNav{padding-top: 60px; }
 		.productNav .item{width: 25%;float: left;line-height: 40px; vertical-align: middle;font-size: 18px;color: #5c5c5c;padding-bottom: 30px;}
-		.productNav .item .icon{width: 35px;height: 35px;display: initial; vertical-align: middle;}
+		.productNav .item .icon{width: 35px;height: 35px;display: inline-block; vertical-align: middle;background: url(images/pubIcon.png) no-repeat -110px -336px/1100px;}
+		.productNav .item .icon.one{background-position: -110px -336px;}
+		.productNav .item.on .icon.one{background-position: -34px -336px;}
+		.productNav .item .icon.two{background-position: -294px -408px;}
+		.productNav .item.on .icon.two{background-position: -195px -408px;}
+		.productNav .item .icon.three{background-position: -110px -408px;}
+		.productNav .item.on .icon.three{background-position: -34px -408px;}
+		.productNav .item .icon.four{background-position: -294px -336px;}
+		.productNav .item.on .icon.four{background-position: -195px -336px;}
+		
+		
 		.productNav .item.on{position: relative;border-bottom: 1px solid #17ACEE;}
 		.productNav .item.on::after{content: ''; position: absolute;left: 50%;transform: translateX(-50%);bottom: 0; border-top: 10px transparent dashed;border-left: 10px transparent dashed;border-right: 10px transparent dashed;border-bottom: 10px #17ACEE solid;}
 		.pd-class{padding: 30px 0 40px 0;}
@@ -57,7 +67,9 @@
 		.allPages li span{margin: 5px 10px; display: inline-block; cursor: pointer;}
 		.allPages li span.on{color: #17ACEE;position: relative;}
 		.allPages li span.on::after{content: '';width: 15px; height: 2px;background: #17ACEE;position: absolute; bottom: -3px;left: 50%;transform: translateX(-42%);}
-		.allPages li .arrow{width: 13px;height:13px; vertical-align: middle; display: inline-block;padding: 0 10px;}
+		.allPages li span.arrow{width: 16px;height:16px; vertical-align: middle; display: inline-block;background: url(images/pubIcon.png) no-repeat -529px -470px/800px;}
+		.allPages li .next.arrow{background-position: -485px -470px;}
+		
 		
 		.anliTit{padding: 20px 2%;}
 		.anliTit .Btn{width: 120px;line-height: 36px;border: 1px solid #17acee;color: #17acee;border-radius: 5px;display: block; margin: 0px auto;position: relative;}
@@ -102,8 +114,18 @@
 			.productNav {padding-top: 15px;}
 			.productNav .item.on::after{border-top: 6px transparent dashed;border-left: 6px transparent dashed;border-right: 6px transparent dashed;border-bottom: 6px #17ACEE solid;}
 			.productNav .item{font-size: 14px; padding-bottom: 10px;}
-			.productNav .item .icon {width:22px;height: 22px;}
+			.productNav .item .icon {width:22px;height: 22px;background-size: 660px;background-position-y: -200px;}
 			.pd-class {padding: 20px 0 10px 0;}
+			
+			.productNav .item .icon.one{background-position: -64px -200px;}
+			.productNav .item.on .icon.one{background-position: -19px -200px;}
+			.productNav .item .icon.two{background-position: -177px -245px;}
+			.productNav .item.on .icon.two{background-position: -118px -245px;}
+			.productNav .item .icon.three{background-position: -64px -245px;}
+			.productNav .item.on .icon.three{background-position: -19px -245px;}
+			.productNav .item .icon.four{background-position: -177px -200px;}
+			.productNav .item.on .icon.four{background-position: -118px -200px;}
+			
 			.pd-class span{line-height: 30px;width: 22.5%;margin-right: 2%;font-size: 13px;border-radius: 15px 0 15px 0;margin-bottom: 15px;}
 			.pd-class span:nth-child(4n){margin-right: 0;}
 			.prodcutList li{margin-bottom: 20px;}
@@ -157,19 +179,19 @@
 						<!-- 产品导航分类 -->
 						<div class="productNav center clearfix borderB1">
 							<span class="item" :class="curr==1?'on':''" @click="currChange('1')">
-								<img class="icon" :src="curr==1?'images/product-icon.png':'images/product-icon1.png'" >
+								<span class="icon one" :class="curr==1?'on':''"></span>
 								APP
 							</span>
 							<span class="item" :class="curr==2?'on':''" @click="currChange('2')">
-								<img class="icon" :src="curr==2?'images/product-icon3.png':'images/product-icon2.png'" >
+								<span class="icon two" :class="curr==2?'on':''"></span>
 								小程序
 							</span>
 							<span class="item" :class="curr==3?'on':''" @click="currChange('3')">
-								<img class="icon" :src="curr==3?'images/product-icon5.png':'images/product-icon4.png'" >
+								<span class="icon three" :class="curr==3?'on':''"></span>
 								公众号
 							</span>
 							<span class="item" :class="curr==4?'on':''" @click="currChange('4')">
-								<img class="icon" :src="curr==4?'images/product-icon7.png':'images/product-icon6.png'" >
+								<span class="icon four" :class="curr==4?'on':''"></span>
 								网站建设
 							</span>
 						</div>
@@ -195,11 +217,11 @@
 						<!-- 页码 -->
 						<div class="allPages center color6 pdt30">
 							<ul class="clearfix">
-								<li><span class="prev"   @click="changePage('back')"><img class="arrow" src="images/product-icon10.png" ></span></li>
+								<li><span class="prev arrow" @click="changePage('back')"></li>
 								<li>
 									<span v-for="item in pageArray" :class="item == paginate.currentPage?'on':''" :data-page="item" @click="linkTo">{{item}}</span>
 								</li>
-								<li><span class="next"   @click="changePage('next')"><img class="arrow" src="images/product-icon11.png"/></span></li>
+								<li><span class="next arrow" @click="changePage('next')"></li>
 							</ul>
 						</div>
 						

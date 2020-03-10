@@ -1,13 +1,18 @@
 @charset "UTF-8";
 
-
+.mini-box1{height: 166px;}
 .mini-box1 .item{float: left; width: 25%;padding: 0 5%;box-sizing: border-box;}
 .mini-box1 .item:last-child{margin-right:0 ;}
-.mini-box1 .item .icon{width: 90px;height: 90px;display: block;margin: 0 auto;}
+.mini-box1 .item .icon{width: 90px;height: 90px;display: block;margin: 0 auto;background: url(../images/pubIcon.png) no-repeat -9px -611px/750px;}
+.mini-box1 .item:nth-child(1) .icon{background-position-x: -267px;}
+.mini-box1 .item:nth-child(2) .icon{background-position-x: -396px;}
+.mini-box1 .item:nth-child(3) .icon{background-position-x: -9px;}
+.mini-box1 .item:nth-child(4) .icon{background-position-x: -138px;}
+
 .mini-box1 .item p{font-size: 16px;margin-top: 20px;line-height: 24px;line-height: 28px}
 
 /* 我们的优势 */
-.OurAdvantage{padding: 80px 0;background:url(../images/public-img2.png) no-repeat 0 0/100% 100%}
+.OurAdvantage{padding: 80px 0;height: 608px;box-sizing: border-box;background:#f2f1f7;}
 .OurAdvantage .title h1{font-size: 28px;margin-bottom: 10px;}
 .OurAdvantage .title p{font-size: 16px;}
 .OurAdvantage .item{width: 56%;float: left;}
@@ -17,7 +22,10 @@
 
 .OurAdvantage .child{padding-left: 50px;position: relative;padding-bottom: 50px;}
 .OurAdvantage .child:last-child{padding-bottom: 0;}
-.OurAdvantage .child .icon{position: absolute;top: 3px;left:0;width: 30px;height: 30px;}
+.OurAdvantage .child .icon{position: absolute;top: 0px;left:0;width: 30px;height: 30px;background: url(../images/pubIcon.png) no-repeat -338px -260px/850px;}
+.OurAdvantage .child:nth-child(1) .icon{background-position-x: -406px;}
+.OurAdvantage .child:nth-child(2) .icon{background-position-x: -338px;}
+.OurAdvantage .child:nth-child(3) .icon{background-position: -468px -262px;}
 .OurAdvantage .child h1{font-size: 18px;margin-bottom: 10px;font-weight: bold;}
 .OurAdvantage .child p{color: #4a4a4a;}
 
@@ -26,19 +34,35 @@
 }
 
 @media screen and ( max-width:1100px){ 
+	.mini-box1{height: 140px;}
 	.mini-box1 .item{padding: 0 3%;}
-	.mini-box1 .item .icon{width: 75px;height: 75px;}
+	.mini-box1 .item .icon{width: 75px;height: 75px;background-size: 630px;background-position:-8px -514px;}
+	.mini-box1 .item:nth-child(1) .icon{background-position-x: -225px;}
+	.mini-box1 .item:nth-child(2) .icon{background-position-x: -333px;}
+	.mini-box1 .item:nth-child(3) .icon{background-position-x: -8px;}
+	.mini-box1 .item:nth-child(4) .icon{background-position-x: -116px;}
 	.mini-box1 .item p{font-size: 15px;margin: 15px auto 0 auto;}
+	.OurAdvantage{height: 558px;}
 	.OurAdvantage .left img{width: 70%;}
 }
 
-
-@media screen and ( max-width:500px){ 
+@media screen and ( max-width:780px){ 
+	.OurAdvantage{ padding: 65px 0;}
+	.OurAdvantage .item.right{width: 58%;}
+	.OurAdvantage .child{padding-bottom: 30px;}
+}
+@media screen and ( max-width:500px){
+	.mini-box1 {height: 270px;}
 	.mini-box1 .item{width: 50%;height: 135px;}
-	.mini-box1 .item .icon{width: 50px;height: 50px;}
+	.mini-box1 .item .icon{width: 55px;height: 55px;background-size: 450px;background-position:-6px -366px;}
+	.mini-box1 .item:nth-child(1) .icon{background-position-x: -160px;}
+	.mini-box1 .item:nth-child(2) .icon{background-position-x: -238px;}
+	.mini-box1 .item:nth-child(3) .icon{background-position-x: -5px;}
+	.mini-box1 .item:nth-child(4) .icon{background-position-x: -82px;}
 	.mini-box1 .item p{font-size: 14px; line-height: 22px;}
 	
-	.OurAdvantage{padding: 40px 0;}
+	
+	.OurAdvantage{padding: 40px 0;height: 611px;}
 	.OurAdvantage .title{text-align: center;margin-bottom: 15px;}
 	.OurAdvantage .title h1{font-size: 20px; font-weight: bold;}
 	.OurAdvantage .title p{font-size: 14px;}
@@ -46,7 +70,10 @@
 	.OurAdvantage .item.right{float: right;width: 100%;margin-top: 0;}
 	.OurAdvantage .left img{width: 160px;height: auto;margin:10px auto 15px auto;}
 	.OurAdvantage .child{padding-left: 35px;padding-bottom: 15px;}
-	.OurAdvantage .child .icon{width: 25px;height: 25px;}
+	.OurAdvantage .child .icon{width: 25px;height: 25px;background-size:700px;background-position:-6px -216px;}
+	.OurAdvantage .child:nth-child(1) .icon{background-position-x: -335px;}
+	.OurAdvantage .child:nth-child(2) .icon{background-position-x: -278px;}
+	.OurAdvantage .child:nth-child(3) .icon{background-position: -386px -216px;}
 	.OurAdvantage .child h1{font-size: 15px;    margin-bottom: 5px;}
 	.OurAdvantage .child p{font-size: 12px;line-height: 20px;}
 }

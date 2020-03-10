@@ -22,16 +22,26 @@
 	</head>
 	<style type="text/css">
 		.mobile-imgTwo{display: none;}
-		.wecando{padding-bottom: 50px;background: #223061 url(images/web-icon6.png) no-repeat center bottom/100% auto;}
+		.wecando{height: 436px;box-sizing: border-box;padding-bottom: 50px;background: #223061 url(images/web-icon6.png) no-repeat center bottom/100% auto;}
 		.wecando li{float: left;width: 42%;height: 80px;box-sizing: border-box;padding-left: 45px;position: relative;margin-bottom: 30px;}
 		.wecando li:nth-of-type(2n){float: right;}
-		.wecando li .icon{width: 30px;height: 30px;display: block;position: absolute;left: 0;top: 0;}
+		.wecando li .icon{width: 30px;height: 30px;display: block;position: absolute;left: 0;top: 0;background: url(images/pubIcon.png) no-repeat -20px -784px/800px;}
+		.wecando li:nth-child(1) .icon{background-position-x: -18px;}
+		.wecando li:nth-child(2) .icon{background-position-x: -156px;}
+		.wecando li:nth-child(3) .icon{background-position-x: -84px;}
+		.wecando li:nth-child(4) .icon{background-position-x: -229px;}
+		
 		.wecando li h1{font-size: 18px;padding-bottom: 10px;}
 		.wecando li p{line-height: 22px;}
 		@media screen and ( max-width:500px){
 			.wecando{padding-bottom: 10px;}
 			.wecando li{width: 100%;height: auto;padding-left: 40px;}
-			.wecando li .icon{width: 25px;height: 25px;}
+			.wecando li .icon{width: 25px;height: 25px;top: 4px;background-size: 680px;background-position-y: -667px;}
+			.wecando li:nth-child(1) .icon{background-position-x: -16px;}
+			.wecando li:nth-child(2) .icon{background-position-x: -134px;}
+			.wecando li:nth-child(3) .icon{background-position-x: -72px;}
+			.wecando li:nth-child(4) .icon{background-position-x: -194px;}
+			
 			.wecando li h1{font-size: 16px;}
 			.wecando li p{font-size: 12px;}
 			.pc-imgOne{display: none;}
@@ -47,7 +57,7 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="">
+			<div  class="bannerBack" style="background-image: url('images/banner-img4.jpg')">
 				<include src="headBanner.html"></include>
 			</div>
 
@@ -75,7 +85,8 @@
 				<div class="w1200" id="wecandoShow">
 					<ul class="clearfix">
 						<li class="fadeInLeft animated" v-show="idObject['wecandoShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in wecandoData" :key="index">
-							<img class="icon" :src="item.iconUrl" >
+							<!-- <img class="icon" :src="item.iconUrl" > -->
+							<span class="icon"></span>
 							<h1>{{item.title}}</h1>
 							<p>{{item.text}}</p>
 						</li>
@@ -113,10 +124,10 @@
 					indshareLis: [],
 					mainData:[],
 					wecandoData:[
-						{iconUrl:'images/app-icon1.png',title:'专业的技术',text:'尖端思路，可视化思考，视觉设计规范，国际化设计体系'},
-						{iconUrl:'images/app-icon2.png',title:'完善的服务',text:'跨平台开发框架，高效开发，便于迭代'},
-						{iconUrl:'images/app-icon3.png',title:'高端的开发',text:'安全维护，漏洞修复，后台管理培训，技术支持'},
-						{iconUrl:'images/app-icon4.png',title:'安全的善后',text:'源码交付，知识产权所有，提供一年年费售后。'}
+						{title:'专业的技术',text:'尖端思路，可视化思考，视觉设计规范，国际化设计体系'},
+						{title:'完善的服务',text:'跨平台开发框架，高效开发，便于迭代'},
+						{title:'高端的开发',text:'安全维护，漏洞修复，后台管理培训，技术支持'},
+						{title:'安全的善后',text:'源码交付，知识产权所有，提供一年年费售后。'}
 					],
 					wecandoShow:false,
 					idObject:{

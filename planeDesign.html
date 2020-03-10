@@ -28,7 +28,7 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="">
+			<div class="bannerBack" style="background-image: url('images/banner-img11.jpg')">
 				<include src="headBanner.html"></include>
 			</div>
 
@@ -40,7 +40,8 @@
 				</div>
 				<div class="w1000 clearfix center" id="candoShow">
 					<div class="item fadeInDown animated" v-show="idObject['candoShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in candoWhat" :key="index">
-						<img class="icon" :src="item.iconUrl" >
+						<span class="icon"></span>
+						<!-- <img class="icon" :src="item.iconUrl" > -->
 						<h1 class="avoidOverflow">{{item.title}}</h1>
 						<p class="avoidOverflow2">{{item.text}}</p>
 					</div>
@@ -122,12 +123,12 @@
 					indshareLis: [],
 					mainData:[],
 					candoWhat:[
-						{iconUrl:'images/the-plane-icon.png',title:'标志LOGO设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
-						{iconUrl:'images/the-plane-icon1.png',title:'品牌VI设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
-						{iconUrl:'images/the-plane-icon2.png',title:'网站规划设计',text:'优秀的网站设计要能充分吸引访问者的注意力，让访问者产生视觉上的愉悦感'},
-						{iconUrl:'images/the-plane-icon3.png',title:'画册设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
-						{iconUrl:'images/the-plane-icon4.png',title:'包装设计',text:'运用到包装盒美化方面，从市场出发，通过出色的设计，以丰富的策划经验为产品增值'},
-						{iconUrl:'images/the-plane-icon5.png',title:'全案策划设计',text:'全案整合策划，对品牌货企业进行整体包装推广及策略方案，涵盖视觉及推广策略'}
+						{title:'标志LOGO设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
+						{title:'品牌VI设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
+						{title:'网站规划设计',text:'优秀的网站设计要能充分吸引访问者的注意力，让访问者产生视觉上的愉悦感'},
+						{title:'画册设计',text:'为您的企业或品牌进行整体的规划与设计服务，打造强势个性的品牌形象'},
+						{title:'包装设计',text:'运用到包装盒美化方面，从市场出发，通过出色的设计，以丰富的策划经验为产品增值'},
+						{title:'全案策划设计',text:'全案整合策划，对品牌货企业进行整体包装推广及策略方案，涵盖视觉及推广策略'}
 					],
 					proCaseData:[
 						'images/the-plane-img1.jpg',

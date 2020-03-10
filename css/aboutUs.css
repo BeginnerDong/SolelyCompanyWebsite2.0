@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 	/* 关于我们 */
+	.aboutText{min-height:551px;box-sizing: border-box;}
 	.inforText p{font-size: 15px;padding-bottom: 20px;}
 	.introduce {padding-top: 30px;}
 	.introduce .item{float: left;width: 33.3%;box-sizing: border-box;position: relative;}
@@ -10,27 +11,42 @@
 	.introduce .item p{padding-top:15px;color: #999;font-size: 15px;}
 	
 	/* 我们的专业 */
+	.ourMajor{height: 463px;box-sizing: border-box;}
 	.ourMajor .item{float: left;width: 25%;box-sizing: border-box;padding: 0 3%;}
-	.ourMajor .item .icon{width: 90px;height: 78px; display: block;margin: 0 auto;}
+	.ourMajor .item .icon{width: 90px;height: 80px; display: block;margin: 0 auto;background: url(../images/pubIcon.png) no-repeat -520px -50px;}
+	.ourMajor .item:nth-child(1) .icon{background-position-x: -520px;}
+	.ourMajor .item:nth-child(2) .icon{background-position-x: -632px;}
+	.ourMajor .item:nth-child(3) .icon{background-position-x: -745px;}
+	.ourMajor .item:nth-child(4) .icon{background-position-x: -857px;}
+	
 	.ourMajor .item h1{font-size:18px;font-weight: bold;padding:30px 0 15px 0;}
 	.ourMajor .item p{line-height: 26px;color: #999;font-size: 14px;}
 
 
 @media only screen and (max-width: 1050px){
-	.ourMajor .item .icon{width: 55px;height: 48px;}
+	.ourMajor{height: 426px;}
+	.ourMajor .item .icon{width: 53px;height: 50px;background-size: 800px;background-position-y: -28px;}
+	.ourMajor .item:nth-child(1) .icon{background-position-x: -303px;}
+	.ourMajor .item:nth-child(2) .icon{background-position-x: -369px;}
+	.ourMajor .item:nth-child(3) .icon{background-position-x: -435px;}
+	.ourMajor .item:nth-child(4) .icon{background-position-x: -500px;}
+	
 	.ourMajor .item h1 {font-size: 15px;padding: 20px 0 10px 0;}
 	.ourMajor .item p {line-height: 20px;font-size: 14px;}
 }
-
+@media only screen and (max-width: 1050px){
+	.ourMajor{height: 446px;}
+}
 @media only screen and (max-width: 500px){
+	.aboutText{min-height:385px;}
 	.inforText p {font-size: 12px;padding-bottom: 5px;}
 	.introduce .item h1 {font-size: 24px;line-height: 24px;}
 	.introduce .item p{padding-top: 5px;font-size: 13px;}
 	.introduce .item::after{height: 30px;}
 	
-	.ourMajor{padding-bottom: 20px;}
-	.ourMajor .item{width: 50%;height: 160px;margin-bottom: 30px;}
-	.ourMajor .item .icon{width: 55px;height: 48px;}
+	.ourMajor{padding-bottom: 20px;height: 490px;}
+	.ourMajor .item{width: 50%;height: 160px;margin-top: 20px;}
+	/* .ourMajor .item .icon{width: 55px;height: 48px;} */
 	.ourMajor .item h1 {font-size: 14px;padding: 15px 0 5px 0;}
 	.ourMajor .item p {line-height: 20px;font-size: 12px;}
 	

@@ -22,13 +22,14 @@
 	</head>
 	<style type="text/css">
 		/* 服务案例展示 */
-		.swiper-container{width: 100%;height: 100%;padding-bottom: 100px;}
+		.swiperPc{height: 630px;}
+		.swiper-container{width: 100%;height: 100%;padding-bottom: 100px;box-sizing: border-box;}
 		.swiper-slide {width: 30%;text-align: center;font-size: 18px;background: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;transition: 300ms;display: block;box-shadow: 0 0 10px rgba(0,0,0,0.15);}
 		.swiper-slide:not(.swiper-slide-active){transform: scale(0.8);}
 		.swiper-slide img {width: 100%;height: auto;display: block;}
 		.swiper-slide p{padding: 20px 2%;}
 		
-		.website{ background:#f5f5f5 url(images/web-icon6.png) no-repeat center bottom/100% auto;margin: 0 auto; padding: 90px 0 110px 0;box-sizing: border-box;}
+		.website{ background:#f5f5f5 url(images/web-icon6.png) no-repeat center bottom/100% auto;margin: 0 auto; padding: 90px 0 110px 0;box-sizing: border-box;height: 530px;}
 		.website .box{width: 70%;margin: 0 auto;box-sizing: border-box;}
 		.website-title{width: 25%;}
 		.website-list{width: 72%;}
@@ -40,29 +41,54 @@
 		.website-list li .Bfix{position: absolute;left: 30px;right:30px;bottom: 15px;}
 		.website-list li .xian{width:1px;height: 25px;background-color: #d8d8d8;}
 		.website-list li .num{clear: both;font-size: 16px;color: #a8a8a8;}
-		.website-list li .rr .icon{width:35px;height: 35px;display: block;margin-top: 8px;}
+		.website-list li .rr .icon{width:35px;height: 38px;display: block;margin-top: 5px;background: url(images/pubIcon.png) no-repeat -25px -686px/1200px auto;}
+		.website-list li:nth-child(1) .rr .icon{background-position-x: -25px;}
+		.website-list li:nth-child(2) .rr .icon{background-position: -299px -683px;}
+		.website-list li:nth-child(3) .rr .icon{background-position: -95px -682px;}
+		.website-list li:nth-child(4) .rr .icon{background-position-x: -452px;}
+		.website-list li:nth-child(5) .rr .icon{background-position: -390px -691px;}
+		.website-list li:nth-child(6) .rr .icon{background-position-x: -181px;}
 		
+		@media screen and ( max-width:1600px){
+			.swiperPc{height: 585px;}
+		}
 		
 		@media screen and ( max-width:1400px){
 			.website-list li{height: 125px;}
+			.swiperPc{height: 590px;}
 		}
+		@media screen and ( max-width:1366px){
+			.website{height: 500px;}
+			.swiperPc{height:578px;}
+		}
+		@media screen and ( max-width:1280px){
+			.swiperPc{height: 565px;}
+		}
+		
 		@media screen and ( max-width:1100px){
+			.swiperPc{height: 540px;}
 			.website .box{width: 100%;padding: 0 3%;}
 		}
+		@media screen and ( max-width:780px){
+			.swiperPc{height: 495px;}
+		}
 		@media screen and ( max-width:500px){
-			.website{padding: 30px 0;}
+			.website{padding: 30px 0;height: 598px;}
 			.website-title{width: 100%;text-align: center;}
 			.website-title .font{font-size: 16px;}
 			.website-title .tit{font-size: 18px;margin-top: 10px;font-weight: bold;}
 			.website-title .text{margin-top: 10px;}
-			.website-list{width: 96%;margin: 0 auto;padding-top: 30px;float: initial;clear: both;}
+			.website .website-list{width: 96%;margin: 0 auto;padding-top: 30px;float: initial;clear: both;}
 			.website-list li{width: 48%;height: 115px;margin-left: 4%;padding: 15px;}
 			.website-list li:nth-child(2n+1){margin-left: 0;}
 			.website-list li h1{font-size: 14px;}
 			.website-list li .Bfix{left: 15px;right: 15px;bottom:10px}
 			.website-list li .num{font-size: 14px;}
 			.website-list li .xian{height: 20px;}
-			.website-list li .rr .icon{width: 25px;height: 25px;}
+			/* .website-list li .rr .icon{width: 25px;height: 25px;} */
+			
+			.swiperPc{height:280px;}
+			.swiper-container{padding-bottom: 40px;}
 			.swiper-slide p{padding: 15px 2%;font-size: 15px;}
 		}
 	</style>
@@ -75,7 +101,7 @@
 			</div>
 			
 			<!-- banner -->
-			<div class="">
+			<div class="bannerBack" style="background-image: url('images/banner-img1.jpg')">
 				<include src="headBanner.html"></include>
 			</div>
 
@@ -95,7 +121,7 @@
 										<p class="xian"></p>
 										<p class="num">{{item.num}}</p>
 									</div>
-									<div class="rr fr"><img class="icon" :src="item.iconUrl" ></div>
+									<div class="rr fr"><span class="icon"></span></div>
 								</div>
 							</li>
 						</ul>
@@ -104,7 +130,7 @@
 			</div>
 			
 			<!-- 产品，让客户充分放心 -->
-			<div>
+			<div class="swiperPc">
 				<div class="pubTitle center">
 					<h1 class="mgb20">产品，让客户充分放心</h1>
 					<p>Peoduct，let customers rest assured</p>
@@ -187,12 +213,12 @@
 					indshareLis: [],
 					mainData:[],
 					websiteData:[
-						{title:'视觉设计',num:'01',iconUrl:'images/web-icon5.png'},
-						{title:'绝佳的响应式体验',num:'02',iconUrl:'images/web-icon4.png'},
-						{title:'H5/CSS3标准',num:'03',iconUrl:'images/web-icon3.png'},
-						{title:'VUE原创后台管理系统',num:'04',iconUrl:'images/web-icon2.png'},
-						{title:'优秀的SEO优化',num:'05',iconUrl:'images/web-icon1.png'},
-						{title:'一站式服务',num:'06',iconUrl:'images/web-icon.png'}
+						{title:'视觉设计',num:'01'},
+						{title:'绝佳的响应式体验',num:'02'},
+						{title:'H5/CSS3标准',num:'03'},
+						{title:'VUE原创后台管理系统',num:'04'},
+						{title:'优秀的SEO优化',num:'05'},
+						{title:'一站式服务',num:'06'}
 					],
 					websiteShow:false,
 					idObject:{
