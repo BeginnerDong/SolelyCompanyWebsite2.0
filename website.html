@@ -138,37 +138,14 @@
 				<div class="pageW75">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="images/img4.jpg">
-									<p>华汇音响</p>
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="images/img5.jpg">
-									<p>瑞安消防</p>
-								</a>
-							</div>
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="images/img4.jpg">
-									<p>华汇音响</p>
-								</a>	
-							</div>
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="images/img5.jpg">
-									<p>瑞安消防</p>
-								</a>
+							<div class="swiper-slide" v-for="(item,index) in mainData" :key="index">
+								<img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''">
+								<p>{{item.title}}</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- <div class="">
-				<include src="OurCace.html"></include>
-			</div> -->
 			
 			<!-- 服务 -->
 			<div class="">
@@ -210,8 +187,9 @@
 			data: function() {
 				return {
 					is_toggle: false,
+					shownav:true,
+					currentUrl:'',
 					indshareLis: [],
-					mainData:[],
 					websiteData:[
 						{title:'视觉设计',num:'01'},
 						{title:'绝佳的响应式体验',num:'02'},
@@ -234,7 +212,16 @@
 					},
 					bodyOffsetHeight:0,
 					sameTime:0,
-					offsetTopNow:0
+					offsetTopNow:0,
+					mainData:[],
+					paginate:{
+						count: 0,
+						currentPage: 1,
+						pagesize: 12,
+						is_page: true,
+					},
+					topStandard:1,
+					csInfo:{}
 				}
 			},
 			
@@ -245,6 +232,17 @@
 			created(){
 				const self = this;
 				window.base.needOnload.push(this.initOffsetTop);
+				
+				self.getMainData()
+				window.base.bus.$on('infoChannal',function(e){
+					
+					if(e.idObject){
+						self.topStandard = e.idObject['swiperBox']['offsetTopStandard'] + 300;
+					}else if(e.offsetTopNow){
+						self.offsetTopNow = e.offsetTopNow
+					};
+				});
+				
 				window.onload = function(){
 					for(var i=0;i<window.base.needOnload.length;i++){
 						window.base.needOnload[i]();
@@ -295,6 +293,23 @@
 					
 				
 				},
+				getMainData() {
+					const self = this;
+					const postData = {};
+					postData.paginate = window.base.cloneForm(self.paginate);
+					postData.searchItem = {
+						thirdapp_id:2,
+						menu_id:['in',[24,25,26]]
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.mainData.push.apply(self.mainData,res.info.data);
+						} else {
+							window.base.showToast('没有数据');
+						};	
+					};
+					window.base.articleGet(postData, callback);
+				}
 
 			}
 		});
