@@ -130,21 +130,8 @@
 			</div>
 			
 			<!-- 产品，让客户充分放心 -->
-			<div class="swiperPc">
-				<div class="pubTitle center">
-					<h1 class="mgb20">产品，让客户充分放心</h1>
-					<p>Peoduct，let customers rest assured</p>
-				</div>
-				<div class="pageW75">
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide" v-for="(item,index) in mainData" :key="index">
-								<img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''">
-								<p>{{item.title}}</p>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="">
+				<include src="OurCace.html"></include>
 			</div>
 			
 			<!-- 服务 -->
@@ -161,26 +148,7 @@
 		</div>
 	</body>
 	
-	<script type="text/javascript">
-		$(function() {
-			var swiper = new Swiper('.swiper-container', {
-				slidesPerView: 3,
-				slidesPerGroup : 1,
-				spaceBetween: 0,
-				slidesOffsetAfter : 500,
-				centeredSlides: true,
-				observer: true,
-				observeParents: true,
-				initialSlide: 2,
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				}
-			});
 	
-		});
-	</script>
-	<script src="js/swiper.min.js"></script>
 	<script type="text/javascript">
 		var app = new Vue({
 			el: '#app',
@@ -209,6 +177,10 @@
 							'isShow':false,
 							'offsetTopStandard':0
 						},
+						'swiperBox':{
+							'isShow':false,
+							'offsetTopStandard':0
+						},
 					},
 					bodyOffsetHeight:0,
 					sameTime:0,
@@ -233,7 +205,7 @@
 				const self = this;
 				window.base.needOnload.push(this.initOffsetTop);
 				
-				self.getMainData()
+				
 				window.base.bus.$on('infoChannal',function(e){
 					
 					if(e.idObject){
@@ -261,6 +233,8 @@
 					self.initOffsetTop()
 				},500)
 			},
+			
+			
 			
 			methods: {
 				
@@ -293,24 +267,7 @@
 					
 				
 				},
-				getMainData() {
-					const self = this;
-					const postData = {};
-					postData.paginate = window.base.cloneForm(self.paginate);
-					postData.searchItem = {
-						thirdapp_id:2,
-						menu_id:['in',[24,25,26]]
-					};
-					const callback = (res) => {
-						if (res.info.data.length > 0) {
-							self.mainData.push.apply(self.mainData,res.info.data);
-						} else {
-							window.base.showToast('没有数据');
-						};	
-					};
-					window.base.articleGet(postData, callback);
-				}
-
+				
 			}
 		});
 	</script>

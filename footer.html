@@ -96,7 +96,41 @@
 							});
 						});
 					}
-				};
+				}else{
+					if(window.screen.width>760){
+						$(function() {
+							var swiper = new Swiper('.swiper-container', {
+								slidesPerView: 3,
+								slidesPerGroup: 1,
+								spaceBetween: 0,
+								slidesOffsetAfter: 500,
+								centeredSlides: true,
+								observer: true, //修改swiper自己或子元素时，自动初始化swiper
+								observeParents: true, //修改swiper的父元素时，自动初始化swiper
+								initialSlide: 2,
+								pagination: {
+									el: '.swiper-pagination',
+									clickable: true,
+								}
+							});
+						});
+					}else{
+						$(function() {
+							var swiper = new Swiper('.swiper-container', {
+								
+								slidesPerView: 3,
+								slidesPerGroup: 1,
+								spaceBetween: 0,
+								slidesOffsetAfter: 0,
+								centeredSlides: true,
+								observer: true, //修改swiper自己或子元素时，自动初始化swiper
+								observeParents: true, //修改swiper的父元素时，自动初始化swiper
+								initialSlide: 3,
+								
+							});
+						});
+					}
+				}
 				
 				var map = new BMap.Map("dituContent"); // 创建地图实例
 				var point = new BMap.Point(108.899556, 34.243055); // 创建点坐标  

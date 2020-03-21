@@ -46,7 +46,7 @@
 		.pd-class span.on{background-color: #17acee;color: #fff;border-color:#17ACEE ;}
 		
 		/* 产品列表 */
-		.prodcutList{min-height: 200px;}
+		.prodcutList{min-height: 690px;}
 		.prodcutList li{float: left;overflow: hidden;box-shadow: 0 0 10px rgba(0,0,0,0.15);background-color: #fff;text-align: center;margin-bottom: 40px;}
 		.prodcutList li .pic{width: 100%; display: block;}
 		.prodcutList li p{padding: 20px 10px;font-size: 16px;}
@@ -180,11 +180,11 @@
 						<div class="productNav center clearfix borderB1">
 							<span class="item" :class="curr==1?'on':''" @click="currChange('1')">
 								<span class="icon one" :class="curr==1?'on':''"></span>
-								APP
+								小程序
 							</span>
 							<span class="item" :class="curr==2?'on':''" @click="currChange('2')">
 								<span class="icon two" :class="curr==2?'on':''"></span>
-								小程序
+								APP
 							</span>
 							<span class="item" :class="curr==3?'on':''" @click="currChange('3')">
 								<span class="icon three" :class="curr==3?'on':''"></span>
@@ -197,6 +197,8 @@
 						</div>
 						<!-- 产品类别 -->
 						<div class="pd-class clearfix">
+							<span  :class="idTwo==-1?'on':''"
+							@click="classChange(-1)">全部</span>
 							<span v-for="(item,index) in labelTwoData" :class="idTwo==item.id?'on':''" 
 							@click="classChange(item.id)">{{item.title}}</span>
 						</div>
@@ -205,7 +207,7 @@
 						<!-- mobile -->
 						<div class="prodcutList">
 							<ul class="clearfix" :class="curr==4?'proPc':'proMobile'">
-								<li class="fadeInUp animated" v-for="(item,index) in mainData" :key="index">
+								<li class="fadeInUp animated" :class="'delay-0'+(index+1)" v-for="(item,index) in mainData" :key="index">
 									<a @click="detailView(item.id)">
 										<img class="pic" :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"/>
 										<p>{{item.title}}</p>
@@ -414,8 +416,11 @@
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
 							self.labelTwoData.push.apply(self.labelTwoData, res.info.data);
-							
-							self.idTwo = self.labelTwoData[0].id;
+							self.idArray = [];
+							for (var i = 0; i < self.labelTwoData.length; i++) {
+								self.idArray.push(self.labelTwoData[i].id)
+							}
+							self.idTwo = -1;
 							self.getMainData()
 						}
 					};
@@ -430,6 +435,9 @@
 					postData.searchItem = {
 						thirdapp_id:2,
 						menu_id:self.idTwo
+					};
+					if(self.idTwo==-1){
+						postData.searchItem.menu_id = ['in',self.idArray]
 					};
 					const callback = (res) => {
 						if (res.info.data.length > 0) {
