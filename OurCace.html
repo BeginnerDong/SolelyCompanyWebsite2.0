@@ -15,6 +15,11 @@
 			</div>
 		</div>
 	</div>
+	<div style="text-align: center;">
+		<a :href="'tel:'+ csInfo.description" >
+			<p style="font-size: 15px;font-weight: bold;">点击，了解案例详情</p >
+		</a>
+	</div>
 </div>
 <script type="text/javascript">
 	var swiperBox = new Vue({
@@ -33,6 +38,7 @@
 				},
 				topStandard: 1,
 				offsetTopNow: 0,
+				csInfo:{}
 			}
 		},
 
@@ -53,6 +59,10 @@
 					self.topStandard = e.idObject['swiperBox']['offsetTopStandard'] + 300;
 				} else if (e.offsetTopNow) {
 					self.offsetTopNow = e.offsetTopNow
+				};
+				
+				if(e.csInfo){
+					self.csInfo = e.csInfo;
 				};
 			});
 		},
@@ -95,7 +105,7 @@
 <style type="text/css">
 	/* 案例展示 */
 	.CaceSwiper {
-		height: 940px;
+		height: 1010px;
 	}
 
 	.CaceSwiper .cont {
@@ -153,7 +163,7 @@
 
 	@media screen and (max-width:1600px) {
 		.CaceSwiper {
-			height: 839px;
+			height: 900px;
 		}
 
 		.CaceSwiper .cont {
@@ -163,7 +173,7 @@
 
 	@media screen and (max-width:1500px) {
 		.CaceSwiper {
-			height: 789px;
+			height: 860px;
 		}
 
 		.CaceSwiper .cont {
@@ -173,7 +183,7 @@
 
 	@media screen and (max-width:1366px) {
 		.CaceSwiper {
-			height: 766px;
+			height: 840px;
 		}
 
 		.CaceSwiper .cont {
@@ -183,7 +193,7 @@
 
 	@media screen and (max-width:1280px) {
 		.CaceSwiper {
-			height: 740px;
+			height: 820px;
 		}
 
 		.CaceSwiper .cont {
@@ -193,7 +203,7 @@
 
 	@media screen and (max-width:1100px) {
 		.CaceSwiper {
-			height: 700px;
+			height: 780px;
 		}
 
 		.CaceSwiper .cont {
@@ -204,7 +214,7 @@
 
 	@media screen and (max-width:780px) {
 		.CaceSwiper {
-			height: 784px;
+			height: 860px;
 		}
 
 		.swiper-slide {
@@ -219,7 +229,7 @@
 
 	@media screen and (max-width:500px) {
 		.CaceSwiper {
-			height: 445px;
+			height: 520px;
 		}
 
 		.CaceSwiper .cont {
