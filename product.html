@@ -22,8 +22,9 @@
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
 	</head>
 	<style>
-		.proBanner{width: 100%;height: 600px;overflow: hidden;position: relative;}
-		.proBanner img{width: auto;height: 100%;position: absolute;right: 0;top: 0;bottom: 0;}
+		.proBanner{width: 100%;height: 400px;overflow: hidden;position: relative;}
+		.proBanner img{width: auto;height: 100%;position: absolute;left:50%;top: 0;transform: translateX(-50%);}
+		.headH{height: 80px;background: #4e54ff;}
 		.prodcuBox{width: 1400px;box-sizing: border-box;margin: 0 auto;}
 		.productNav{padding-top: 60px; }
 		.productNav .item{width: 25%;float: left;line-height: 40px; vertical-align: middle;font-size: 18px;color: #5c5c5c;padding-bottom: 30px;}
@@ -76,29 +77,29 @@
 		.anliTit .Btn::before{content: '';position: absolute;bottom: -20px;left: 50%;transform: translateX(-50%);border-bottom: 10px transparent dashed;border-left: 10px transparent dashed;border-right: 10px transparent dashed;border-top: 10px #17ACEE solid;}
 		
 		@media only screen and (max-width: 1600px){
-			.proBanner{height: 500px;}
+			.proBanner{height: 370px;}
 			.prodcuBox{width: 1200px;}
 			.prodcutList .proMobile li .pic{height: 501px;}
 			.prodcutList .proPc li .pic{height: 324px;}
 		}
 		
 		@media only screen and (max-width: 1440px){
-			.proBanner{height:450px;}
+			.proBanner{height:350px;}
 			.prodcuBox{width: 1100px;}
 			.prodcutList .proMobile li .pic{height: 460px;}
 			.prodcutList .proPc li .pic{height: 297px;}
 		}
 		@media only screen and (max-width: 1366px){
-			.proBanner{height:426px;}
+			.proBanner{height:325px;}
 		}
 		@media only screen and (max-width: 1050px){
-			.proBanner{height:320px;}
+			.proBanner{height:240px;}
 			.prodcuBox{width: 100%;padding: 0 3% 50px 3%;}
 			.prodcutList .proMobile li .pic{height: 402px;}
 			.prodcutList .proPc li .pic{height: 259px;}
 		}
 		@media only screen and (max-width: 768px){
-			.proBanner{height:240px;}
+			.proBanner{height:180px;}
 			.prodcutList{min-height: 100px;}
 			.productNav {padding-top: 40px;}
 			.productNav .item{font-size: 16px;    padding-bottom: 20px;}
@@ -110,7 +111,7 @@
 		}
 		
 		@media only screen and (max-width: 500px){
-			.proBanner{height:160px;}
+			.proBanner{height:115px;}
 			.productNav {padding-top: 15px;}
 			.productNav .item.on::after{border-top: 6px transparent dashed;border-left: 6px transparent dashed;border-right: 6px transparent dashed;border-bottom: 6px #17ACEE solid;}
 			.productNav .item{font-size: 14px; padding-bottom: 10px;}
@@ -139,15 +140,17 @@
 			
 		}
 		@media only screen and (max-width: 414px){
+			.proBanner{height:110px;}
 			.prodcutList .proMobile li .pic{height: 332px;}
 			.prodcutList .proPc li .pic{height: 105px;}
 		}
 		@media only screen and (max-width: 375px){
-			
+			.proBanner{height:95px;}
 			.prodcutList .proMobile li .pic{height: 300px;}
 			.prodcutList .proPc li .pic{height: 95px;}
 		}
 		@media only screen and (max-width: 320px){
+			.proBanner{height:85px;}
 			.prodcutList .proMobile li .pic{height: 257px;}
 			.prodcutList .proPc li .pic{height: 81px;}
 		}
@@ -165,11 +168,10 @@
 				<div class="">
 					<include src="header.html"></include>
 				</div>
-				
 				<!-- banner -->
-				<!-- <div >
+				<div class="proBanner">
 					<img src="images/banner.png" >
-				</div> -->
+				</div>
 				<!-- <div class="">
 					<include src="headBanner.html"></include>
 				</div> -->
