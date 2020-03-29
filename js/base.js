@@ -1123,7 +1123,7 @@ window.base = {
 	addClass: function(){
 		setTimeout(function() {
 			$("#showToast").addClass("fadeOutRight"); //添加样式
-		}, 4000);
+		}, 10000);
 		$("#showToast").removeClass("fadeOutRight")
 		
 		
@@ -1131,7 +1131,7 @@ window.base = {
 	
 	
 
-	hideToast() {
+	hideToast: function() {
 		var code = document.getElementById("showToast");
 		code.parentNode.removeNode(element);
 	},

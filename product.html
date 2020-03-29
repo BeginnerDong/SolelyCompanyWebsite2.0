@@ -336,7 +336,7 @@
 				
 				
 				
-				detailView(id){
+				detailView:function(id){
 					const self = this;
 					self.detailId = id;
 					if(id>0){
@@ -351,7 +351,7 @@
 					
 				},
 				
-				currChange(curr){
+				currChange:function(curr){
 					const self = this;
 					if(curr!=self.curr){
 						self.curr = curr;
@@ -362,7 +362,7 @@
 					}
 				},
 				
-				classChange(id){
+				classChange:function(id){
 					const self = this;
 					if(id!=self.idTwo){
 						self.idTwo = id
@@ -430,7 +430,7 @@
 				},
 				
 				
-				getMainData() {
+				getMainData:function() {
 					const self = this;
 					const postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
@@ -441,7 +441,7 @@
 					if(self.idTwo==-1){
 						postData.searchItem.menu_id = ['in',self.idArray]
 					};
-					const callback = (res) => {
+					const callback = function(res){
 						if (res.info.data.length > 0) {
 							self.mainData.push.apply(self.mainData,res.info.data);
 							self.paginate['count'] = res.info.total;
@@ -455,14 +455,14 @@
 				
 				
 				
-				linkTo(e) {
+				linkTo:function(e) {
 					var self = this;
 					console.log(e);
 					self.linkPage = window.base.getDataSet(e).page;
 					window.base.linkTo(self);
 				},
 				
-				changePage(type) {
+				changePage:function(type) {
 					var self = this;
 					var dataSet = type;
 					console.log(3432432,dataSet)

@@ -205,13 +205,13 @@
 				},500)
 			},
 			
-			mounted () {
+			mounted: function () {
 			   window.addEventListener('scroll', this.handleScroll)
 			},
 			
 			methods: {
 				
-				initOffsetTop(){
+				initOffsetTop: function(){
 					const self = this;
 					this.bodyOffsetHeight =  document.getElementById('app').offsetHeight;
 					for(let key  in self.idObject){
@@ -226,9 +226,9 @@
 					this.handleScroll();
 				},
 				
-				handleScroll(){
+				handleScroll: function(){
 					const self = this;
-					var scrollTop = document.documentElement.scrollTop;
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 					var winHeight = window.screen.height;
 					var extra = winHeight*0.3;
 					if((scrollTop + winHeight - extra)>self.offsetTopNow){
@@ -237,8 +237,6 @@
 							offsetTopNow:self.offsetTopNow
 						});
 					};
-					
-				
 				},
 
 			}

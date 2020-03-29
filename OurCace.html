@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div style="text-align: center;">
-		<a :href="'tel:'+ csInfo.description" >
+		<a @click="caseCall" >
 			<p style="font-size: 15px;font-weight: bold;">点击，了解案例详情</p >
 		</a>
 	</div>
@@ -70,9 +70,14 @@
 		methods: {
 
 
+			caseCall:function(){
+				const self = this;
+				window.base.bus.$emit('infoChannal',{
+					funcName:'call'
+				});
+			},
 
-
-			getMainData() {
+			getMainData: function() {
 				const self = this;
 				const postData = {};
 				postData.paginate = window.base.cloneForm(self.paginate);
@@ -88,7 +93,7 @@
 				}else if(self.currentUrl=='/app.html'){
 					postData.searchItem.menu_id =  ['in', [14,15,16,17,18,19,20,21,22,23]]
 				}
-				const callback = (res) => {
+				const callback =  function(res){
 					if (res.info.data.length > 0) {
 						self.mainData.push.apply(self.mainData, res.info.data);
 					} else {

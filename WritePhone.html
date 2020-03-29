@@ -71,7 +71,7 @@
 				var postData = {
 					data:window.base.cloneForm(self.submitData)
 				};
-				var callback = (res) => {
+				var callback = function(res){
 					if(res.solely_code==100000){
 						window.base.showToast('提交成功，稍后会有专门的业务经理联系您')
 					}

@@ -33,9 +33,14 @@
 		el: '#footer_app',
 		data: function() {
 			return {
-				samNavData: [{name:'百度智能云',url:"https://cloud.baidu.com/"}, 
-				{name:'天互数据',url:"https://www.idcs.cn/"},
-				{name:'新浪云',url:"https://www.sinacloud.com/"},],
+				samNavData: [
+					{name:'百度智能云',url:"https://cloud.baidu.com/"}, 
+					{name:'天互数据',url:"https://www.idcs.cn/"},
+					{name:'新浪云',url:"https://www.sinacloud.com/"},
+					{name:'微信官方文档',url:"https://developers.weixin.qq.com/"},
+					{name:'阿里云',url:"https://www.aliyun.com/"},
+					{name:'中软国际',url:"http://www.chinasofti.com/"},
+				],
 				copyrightData: ['copyright © 2016 陕ICP备17000262号'],
 				phone:'180-9265-1095',
 				csInfo:{}
@@ -152,14 +157,14 @@
 
 		methods: {
 			
-			addVisitorInfo(address) {
+			addVisitorInfo:function(address) {
 				var self = this;
 				var postData = {
 					address:address,
 					thirdapp_id:2,
 					visitor_url:self.currentUrl
 				};
-				var callback = (res) => {
+				var callback =  function(res){
 					if(res.solely_code==100000){
 						
 					}else{

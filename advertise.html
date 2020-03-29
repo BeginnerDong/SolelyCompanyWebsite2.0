@@ -4,12 +4,12 @@
 			<div class="consult_top"  >
 				<div class="consult_top_box">
 					<span style="position: absolute;position: absolute;top: 56%;left: 47%;color:black;font-size:15px; font-weight: 700;">{{csInfo.description}}</span>
-					<a :href="'tel:' + csInfo.description" >
+					<a @click="call" >
 						<img src="images/consulter.png">	
 					</a>
 				</div>
 			</div>
-			<div class="consult_bottom" @mouseover="enter(1)" @mouseout="enter(0)">
+			<div class="consult_bottom" @mouseover="open()" @mouseout="close()">
 				<div class="consult_bottom_box">
 					<div class="cbb_top">
 						<img src="images/wx_con.png" style="width: 70%;" >
@@ -24,14 +24,12 @@
 		
 		<div class="consult_phone">
 			<div class="cp_box">
-				<a href="tel:18092651090" >
-					
-						<img src="images/call.png"  >
-					
+				<a :href="'tel:'+csInfo.description" >
+					<img src="images/call.png"  >
 				</a>
 				
 			</div>
-			<div class="cp_box" @click="enter('click')">
+			<div class="cp_box" @click="open()">
 				
 				<img src="images/wechat.png"  >
 				
@@ -41,14 +39,16 @@
 	</div>
 	
 	<div class="show_card" :class="wx_show == 1?'contact_show':'contact_hidden'">
-		
+		<div @click="close" style="position: absolute;right: 10px;top: 5px;">
+			<img src="./images/close.png" style="width:25px;height:25px;" />
+		</div>
 		
 		<div style="width: 100%;height: 70%;" style="margin-top: 0;">
 		    <img :src="csInfo['mainImg'][0]&&csInfo['mainImg'][0]['url']"/>
 		</div>
 		<a  @click="copyUrl2">
 			<p class="sc_bottom">
-				客服微信:{{csInfo.description}}
+				微信/电话:{{csInfo.description}}
 				<br>
 				<span style="color: #089fe3;font-size: 12px;" >点击复制微信号</span>
 			</p>
@@ -74,36 +74,29 @@
 				if(e.csInfo){
 					self.csInfo = e.csInfo;
 				};
+				if(e.funcName=='call'){
+					self.call();
+				};
 			});
-
 		},
 
 		methods: {
 			
-			enter:function(index) {
+			call:function() {
 			    var self = this;
-				if(index=='click'){
-					if(self.wx_show==0){
-						self.wx_show = 1;
-					}else{
-						self.wx_show = 0;
-					};
-					return;
-				};
-				console.log('index',index);
-				console.log('self.wx_show',self.wx_show)
-			    var cursorId = index;
-			    self.wx_show =cursorId;
-			},
-			phoneMarketing:function(index){
-				var self = this;
-				if(index==self.wx_show){
-					self.wx_show = 2;
+				if(window.screen.width<800){
+					window.location.href = "tel://"+self.csInfo.description;
 				}else{
-					self.wx_show = index;
-				}
-				
-				console.log('self.wx_show',self.wx_show)
+					self.open();
+				};
+			},
+			open:function() {
+			    var self = this;
+				self.wx_show = 1;	
+			},
+			close:function() {
+			    var self = this;
+				self.wx_show = 0;
 			},
 			
 			copyUrl2:function(){
