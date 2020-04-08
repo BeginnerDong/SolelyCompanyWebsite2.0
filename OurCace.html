@@ -1,26 +1,29 @@
-<div id="swiperBox" :class="currentUrl=='/website.html'?'swiperPc':'CaceSwiper'">
-	<div class="pubTitle center">
-		<h1 class="mgb20">产品，让客户充分放心</h1>
-		<p>Peoduct，let customers rest assured</p>
-	</div>
-	<div class=" animated zoomIn" :class="currentUrl=='/website.html'?'pageW75':'cont'" v-show="topStandard < offsetTopNow">
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in mainData">
-					<a>
-						<img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''">
-						<p>{{item.title}}</p>
-					</a>
+<div id="swiperBox">
+	<div  :class="currentUrl=='/website.html'?'swiperPc':'CaceSwiper'">
+		<div class="pubTitle center">
+			<h1 class="mgb20">产品，让客户充分放心</h1>
+			<p>Peoduct，let customers rest assured{{topStandard}}</p>
+		</div>
+		<div class=" animated zoomIn" :class="currentUrl=='/website.html'?'pageW75':'cont'" v-show="topStandard < offsetTopNow">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" v-for="item in mainData">
+						<a @click="caseCall">
+							<img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''">
+							<p>{{item.title}}</p>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div style="text-align: center;">
-		<a @click="caseCall" >
-			<p style="font-size: 15px;font-weight: bold;">点击，了解案例详情</p >
-		</a>
+		<div style="text-align: center;">
+			<a @click="caseCall" >
+				<p style="font-size: 15px;font-weight: bold;">点击，了解案例详情</p >
+			</a>
+		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 	var swiperBox = new Vue({
 		el: '#swiperBox',
@@ -56,9 +59,9 @@
 			window.base.bus.$on('infoChannal', function(e) {
 
 				if (e.idObject) {
-					self.topStandard = e.idObject['swiperBox']['offsetTopStandard'] + 300;
+					self.topStandard = e.idObject['swiperBox']['offsetTopStandard'];
 				} else if (e.offsetTopNow) {
-					self.offsetTopNow = e.offsetTopNow
+					self.offsetTopNow = e.offsetTopNow;
 				};
 				
 				if(e.csInfo){

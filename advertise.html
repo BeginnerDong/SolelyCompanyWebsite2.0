@@ -3,13 +3,13 @@
 		<div class="consult_pc">
 			<div class="consult_top"  >
 				<div class="consult_top_box">
-					<span style="position: absolute;position: absolute;top: 56%;left: 47%;color:black;font-size:15px; font-weight: 700;">{{csInfo.description}}</span>
+					<span style="position: absolute;position: absolute;top: 53%;left: 15%;color:black;font-size:15px; font-weight: 700;">{{csInfo.description}}</span>
 					<a @click="call" >
-						<img src="images/consulter.png">	
+						<img style="width: 100%;" src="images/consulter.png">	
 					</a>
 				</div>
 			</div>
-			<div class="consult_bottom" @mouseover="open()" @mouseout="close()">
+			<div class="consult_bottom" @mouseover="open()" >
 				<div class="consult_bottom_box">
 					<div class="cbb_top">
 						<img src="images/wx_con.png" style="width: 70%;" >
@@ -27,13 +27,9 @@
 				<a :href="'tel:'+csInfo.description" >
 					<img src="images/call.png"  >
 				</a>
-				
 			</div>
 			<div class="cp_box" @click="open()">
-				
 				<img src="images/wechat.png"  >
-				
-					
 			</div>
 		</div>
 	</div>
@@ -122,8 +118,8 @@
 	    width:230px;
 	    height:400px;
 	    position: fixed;
-		bottom:20%;
-		right:0;
+		bottom:30%;
+		left:0.5%;
 		z-index: 999;
 	}
 	.consult_pc{
@@ -137,8 +133,8 @@
 		text-align: right;
 	}
 	.consult_top_box{
-		width: 60%;
-		margin-left: 30%;
+		width: 70%;
+		margin-right: 30%;
 		height: 100%;
 	}
 	.consult_bottom{
@@ -150,7 +146,7 @@
 		width: 80px;
 		height: 80px;
 		background: #089fe3;
-		margin-left: 60%;
+		margin-right: 60%;
 		border-radius: 10%;
 		box-shadow: #aebfcc;
 	}
@@ -183,6 +179,7 @@
 		text-align: center;
 		border-radius: 5%;
 		box-shadow:2px 2px 5px #333333;
+		z-index: 999999;
 	}
 	
 	.sc_bottom{
@@ -264,7 +261,7 @@
 			-webkit-transition:all 0.5s;
 			text-align: center;
 			
-			z-index: 999;
+			
 		}
 		
 		.show_card img{

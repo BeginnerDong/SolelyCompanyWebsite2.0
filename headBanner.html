@@ -1,4 +1,4 @@
-<div id="banner_app" class="pubHeadBanner">
+<div id="banner_app" class="pubHeadBanner" >
 	<div class="banner clearfix" v-for="(item,index) in bannerData" v-show="index==banner_index" style="height:100%">
 		<!-- <img class="pic" :src="item.mainImg" /> -->
 		<div class="animated bounceInLeft banner-mainTitle" style="z-index: 99;">
@@ -39,7 +39,7 @@
 					'/mini.html': '小程序轮播字',
 					'/website.html': '网站开发轮播字',
 					'/app.html': 'APP开发轮播字',
-					'/planeDesign.html': '平面设计轮播字',
+					'/design.html': '平面设计轮播字',
 					'/product.html': '产品轮播字',
 					'/aboutUs.html': '关于我们轮播字'
 				}
@@ -48,7 +48,6 @@
 		created: function() {
 			var self = this;
 			var currentUrl = window.base.GetUrlRelativePath();
-
 			var reg = /\/([^\/]+)\.html/i;
 			if (reg.exec(currentUrl) && reg.exec(currentUrl)[0]) {
 				self.currentUrl = reg.exec(currentUrl)[0];
@@ -112,7 +111,7 @@
 						small_title:''
 					}
 				]
-			} else if (self.currentUrl == '/planeDesign.html') {
+			} else if (self.currentUrl == '/design.html') {
 				self.bannerData = [{
 						mainImg: 'images/banner-img9.png',
 						samllIcon: 'images/banner-img17.png',
@@ -141,7 +140,8 @@
 					}
 				]
 			} else if (self.currentUrl == '/aboutUs.html') {
-				self.bannerData = [{
+				self.bannerData = [
+					{
 						mainImg: 'images/banner-img7.png',
 						samllIcon: 'images/banner-img21.png',
 						title:'',
@@ -191,14 +191,12 @@
 									self.bannerData[i].title = res.info.data[0]['child'][j].title
 									self.bannerData[i].small_title = res.info.data[0]['child'][j].description
 								}
-								
 							}
 						};
 					};
-					setTimeout(function(){
+					setInterval(function(){
 						self.changeBanner('+');
-					},3000);
-					console.log('2323', self.bannerData)
+					},10000);
 				};
 				window.base.labelGet(postData, callback);
 			},
@@ -240,6 +238,7 @@
 		height: 850px;
 		overflow: hidden;
 		position: relative;
+		
 	}
 
 	#banner_app .banner {

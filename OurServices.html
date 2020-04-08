@@ -68,7 +68,7 @@
 				window.base.bus.$on('infoChannal',function(e){
 				
 				if(e.idObject){
-					self.topStandard = e.idObject['OurService']['offsetTopStandard'] + 300;
+					self.topStandard = e.idObject['OurService']['offsetTopStandard'];
 				}else if(e.offsetTopNow){
 					self.offsetTopNow = e.offsetTopNow
 				};

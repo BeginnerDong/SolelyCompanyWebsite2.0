@@ -1,0 +1,8 @@
+/* TEAM */
+开发人员：纯粹科技
+网站： solelytech.com
+电子邮件: 524061853@qq.com
+
+/* SITE */
+最后更新: 2019/04/13
+语言： HTML5、CSS3、javascript
