@@ -18,11 +18,49 @@
 		<link type="text/css" rel="stylesheet" href="css/public.css">
 		<link rel="stylesheet" type="text/css" href="css/mini.css">
 		<link rel="stylesheet" type="text/css" href="css/wxParse.css">
+		<link rel="stylesheet" type="text/css" href="css/advantage.css">
 		<link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
 		<link crossorigin="anonymous" integrity="sha384-K6LrEaceM4QP87RzJ7R4CDXcFN4cFW/A5Q7/fEp/92c2WV+woVw9S9zKDO23sNS+" href="https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
 		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=M9C0DhYUo81Io76oZlaPQ1xoZcycRqwB"></script>
 		<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a0365323250827af85f41d3890d1ce53"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+		<style type="text/css">
+			#OurService .bjgayf5{background: #fff;}
+			.schemeBox{width: 100%;/* height:1000px ; */box-sizing: border-box;background: url(images/the-publicl-img1.jpg) no-repeat center 0/auto 100%;}
+			.schemeBox .infor{width: 1034px;margin: 65px auto 0 auto;}
+			.schemeBox .infor .child{width: 33.33%;height:626px;position: relative; float: left;}
+			/* .schemeBox .infor .iconBox{height: 626px;} */
+			.schemeBox .infor .iconBox img{width: auto;height: 100%;display: block; margin: 0 auto;}
+			.schemeBox .infor .M{position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);text-align: center;}
+			.schemeBox .infor .M p{font-size: 22px;margin-top: 20px;}
+			.schemeBox .infor .M img{width: 230px;height: auto;margin: 0 auto; display: block;}
+			/* .schemeBox .infor .M{width: 300px;height: 300px;border-radius: 50%;background: #ade7fd;} */
+			
+			@media screen and ( max-width:1450px){
+				.schemeBox .infor .child{height: 520px;}
+				.schemeBox .infor {width: 880px;margin: 20px auto 0 auto;}
+			}
+			
+			@media screen and ( max-width:1024px){
+				.schemeBox .infor .child{height: 430px;}
+				.schemeBox .infor {width: 720px;margin: 5px auto 0 auto;}
+			}
+			@media screen and ( max-width:768px){
+				.schemeBox .infor .child{height: 280px;}
+				.schemeBox .infor {width: 550px;margin: -10px auto 0 auto;}
+				.schemeBox .infor .M img{width: 155px;}
+				.schemeBox .infor .M p {font-size: 16px;margin-top: 10px;}
+			}
+			@media screen and ( max-width:500px){
+				.schemeBox .infor{width: 300px;}
+				.schemeBox .infor .child{width:44%;height: 215px;}
+				.schemeBox .infor .child.iconBox{width: 28%;}
+				.schemeBox .infor .M img{width: 120px;}
+				.schemeBox .infor .M p {font-size: 15px;margin-top: 10px;}
+				
+			}
+			
+		</style>
 	</head>
 
 	<body>
@@ -45,14 +83,16 @@
 				</div>
 				<div class="clearfix center pageW75 mini-box1" id="whyShow" >
 					<div class="item fadeInDown animated" v-show="idObject['whyShow']['offsetTopStandard'] <offsetTopNow"  :class="item.className" v-for="(item,index) in whyData" :key="index">
-						<span class="icon"></span>
+						<!-- <span class="icon"></span> -->
+						<img class="icon" :src="item.iconUrl" >
+						<div class="title">{{item.title}}</div>
 						<p>{{item.text}}</p>
 					</div>
 				</div>
 			</div>
 			
 			<!-- 我们的优势 -->
-			<div class="OurAdvantage">
+			<!-- <div class="OurAdvantage">
 				<div class="pageW75">
 					<div class="title">
 						<h1 class="">我们的优势</h1>
@@ -71,11 +111,58 @@
 						</div>
 					</div>
 				</div>
+			</div> -->
+			
+			<div class="changeBox3 pdb100 bjgayf5" >
+				<div class="pageW75">
+					<div class="pubTitle center">
+						<h1 class="mgb20">我们的优势</h1>
+						<p>Our advantage</p>
+					</div>
+					<div class="clearfix center cont" id="advantageShow">
+						<div class="left fl animated bounceInLeft">
+							<img src="images/public-img.png" >
+						</div>
+						<div class="clearfix right fr">
+							<div class="item animated bounceInRight"  v-for="(item,index) in advantageData" :key="index" v-show="idObject['advantageShow']['offsetTopStandard'] <offsetTopNow">
+								<img class="icon" :src="item.iconUrl" alt="">
+								<h1>{{item.title}}</h1>
+								<p>{{item.text}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			
 			
 			<!-- 产品，让客户充分放心 -->
 			<div class="">
 				<include src="OurCace.html"></include>
+			</div>
+			
+			<div class="schemeBox pdb100">
+				<div class="pageW75">
+					<div class="pubTitle center">
+						<h1 class="mgb20">全行业小程序+公众号解决方案</h1>
+						<p>10年产品开发经验，国内外最新技术水平</p>
+					</div>
+					<div class="clearfix center cont">
+						<div class="infor clearfix">
+							<div class="child iconBox fl">
+								<img src="images/the-publicl-img4.png" >
+							</div>
+							<div class="child fl">
+								<div class="M">
+									<img src="images/the-publicl-img2.png" >
+									<p>解决方案</p>
+								</div>
+							</div>
+							<div class="child iconBox fl">
+								<img src="images/the-publicl-img5.png" >
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			<!-- 服务 -->
@@ -105,10 +192,10 @@
 					indshareLis: [],
 					mainData:[],
 					whyData:[
-						{text:'接近app的优质体验',className:'delay-01'},
-						{text:'天然的社交工具，疯狂裂变',className:'delay-02'},
-						{text:'免费的10亿流量共享',className:'delay-03'},
-						{text:'小程序的风口已经掀起，大势所趋',className:'delay-04'}
+						{iconUrl:'images/the-publicl-icon.png',title:'新型营销方式',text:'线上线下一体化营销，帮您快速实现流量变现。',className:'delay-01'},
+						{iconUrl:'images/the-publicl-icon1.png',title:'快速引流获客',text:'10亿流量转化、60+流量入口、让客户快速发现你',className:'delay-02'},
+						{iconUrl:'images/the-publicl-icon2.png',title:'高效提升付费转化',text:'产品体验更流畅，极大程度降低转化时用户流失',className:'delay-03'},
+						// {text:'小程序的风口已经掀起，大势所趋',className:'delay-04'}
 					],
 					advantageData:[
 						{title:'100%定制开发',text:'我们拥有专业的开发团队，核心代码框架100%自研，拒绝模板，拒绝转包。'},
@@ -117,6 +204,17 @@
 					],
 					whyShow:false,
 					advantageShow:false,
+					advantageData:[
+						{iconUrl:"images/the-publicl-icon3.png",title:"100%定制开发"},
+						{iconUrl:"images/the-publicl-icon4.png",title:"稳定的前沿技术框架"},
+						{iconUrl:"images/the-publicl-icon5.png",title:"1000+客户产品规划经验"},
+						{iconUrl:"images/the-publicl-icon6.png",title:"详尽且极具竞争力的报价"},
+						{iconUrl:"images/the-publicl-icon7.png",title:"一站式服务"},
+						{iconUrl:"images/the-publicl-icon8.png",title:"5道测试环节力保质量"},
+						{iconUrl:"images/the-publicl-icon9.png",title:"信守工期延期赔付"},
+						{iconUrl:"images/the-publicl-icon10.png",title:"7*24售后临时待命"}
+						
+					],
 					idObject:{
 						'whyShow':{
 							'isShow':false,

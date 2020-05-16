@@ -1,0 +1,42 @@
+
+/* 我们的优势 */
+.changeBox3 .left{width: 25%;}
+.changeBox3 .left img{width: 100%;height: auto; display: block;}
+.changeBox3 .right{width: 70%;height: 400px;}
+.changeBox3 .right .item{float: left;width: 25%;height: 160px;padding:0px 4%;box-sizing: border-box;margin-bottom: 60px;}
+.changeBox3 .item .icon{width: 70px;height: 70px;display: block;margin: 0 auto;}
+.changeBox3 .item h1{font-size: 18px;padding-top:20px;line-height: 30px;}
+
+@media screen and ( max-width:1450px){
+	.changeBox3 .left{width: 30%;}
+	.changeBox3 .right{width:65%;}
+	.changeBox3 .right .item{height:145px ;}
+	.changeBox3 .item .icon{width:55px;height:55px;}
+	.changeBox3 .item h1{font-size: 16px;padding-top:15px;}
+}
+
+@media screen and ( max-width:1366px){
+	.changeBox3 .right{height: 320px;}
+	.changeBox3 .right .item{height:100px ;}
+	.changeBox3 .item .icon{width: 45px;height: 45px;}
+	.changeBox3 .item h1{font-size: 15px;}
+}
+
+@media screen and ( max-width:1100px){
+	.changeBox3 .right{height: 300px;}
+}
+@media screen and ( max-width:768px){
+	.changeBox3 .left{width: 20%;}
+	.changeBox3 .right{width:75%;height: auto;}
+	.changeBox3 .right .item{height: 110px;margin-bottom: 35px;}
+	.changeBox3 .item h1{font-size: 14px;line-height: 24px;}
+}
+@media screen and ( max-width:500px){
+	.changeBox3 .left{width: 100%;  margin-bottom: 30px;}
+	.changeBox3 .left img{width: 160px;height: auto;margin: 0 auto; display: block;}
+	.changeBox3 .right{width:100%;}
+	.changeBox3 .right .item{padding: 0 2%;height: 100px;margin: 10px 0;  }
+	.changeBox3 .right .item .icon{width: 35px;height: 35px;}
+	.changeBox3 .item h1 {font-size: 12px;line-height: 20px;}
+}
+

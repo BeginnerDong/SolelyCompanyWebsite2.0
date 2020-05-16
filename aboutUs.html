@@ -91,7 +91,8 @@
 				</div>
 				<div class="pageW75 clearfix center" id="majorShow">
 					<div class="item animated lightSpeedIn" v-show="idObject['majorShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in majorData" :key="index">
-						<span class="icon"></span>
+						<!-- <span class="icon"></span> -->
+						<img class="icon" :src="item.iconUrl" >
 						<h1>{{item.title}}</h1>
 						<p>{{item.text}}</p>
 					</div>
@@ -135,10 +136,10 @@
 					],
 					// 我们的专业
 					majorData:[
-						{title:'细致的需求分析',text:'从用户体验开发，以客户为中心，细致需求分析'},
-						{title:'专业的产品设计',text:'多方位进行产品设计，贴合用户使用习惯'},
-						{title:'高性价比的开发方案',text:'致力为客户提供高性价比的开发方案以及报价'},
-						{title:'成熟的项目管理经验',text:'在每个项目中我们的运用了专业的项目管理知识及项目管理经验'}
+						{iconUrl:'images/about-icon.png',title:'细致的需求分析',text:'从用户体验开发，以客户为中心，细致需求分析'},
+						{iconUrl:'images/about-icon2.png',title:'专业的产品设计',text:'多方位进行产品设计，贴合用户使用习惯'},
+						{iconUrl:'images/about-icon3.png',title:'高性价比的开发方案',text:'致力为客户提供高性价比的开发方案以及报价'},
+						{iconUrl:'images/about-icon4.png',title:'成熟的项目管理经验',text:'在每个项目中我们的运用了专业的项目管理知识及项目管理经验'}
 					],
 					idObject:{
 						'majorShow':{

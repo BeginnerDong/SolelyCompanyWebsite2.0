@@ -33,15 +33,16 @@
 		.swiper-slide p{padding: 20px 2%;}
 		
 		.website{ background:#f5f5f5 url(images/web-icon6.png) no-repeat center bottom/100% auto;margin: 0 auto; padding: 90px 0 110px 0;box-sizing: border-box;height: 530px;}
-		.website .box{width: 70%;margin: 0 auto;box-sizing: border-box;}
+		/* .website .box{width: 70%;margin: 0 auto;box-sizing: border-box;} */
 		.website-title{width: 25%;}
 		.website-list{width: 72%;}
 		.website-title .font{font-size: 20px; color: #b9b9b9;}
 		.website-title .tit{font-size: 24px; margin-top: 15px;line-height: 24px;}
 		.website-title .text{font-size: 14px; margin-top: 50px;}
-		.website-list li{width: 30.3%; height: 140px;background-color: #fff;border-radius: 5px;padding: 20px;box-sizing: border-box;float: left;margin:0 0 25px 3%;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
-		.website-list li h1{font-size:16px;}
-		.website-list li .Bfix{position: absolute;left: 30px;right:30px;bottom: 15px;}
+		.website-list li{width: 30.3%; height: 160px;background-color: #fff;border-radius: 5px;padding: 15px;box-sizing: border-box;float: left;margin:0 0 25px 2%;position: relative;box-shadow: 0 0 5px rgba(0,0,0,0.15);}
+		.website-list li h1{font-size:16px; margin-bottom: 5px;}
+		.website-list li .text2{font-size: 12px;line-height: 18px;color: #666;}
+		.website-list li .Bfix{position: absolute;left: 20px;right:20px;bottom: 10px;}
 		.website-list li .xian{width:1px;height: 25px;background-color: #d8d8d8;}
 		.website-list li .num{clear: both;font-size: 16px;color: #a8a8a8;}
 		.website-list li .rr .icon{width:35px;height: 38px;display: block;margin-top: 5px;background: url(images/pubIcon.png) no-repeat -25px -686px/1200px auto;}
@@ -57,11 +58,11 @@
 		}
 		
 		@media screen and ( max-width:1400px){
-			.website-list li{height: 125px;}
+			.website-list li{height: 175px;}
 			.swiperPc{height: 590px;}
 		}
 		@media screen and ( max-width:1366px){
-			.website{height: 500px;}
+			.website{height: 600px;}
 			.swiperPc{height:578px;}
 		}
 		@media screen and ( max-width:1280px){
@@ -70,19 +71,20 @@
 		
 		@media screen and ( max-width:1100px){
 			.swiperPc{height: 540px;}
-			.website .box{width: 100%;padding: 0 3%;}
+			/* .website .box{width: 100%;padding: 0 3%;} */
 		}
 		@media screen and ( max-width:780px){
 			.swiperPc{height: 495px;}
+			.website-list li{height: 215px;}
 		}
 		@media screen and ( max-width:500px){
-			.website{padding: 30px 0;height: 598px;}
+			.website{padding: 30px 0;height: 883px;}
 			.website-title{width: 100%;text-align: center;}
 			.website-title .font{font-size: 16px;}
 			.website-title .tit{font-size: 18px;margin-top: 10px;font-weight: bold;}
 			.website-title .text{margin-top: 10px;}
 			.website .website-list{width: 96%;margin: 0 auto;padding-top: 30px;float: initial;clear: both;}
-			.website-list li{width: 48%;height: 115px;margin-left: 4%;padding: 15px;}
+			.website-list li{width: 48%;height: 210px;margin-left: 4%;padding: 15px;}
 			.website-list li:nth-child(2n+1){margin-left: 0;}
 			.website-list li h1{font-size: 14px;}
 			.website-list li .Bfix{left: 15px;right: 15px;bottom:10px}
@@ -93,6 +95,9 @@
 			.swiperPc{height:280px;}
 			.swiper-container{padding-bottom: 40px;}
 			.swiper-slide p{padding: 15px 2%;font-size: 15px;}
+		}
+		@media screen and ( max-width:320px){
+			.website-list li{height: 225px;}
 		}
 	</style>
 
@@ -109,7 +114,7 @@
 			</div>
 
 			<div class="website">
-				<div class="box clearfix">
+				<div class="pageW75 box clearfix">
 					<div class="website-title fl">
 						<p class="font">WEBSITE ADVANTAGE</p>
 						<p class="tit">网站优势</p>
@@ -119,6 +124,7 @@
 						<ul class="clearfix">
 							<li class="fadeInRight animated" v-show="idObject['websiteShow']['offsetTopStandard'] <offsetTopNow"  v-for="(item,index) in websiteData" :key="index">
 								<h1>{{item.title}}</h1>
+								<div class="text2">{{item.text}}</div>
 								<div class="Bfix clearfix">
 									<div class="ll fl">
 										<p class="xian"></p>
@@ -166,12 +172,12 @@
 					currentUrl:'',
 					indshareLis: [],
 					websiteData:[
-						{title:'视觉设计',num:'01'},
-						{title:'绝佳的响应式体验',num:'02'},
-						{title:'H5/CSS3标准',num:'03'},
-						{title:'VUE原创后台管理系统',num:'04'},
-						{title:'优秀的SEO优化',num:'05'},
-						{title:'一站式服务',num:'06'}
+						{title:'视觉设计',text:'按需求定制网站设计，包括主次设计、相似性设计、视觉分层、配色、排版等，满足用户一切要求。',num:'01'},
+						{title:'绝佳的响应式体验',text:'面对不同分辨率设备灵活性强，可以为不同终端的用户提供更加舒适的界面和更好的用户体验。',num:'02'},
+						{title:'H5/CSS3标准',text:'实现多平台的浏览方式，不同分辨率下依然保持页面风格一致，后台更新数据可高效同步至多个平台，用户体验极佳。',num:'03'},
+						{title:'VUE原创后台管理系统',text:'相比于常规的后台管理系统进行速度更快更稳定，提升整个网站的可维护性。',num:'04'},
+						{title:'优秀的SEO优化',text:'更高的网站流量转化，提高公司业务，广告点击及品牌建设，有效提升用户公司知名度。',num:'05'},
+						{title:'一站式服务',text:'从域名申请备案，到公众号的认证，微信支付的开通认证，所有相关的资质和准备工作全部交给我们，绝佳的一站式开发体验。',num:'06'}
 					],
 					websiteShow:false,
 					idObject:{
