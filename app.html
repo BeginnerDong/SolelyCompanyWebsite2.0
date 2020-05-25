@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="description" content="纯粹科技，专注技术的软件开发公司">
 		<meta name="keywords" content="软件开发，微信公众号开发，小程序开发，app开发，网站建设，平面设计，优质外包软件公司">
-		<title>纯粹科技-案例</title>
+		<title>纯粹科技-APP开发</title>
 		<link rel="shortcut icon"  href="images/logoico.ico" type="image/x-icon" />
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -37,6 +37,9 @@
 		
 		.wecando li h1{font-size: 18px;padding-bottom: 10px;}
 		.wecando li p{line-height: 22px;}
+		
+		.changeBox3 .left img{position: absolute;margin-top: 0;}
+		
 		@media screen and ( max-width:500px){
 			.wecando{padding-bottom: 10px;}
 			.wecando li{width: 100%;height: auto;padding-left: 40px;}
@@ -76,11 +79,13 @@
 						<p>Our advantage</p>
 					</div>
 					<div class="clearfix center cont" id="advantageShow">
-						<div class="left fl animated bounceInLeft">
-							<img src="images/public-img.png" >
+						<div class="left fl">
+							<img src="images/public-img1.png" class="animated bounceInLeft delay-01">
+							<img src="images/public-img2.png" class="animated bounceInLeft delay-03">
+							<img src="images/public-img3.png" class="animated bounceInLeft delay-05">
 						</div>
-						<div class="clearfix right fr animated bounceInRight">
-							<div class="item" v-for="(item,index) in advantageData" :key="index" v-show="idObject['advantageShow']['offsetTopStandard'] <offsetTopNow">
+						<div class="clearfix right fr">
+							<div class="item animated bounceInRight" v-for="(item,index) in advantageData " :class="item.className" :key="index" v-show="idObject['advantageShow']['offsetTopStandard'] <offsetTopNow">
 								<img class="icon" :src="item.iconUrl" alt="">
 								<h1>{{item.title}}</h1>
 								<p>{{item.text}}</p>
@@ -187,14 +192,14 @@
 					sameTime:0,
 					offsetTopNow:0,
 					advantageData:[
-						{iconUrl:"images/the-publicl-icon3.png",title:"100%定制开发"},
-						{iconUrl:"images/the-publicl-icon4.png",title:"稳定的前沿技术框架"},
-						{iconUrl:"images/the-publicl-icon5.png",title:"1000+客户产品规划经验"},
-						{iconUrl:"images/the-publicl-icon6.png",title:"详尽且极具竞争力的报价"},
-						{iconUrl:"images/the-publicl-icon7.png",title:"一站式服务"},
-						{iconUrl:"images/the-publicl-icon8.png",title:"5道测试环节力保质量"},
-						{iconUrl:"images/the-publicl-icon9.png",title:"信守工期延期赔付"},
-						{iconUrl:"images/the-publicl-icon10.png",title:"7*24售后临时待命"}
+						{iconUrl:"images/the-publicl-icon3.png",title:"100%定制开发",className:'delay-01'},
+						{iconUrl:"images/the-publicl-icon4.png",title:"稳定的前沿技术框架",className:'delay-02'},
+						{iconUrl:"images/the-publicl-icon5.png",title:"1000+客户产品规划经验",className:'delay-03'},
+						{iconUrl:"images/the-publicl-icon6.png",title:"详尽且极具竞争力的报价",className:'delay-04'},
+						{iconUrl:"images/the-publicl-icon7.png",title:"一站式服务",className:'delay-05'},
+						{iconUrl:"images/the-publicl-icon8.png",title:"5道测试环节力保质量",className:'delay-06'},
+						{iconUrl:"images/the-publicl-icon9.png",title:"信守工期延期赔付",className:'delay-07'},
+						{iconUrl:"images/the-publicl-icon10.png",title:"7*24售后临时待命",className:'delay-08'}
 						
 					]
 				}

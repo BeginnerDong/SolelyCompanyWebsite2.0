@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="right fr clearfix animated slideInRight">
-						<img src="images/to-home-icon15.png" >
+						<img :src="item.img" >
 					</div>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 							'（2）梳理客户各项需求绘制出业务流程图，并给出详尽且极具竞争力的报价方案。',
 							'（3）相关文件：《需求文档》《项目报价表》《第三方费用明细表》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img1.png'
 					},
 					{
 						"title":'02项目策划',
@@ -70,7 +70,7 @@
 							'（2）将功能清单反馈给客户，经双方商讨后制定准确一致的功能确认书。',
 							'（3）相关文件：《项目功能确认书》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img2.png'
 					},
 					{
 						"title":'03UI/UE设计',
@@ -79,7 +79,7 @@
 							'（2）将设计图反馈给客户，并针对客户的意见不断调整直到客户满意。',
 							'（3）相关文件：《界面设计确认单》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img3.png'
 					},
 					{
 						"title":'04技术开发',
@@ -88,7 +88,7 @@
 							'（2）依据功能确认书及UI高保真设计图，科学分工，进行从前端页面到API架构的搭建。',
 							'（3）相关文件：《开发标准及流程说明书》《工期标准说明》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img4.png'
 					},
 					{
 						"title":'05项目测试',
@@ -97,7 +97,7 @@
 							'（2）开发完成后，5+岗位进行完整的5遍测试流程，确保完整实现产品诉求。',
 							'（3）相关文件：《测试用例编写》《测试结果说明》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img5.png'
 					},
 					{
 						"title":'06产品上线',
@@ -106,7 +106,7 @@
 							'（2）根据客户提供的小程序/公众号/APP/网站认证的相关资质，帮助客户通过平台认证。',
 							'（3）相关文件：《项目交接文档》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img6.png'
 					},
 					{
 						"title":'07跟踪服务',
@@ -115,7 +115,7 @@
 							'（2）产品正式运营后，提供7*12小时售后，包括服务器异常维护、用户反馈bug修理等。',
 							'（3）相关文件：《后台操作说明文档》',
 						],
-						'img':'images/to-home-icon15.png'
+						'img':'images/our-services-img7.png'
 					}
 				],
 				serviceShow:false,
@@ -231,23 +231,25 @@
 	.indx-myService .left .title{font-size: 20px; font-weight: bold;padding: 30px 0 40px 0;}
 	.indx-myService .left .text p{margin-bottom: 20px; font-size: 15px;}
 	.indx-myService .right{width: 35%;}
-	.indx-myService .right img{width:300px; height: 253px; display: block;float: right;}
+	.indx-myService .right img{width: 450px; height:auto; display: block;float: right;}
 	
 	@media only screen and (max-width: 1600px){
-		
+		.indx-myService .right img{width: 420px;height: auto;}
 	}
 	@media only screen and (max-width: 1450px){
 		.topBox .item{height: 135px;}
 		.topBox .item .icon{width: 50px;height: 50px;}
 		.topBox .item p{font-size: 18px;}
+		.indx-myService .right img{width: 420px;height: auto;}
 	}
 	@media only screen and (max-width: 1366px){
 		.topBox .item{height: 130px;}
 		.topBox .item .icon{width: 45px;height: 45px;}
 		.topBox .item p{font-size: 16px;}
+		.indx-myService .right img{width: 340px;height: auto;margin-top: 10%;}
 	}
 	@media only screen and (max-width: 1050px){
-		
+		.indx-myService .right img{width: 280px;height: auto;margin-top: 25%;}
 	}
 	@media only screen and (max-width: 768px){
 		.topBox .item{height: 120px;}
@@ -256,7 +258,7 @@
 		.indx-myService .left .title {font-size: 18px;padding: 20px 0 30px 0;}
 		.indx-myService .left .text p {margin-bottom: 15px;font-size: 13px;}
 		.indx-myService .infor{height: 253px;padding: 40px 3% 0 3%;}
-		.indx-myService .right img{width: 100%;height: auto;}
+		.indx-myService .right img{width: 250px;height: auto;margin-top: 20%;float: initial;}
 	}
 	@media only screen and (max-width: 500px){
 		.indx-myService .topBox{overflow-x: auto;white-space: nowrap;}
