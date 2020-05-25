@@ -18,17 +18,17 @@
 			<div style="width: 100%;height: 1px;background: #d5d5d5;"></div>
 			
 			<div class="pageW75 infor clearfix animated slideInUp" id="serviceShow" v-show="idObject['serviceShow']['offsetTopStandard'] <offsetTopNow">
-				<div class="left fl">
-					<div class="titXian"></div>
-					<div class="title">01需求分析</div>
-					<div class="text">
-						<p>（1）结合客户需求，从技术是实现、用户体验等多个方面进行需求分析</p>
-						<p>（2）梳理客户各项需求绘制出业务流程图，并给出详尽且竞争力的报价方案</p>
-						<p>（3）相关文件：《需求文档》《项目报价表》《第三个费用明细表》</p>
+				<div v-for="(item,index) in serviceCon" :key="index" v-show="stateCurr==index">
+					<div class="left fl animated slideInLeft">
+						<div class="titXian"></div>
+						<div class="title">{{item.title}}</div>
+						<div class="text" v-for="(v,i) in item.text" :key="i">
+							<p>{{v}}</p>
+						</div>
 					</div>
-				</div>
-				<div class="right fr clearfix">
-					<img src="images/to-home-icon15.png" >
+					<div class="right fr clearfix animated slideInRight">
+						<img src="images/to-home-icon15.png" >
+					</div>
 				</div>
 			</div>
 		</div>
@@ -52,6 +52,71 @@
 					{iconUrl:'images/to-home-icon8.png',iconUrlCurr:'images/to-home-icon9.png',title:'项目测试'},
 					{iconUrl:'images/to-home-icon11.png',iconUrlCurr:'images/to-home-icon10.png',title:'产品上线'},
 					{iconUrl:'images/to-home-icon12.png',iconUrlCurr:'images/to-home-icon13.png',title:'跟踪服务'}
+				],
+				serviceCon:[
+					{
+						"title":'01需求分析',
+						'text':[
+							'（1）结合客户需求，从技术实现、用户体验等多个方面进行需求分析。',
+							'（2）梳理客户各项需求绘制出业务流程图，并给出详尽且极具竞争力的报价方案。',
+							'（3）相关文件：《需求文档》《项目报价表》《第三方费用明细表》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'02项目策划',
+						'text':[
+							'（1）依据需求分析确定的项目结构，提供完整且合乎逻辑的功能实现清单。',
+							'（2）将功能清单反馈给客户，经双方商讨后制定准确一致的功能确认书。',
+							'（3）相关文件：《项目功能确认书》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'03UI/UE设计',
+						'text':[
+							'（1）依据项目策划确定的功能清单与逻辑，结合客户需求及市场审美方向，提供UI高保真设计图。',
+							'（2）将设计图反馈给客户，并针对客户的意见不断调整直到客户满意。',
+							'（3）相关文件：《界面设计确认单》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'04技术开发',
+						'text':[
+							'（1）与客户明确开发周期并签订具体合约，延期按约赔付。',
+							'（2）依据功能确认书及UI高保真设计图，科学分工，进行从前端页面到API架构的搭建。',
+							'（3）相关文件：《开发标准及流程说明书》《工期标准说明》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'05项目测试',
+						'text':[
+							'（1）开发过程中，测试人员制定相应的产品测试策略，对常见风险点进行评估与规避。',
+							'（2）开发完成后，5+岗位进行完整的5遍测试流程，确保完整实现产品诉求。',
+							'（3）相关文件：《测试用例编写》《测试结果说明》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'06产品上线',
+						'text':[
+							'（1）测试无误后与客户进行项目交接，并编写完整的交接注意事项说明书。',
+							'（2）根据客户提供的小程序/公众号/APP/网站认证的相关资质，帮助客户通过平台认证。',
+							'（3）相关文件：《项目交接文档》',
+						],
+						'img':'images/to-home-icon15.png'
+					},
+					{
+						"title":'07跟踪服务',
+						'text':[
+							'（1）交接产品后即为客户免费培训后台操作并附赠操作文档，直至客户能独立操作后台系统。',
+							'（2）产品正式运营后，提供7*12小时售后，包括服务器异常维护、用户反馈bug修理等。',
+							'（3）相关文件：《后台操作说明文档》',
+						],
+						'img':'images/to-home-icon15.png'
+					}
 				],
 				serviceShow:false,
 				idObject:{
@@ -85,7 +150,7 @@
 				};
 			};
 			self.topInterval =  setInterval(function(){
-				console.log('document.getElementById',document.getElementById('app').offsetHeight)
+				// console.log('document.getElementById',document.getElementById('app').offsetHeight)
 				if(self.sameTime==100){
 					clearInterval(self.topInterval);
 					return;
@@ -132,6 +197,7 @@
 				var self = this;
 				self.stateCurr = index
 				self.is_icon = true
+				console.log(index)
 			}
 	    	
 	    }

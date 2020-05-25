@@ -111,7 +111,7 @@
 							<p>服务足迹遍布30+省份</p>
 						</li>
 						<li>
-							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">1000<em class="">年</em></h1>
+							<h1 class="num animated rubberBand" v-show="idObject['numShow']['offsetTopStandard'] <offsetTopNow">1000<em class="">+</em></h1>
 							<p>为1000+企业提供一站式解决方案</p>
 						</li>
 						<li>
@@ -255,7 +255,7 @@
 					};
 				};
 				self.topInterval =  setInterval(function(){
-					console.log('document.getElementById',document.getElementById('app').offsetHeight)
+					// console.log('document.getElementById',document.getElementById('app').offsetHeight)
 					if(self.sameTime==100){
 						clearInterval(self.topInterval);
 						return;
