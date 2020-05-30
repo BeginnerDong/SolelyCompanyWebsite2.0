@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="text-align: center;">
+		<div style="text-align: center;" class="linkBto">
 			<a @click="caseCall" >
 				<p style="font-size: 15px;font-weight: bold;">点击，了解案例详情</p >
 			</a>
@@ -226,7 +226,7 @@
 		}
 
 		.swiper-slide {
-			width: 33.3% !important;
+			width: 33.3% ;
 		}
 
 		.CaceSwiper .cont {
@@ -237,17 +237,60 @@
 
 	@media screen and (max-width:500px) {
 		.CaceSwiper {
-			height: 520px;
+			height: 660px;
 		}
 
 		.CaceSwiper .cont {
-			height: 334px;
+			height: 83%;
 			padding-bottom: 40px;
 		}
 
 		.swiper-slide p {
 			font-size: 14px;
 			padding: 15px 2%;
+		}
+		
+		.swiperPc .swiper-slide{
+			margin-top: 30px;
+		}
+		
+		.swiperPc .swiper-wrapper{
+			margin-left: -19%;
+		}
+		
+		.swiperPc .swiper-slide-active{
+			width: 70%!important;
+			margin: 0 2%!important;
+		}
+		
+		.CaceSwiper .swiper-wrapper{
+			margin-left: -15%;
+		}
+		
+		.CaceSwiper .swiper-slide-active{
+			width: 60%!important;
+			margin: 0 2%!important;
+		}
+		
+		.swiperPc,.CaceSwiper{
+			position: relative;
+		}
+		.linkBto{
+			position: absolute;
+			width: 100%;
+			bottom: 15px;
+		}
+	}
+	
+	@media screen and (max-width:375px) {
+		.CaceSwiper {
+			height: 610px;
+		}
+	}
+	
+	@media screen and (max-width:320px) {
+		.CaceSwiper {
+			height: 550px;
 		}
 	}
 </style>

@@ -962,7 +962,6 @@ a:visited {
 	.banner-small-title {font-size: 20px;}
 	.banner-mainTitle{top: 7%;}
 	#showToast{top: 20%;}
-	
 }
 
 @media only screen and (max-width: 1024px) {
@@ -1006,4 +1005,10 @@ a:visited {
 	.banner-mainTitle .banner-title{margin-top: 0;margin-left: 0;font-size: 20px;}
 	.banner-mainTitle .banner-small-title{margin-top: 10px;margin-left: 0;font-size: 14px;}
 	
+	
+	.inforText p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: left;
+	}
 }
