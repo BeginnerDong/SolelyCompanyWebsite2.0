@@ -272,7 +272,7 @@
 				initOffsetTop: function(){
 					const self = this;
 					this.bodyOffsetHeight =  document.getElementById('app').offsetHeight;
-					for(let key  in self.idObject){
+					for(var key  in self.idObject){
 						if(document.getElementById(key)){
 							var res = window.base.getElementToPageTop(document.getElementById(key));
 							self.idObject[key]['offsetTopStandard'] = res;
